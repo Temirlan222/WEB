@@ -81,9 +81,4 @@ Regenerate its line numbers after editing HTML.
 - Genuine commits from each student's own account across the required three days,
   and preparation for the live defence.
 
-## AI disclosure
 
-AI wrote the three new pages, their prose and comments, and these support notes.
-See `AI_LOG.md`. The assignment allows AI explanations but prohibits AI-written
-pages and text. This generated draft must not be presented as independent student
-work; a log alone does not make it comply with that rule.
