@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="Grocery" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
     <title>Products | Grocery Store</title>
 </head>
 <body>  
  <header>
-    <h1> Products</h1>
+    <p>Lido Grocery Store</p>
  </header>
- <nav>
+ <nav aria-label="Main navigation">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="prices.html">Prices</a></li>
-            <li><a href="delivery.html">Delivery</a></li>
+            <li><a href="delivery.html" aria-current="page">Order and delivery</a></li>
             <li><a href="contacts.html">Contacts</a></li>
-            <li><a href="colophon.html">Colophon</a></li>
+            <li><a href="colophon.html">About this site</a></li>
         </ul>
     </nav>
+    <main>
+        <h1>Products</h1>
     <section>
-        <h2>    Products category</h2>
+        <!-- Author: Temirlan -->
+         <!-- I used section because all content inside this block is related to one main topic: product categories. -->
+        
+        <h2>Food &amp; Household Products</h2>
         <article>
             <h3><em>Accessories and Miscellaneous</em></h3>
             <figure>
@@ -42,15 +47,17 @@
         <article>
             <h3><em>Household cleaning</em></h3>
             <figure>
-                <img src="мыло.jpg" alt="Cleaning Produce" width="400" height="200">
+                <img src="мыло.jpg" alt="Household cleaning products displayed in Lido Grocery Store" width="400" height="200">
                 <figcaption>Cleaning items for home use including soaps, detergents for laundry clothes, dishwashing fluids, cleaning sprays, sponges, and more are all addressed in this paragraph. </figcaption>
             </figure>
         </article>
         <hr>
     </section>
+
     <br>
     <br>
     <aside> 
+        <!-- I used aside because this information is additional and is not part of the main product category descriptions. -->
         <p>Apart from packaged foods and household goods, fresh produce, particularly fruits and vegetables, is also sold in Lido on a daily basis.</p>
         <p>Products such as apples, bananas, tomatoes, cucumbers and potatoes can be found among all the usual products sold in Lido’s a shop. Lido has bottled water, juices, drinks and many other kinds of beverages.</p>
         <p>Several goods are stored in refrigerators so as to keep them fresh. The wide variety of foods and beverages helps the customers to make their daily purchases easily.</p>
@@ -61,10 +68,16 @@
     <br>
 
     <section>
-    <h4>Details on the remaining sections:</h4>
-    <ol>
+    <h2>Details on the remaining sections:</h2>
+    <ol type ="1">
         <li>Quick bites</li>
-        <li>Beverages</li>
+        <li>Beverages
+        <ul>
+            <li>Water</li>
+            <li>Juice</li>
+            <li>Soft Drinks</li>
+        </ul>
+        </li>
         <li>Fruit and vegetables</li>
         <li>Snacks</li>
         <li>Sweets</li>
@@ -74,7 +87,29 @@
     </ol>
     </section>
     <section>
-    <h4>Description of each section:</h4>
+    <h2>Product Information</h2>
+
+    <p>
+        Lido offers <strong>everyday essentials</strong> and
+        <em>fresh products</em> for its customers.
+        The store also sells <b>popular brands</b> and some
+        <i>ready-to-eat</i> products.
+        Selected goods may sometimes be <mark>on promotion</mark>.
+        Bottled H<sub>2</sub>O can be found in the beverages section.
+    </p>
+
+    <p>
+        <small>Product availability may change during the day.</small>
+    </p>
+    <p>
+    Product availability:
+    <!-- I used span because only this small part of the sentence needs to be grouped and no semantic element is suitable. -->
+    <span>may change during the day</span>.
+    </p>
+</section>
+    <section>
+        
+    <h2>Description of each section:</h2>
     <dl>
     <dt><strong>Quick bites:</strong></dt>
     <dd>Ready-to-eat food and small meals for a quick snack.</dd>
@@ -101,11 +136,107 @@
     <dd>Alcoholic beverages available for adult customers.</dd>
 </dl>
     </section>
+    <section>
+    <h2>Product Request Form</h2>
+    <p>
+        Customers can use this form to request information about a product
+        they are looking for.
+    </p>
+    <section>
+    <h2>About the Store</h2>
+    <blockquote>
+        The best medicine is shopping!
+    </blockquote>
+    <p>
+        <cite>Gulzhan, 13 September 2026</cite>
+    </p>
+    <p>
+        During our visit, the employee also said,
+        <q>We’re always happy to see you—come back again!</q>.
+    </p>
+</section>
+    <form action="products.html" method="get">
+        <fieldset>
+            <legend>Product Request</legend>
+            <p>
+                <label for="customer-name">Name:</label>
+                <input type="text" id="customer-name" name="customer-name" placeholder="Enter your name" required
+                >
+            </p>
+            <p>
+                <label for="customer-email">Email:</label>
+                <input type="email" id="customer-email" name="customer-email" placeholder="Enter your email" required
+                >
+            </p>
+            <p>
+                <label for="customer-phone">Phone:</label>
+                <input type="tel" id="customer-phone" name="customer-phone" placeholder="+7 700 000 00 00"
+                >
+            </p>
+            <p>
+                <label for="product-name">Product name:</label>
+                <input type="text" id="product-name" name="product-name" placeholder="Example: Milk" required
+                >
+            </p>
+            <p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" required
+                >
+            </p>
+            <p>
+                <label for="request-date">Preferred date:</label>
+                <input type="date" id="request-date" name="request-date"
+                >
+            </p>
+            <p>
+                <label for="category">Product category:</label>
+
+                <select id="category" name="category">
+                    <option value="beverages">Beverages</option>
+                    <option value="snacks">Snacks</option>
+                    <option value="sweets">Sweets</option>
+                    <option value="meat">Meat</option>
+                    <option value="household">Household Cleaning</option>
+                </select>
+            </p>
+            <p>Preferred contact method:</p>
+            <input type="radio" id="contact-email" name="contact-method" value="email" required
+            >
+            <label for="contact-email">Email</label>
+            <input type="radio" id="contact-phone" name="contact-method" value="phone"
+            >
+            <label for="contact-phone">Phone</label>
+            <p>
+                <input type="checkbox" id="contact-permission" name="contact-permission" required
+                >
+                <label for="contact-permission">
+                    I agree to be contacted about this request.
+                </label>
+            </p>
+            <p>
+                <label for="request-comment">Additional information:</label>
+                <br>
+                <textarea id="request-comment" name="request-comment"  rows="5" cols="40"  placeholder="Describe the product you are looking for"></textarea>
+            </p>
+
+            <!-- I used div because the buttons are only grouped as form controls and no semantic section element is appropriate here. -->
+            <div>
+                <button type="submit">Submit Request</button>
+                <button type="reset">Reset</button>
+            </div>
+<!-- This form does not send data to a server because server-side handling has not been implemented yet. -->
+        </fieldset>
+
+    </form>
+</section>
+    </main>
     <footer>
         <p>Lido Grocery Store</p>
         <p>&copy; 2026 Lido Grocery Store</p>
-        <p>Contact: +77479052505</p>
+        <p>Contact: <a href="tel:+77479052505">+7 747 905 25 05</a></p>
         <p>Address: Uly dala 31</p>
+        <p> Email: <a href="mailto:253741@astanait.edu.kz"> 253741@astanait.edu.kz </a></p>
+        <p> <a href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" target="_blank" rel="noopener noreferrer">View Lido location on 2GIS </a></p>
     </footer>
 
 </body>
