@@ -2,7 +2,7 @@
 
 Generated from the current saved HTML on 2026-09-13, after the requested removal of the form. Regenerate line references after any HTML edit.
 
-Student responsible: **Saparali Shalkar**. AI assistance is recorded in `AI_LOG.md`.
+Student responsible: **Saparali Shalkar**.
 
 The telephone link is not a substitute for the assignment form. Deleted tags and controls are marked missing, even if escaped code or a backup mentions them.
 
