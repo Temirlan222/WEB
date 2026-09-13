@@ -52,12 +52,3 @@ contains four different photographs:
 | Grocery/мыло.jpg | Soap, shampoo and household cleaning shelves | delivery.html, copy in images/ |
 | Grocery/non-food.jpg | Toys, socks and miscellaneous goods | Teammate page only |
 
-AI inspected and copied these existing image files. It did not generate, retouch
-or crop them. Three distinct photographs are now displayed across delivery and
-contacts. Copies are not counted as additional photographs. The photographer and
-capture dates have not been verified; the student must supply that evidence.
-
-## AI contribution
-
-The HTML, prose, comments and these notes were prepared with AI assistance,
-recorded in `AI_LOG.md`. No personal visit, interview or independent authorship is claimed.
