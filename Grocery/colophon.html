@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How the Lido student website is organised, how its telephone link works and where assistance is recorded.">
+    <meta name="author" content="Saparali Shalkar">
+    <title>About this site | Lido Grocery Store</title>
+</head>
+<body>
+    <!-- Page author: Saparali Shalkar. AI assistance is recorded in ../AI_LOG.md. -->
+    <header>
+        <p>Lido Grocery Store</p>
+    </header>
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="prices.html">Prices</a></li>
+            <li><a href="delivery.html">Order and delivery</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="colophon.html" aria-current="page">About this site</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>How this site was made</h1>
+        <section>
+            <h2>Files and responsibilities</h2>
+            <p>This student project describes Lido in Astana. Temirlan is responsible for the home,
+                products and prices pages. Saparali Shalkar is responsible for delivery, contacts and this page.
+                The six HTML files belong in the same folder, with photographs inside <code>images/</code>.</p>
+            <p>These three pages use plain HTML. There is no CSS, JavaScript or framework.
+                Opening a file directly in a browser displays its headings, text, links and photographs.
+                Relative links connect the local pages.</p>
+        </section>
+
+        <!-- Editing and telephone links have different purposes, so each topic has its own titled section. -->
+        <section>
+            <h2>Editing and checking</h2>
+            <p>Sublime Text can edit these files. On a Mac, press <kbd>Command</kbd> + <kbd>S</kbd>
+                to save, then reload the browser. The telephone link uses a simple address:</p>
+            <!-- Preformatted text preserves the example's line breaks; escaped brackets show the link's code instead of another active link. -->
+            <pre><code>&lt;a href="tel:+77479052505"&gt;
+    Call Lido
+&lt;/a&gt;</code></pre>
+            <p>Check each saved file with the <a href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">W3C Nu Html Checker</a>.
+                A successful result reads <samp>Document checking completed. No errors or warnings to show.</samp></p>
+        </section>
+
+        <section>
+            <h2>Telephone link and sources</h2>
+            <p>The <code>tel:</code> link asks the device to open a calling app.
+                The visitor can then call the shop to discuss delivery. This website has no order form
+                and does not send customer details anywhere.</p>
+            <p>AI helped write these pages; details are in the <a href="../AI_LOG.md">AI log</a>.
+                The <a href="../DATA_SOURCES.md">source notes</a> separate public information from missing personal evidence.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Lido student project &mdash; Saparali Shalkar.</p>
+        <p>Uly Dala Avenue, 31, Astana<br><a href="tel:+77479052505">+7&nbsp;747&nbsp;905&nbsp;25&nbsp;05</a></p>
+    </footer>
+</body>
+</html>
