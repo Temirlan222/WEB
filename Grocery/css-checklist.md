@@ -136,8 +136,8 @@ Each ID appears once per page. The same ID name may be used once on each separat
 | W3C CSS validation | Two stylesheets, zero errors and zero warnings on 18 September 2026 |
 | Git history | Multiple team commits across 12, 13 and 18 September 2026 |
 
-## Process evidence still supplied by the student
+## Process evidence
 
-- Signed and dated photograph of the hand-drawn layouts for two pages.
+The hand-drawn layouts for the home and products pages are included in the project photograph and on the first page of `evidence/Temirlan_Mukhametov_Assignment_2_Evidence.pdf`.
 
 The `evidence` folder contains before-and-after screenshots of the home and products pages. The before screenshots were rendered from the final Assignment 1 commit, before CSS was added.
