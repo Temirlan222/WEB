@@ -1,13 +1,13 @@
 /*
     
-    #24513b green is used for the store header and headings.
-    #d7a928 gold marks the current navigation link.
-    #f7f3e8 light cream is used for the page background.
-    #23312b dark green is used for readable text.
-    white   white keeps tables and form fields clear.
+    #24513b green is used for the store header and headings
+    #d7a928 gold marks the current navigation link
+    #f7f3e8 light cream is used for the page background
+    #23312b dark green is used for readable text
+    white   white keeps tables and form fields clear
 */
 
-/* The universal selector matches every element. */
+/* The universal selector matches every elemen  */
 * {
     box-sizing: border-box;
 }
@@ -75,12 +75,12 @@ img {
 }
 
 .site-nav {
-    position: static; /* Static is suitable because the menu stays in the normal page flow. */
+    position: static; /* Static is suitable because the menu stays in the normal page flow */
     padding: 10px;
     background-color: #23312b;
 }
 
-/* Child selector: only the main list inside the navigation becomes flex. */
+/* Child selecto  only the main list inside the navigation becomes fle  */
 .site-nav > .nav-list {
     display: flex;
     flex-direction: row;
@@ -93,14 +93,14 @@ img {
     list-style: none;
 }
 
-/* Descendant selector: all links inside the navigation get the same style. */
+/* Descendant selector all links inside the navigation get the same style */
 .site-nav a {
     color: white;
     font-weight: 700;
     text-decoration: none;
 }
 
-/* :first-child matches the first menu item; ::before inserts the marker before its link. */
+/* :first child matches the first menu item ::before inserts the marker before its link */
 .site-nav li:first-child a::before {
     content: "> ";
     color: #d7a928;
@@ -120,7 +120,7 @@ img {
 .site-main {
     width: 90%;
     max-width: 1000px;
-    margin: 0 auto; /* Centering technique 1: auto margins centre the main page column. */
+    margin: 0 auto; /* 1 auto margins centre the main page column*/
     padding: 30px 0;
 }
 
@@ -202,7 +202,7 @@ button:focus {
     background-color: #23312b;
 }
 
-/* Attribute selector: external links get a small symbol after them. */
+/* Attribute selector: external links get a small symbol after them */
 a[target="_blank"]::after {
     content: " (external)";
     font-size: 12px;
