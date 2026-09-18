@@ -10,12 +10,12 @@
     margin: 0 15px 10px 0;
 }
 
-/* Without clear, the following content could move up beside the floated store photo. */
+/* Without clear the following content could move up beside the floated store photo */
 .about-section + hr {
     clear: both;
 }
 
-/* Grid is better than Flexbox here because the cards need both rows and columns. */
+/* Grid is better than Flexbox here because the cards need both rows and columns */
 .product-gallery {
     display: grid;
     grid-template-columns: repeat(3, minmax(180px, 1fr));
@@ -85,13 +85,13 @@
     text-align: center;
 }
 
-/* Specificity 0-1-0: this rule loses to the more specific rule below. */
+/* Specificity 0 1 0 this rule loses to the more specific rule below */
 .product-information {
     border-left: 4px solid #d7a928;
     padding-left: 12px;
 }
 
-/* Specificity 0-2-0: this rule wins and resolves the conflict through specificity. */
+/* Specificity 0 2 0 this rule wins and resolves the conflict through specificity */
 .page-products .product-information {
     border-left-color: #24513b;
 }
