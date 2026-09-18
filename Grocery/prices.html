@@ -8,24 +8,27 @@
     <meta name="author" content="Temirlan">
 
     <title>Prices | Lido Grocery Store</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/temirlan.css">
 </head>
-<body>
-    <!-- Author: Temirlan -->
-    <header>
-        <p>Lido Grocery Store</p>
+<body class="page-prices">
+    <header class="site-header">
+        <p class="site-name">Lido Grocery Store</p>
     </header>
-    <nav aria-label="Main navigation">
-        <ul>
+    <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
-            <li><a href="prices.html">Prices</a></li>
-            <li><a href="delivery.html" aria-current="page">Order and delivery</a></li>
+            <li><a href="prices.html" aria-current="page">Prices</a></li>
+            <li><a href="delivery.html">Order and delivery</a></li>
             <li><a href="contacts.html">Contacts</a></li>
             <li><a href="colophon.html">About this site</a></li>
         </ul>
     </nav>
-    <main>
-        <h1>Product Prices</h1>
+    <!-- main-content is an ID because there is only one main content region per page. -->
+    <main id="main-content" class="site-main">
+        <!-- page-title is an ID because this page has exactly one primary title. -->
+        <h1 id="page-title">Product Prices</h1>
         <p>
             The content of this page represents a summary of costs for a number of goods 
             that were available at Lido Grocery Store. In this case, the most frequently 
@@ -40,8 +43,7 @@
             <a href="#price-information">read information about the prices</a>.
         </p>
 
-        <!-- I used section because this part focuses specifically on product prices. -->
-        <section id="price-table">
+        <section id="price-table" class="content-section price-section">
 
             <h2>Current Prices</h2>
 
@@ -51,7 +53,7 @@
                 Some products are sold by piece, while others are sold by
                 <abbr title="Kilogram">kg</abbr>.
             </p>
-            <table>
+            <table class="price-table">
                 <caption>Selected Products and Their Prices</caption>
                 <thead>
                     <tr>
@@ -120,8 +122,7 @@
             </table>
         </section>
         <hr>
-        <!-- I used section because this information explains how the table data was collected. -->
-        <section id="price-information">
+        <section id="price-information" class="content-section price-information">
             <h2>Price Information</h2>
             <p>
                 Product pricing may fluctuate because shops receive new supplies, conduct sales activities, 
@@ -146,7 +147,7 @@
 
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <p>Lido Grocery Store</p>
         <p>&copy; 2026 Lido Grocery Store</p>
         <p>Contact: <a href="tel:+77479052505">+7 747 905 25 05</a></p>

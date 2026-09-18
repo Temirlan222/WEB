@@ -6,25 +6,36 @@
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
     <title>Home | Grocery Store</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/temirlan.css">
+    <style>
+        /* Cascade demo: this internal ID rule overrides .cascade-demo in base.css. */
+        #cascade-note { color: #24513b; }
+    </style>
 </head>
-<body>
+<body class="page-home">
     
-    <header> <h1>Welcome to Lido Grocery Store</h1> </header>
-    <nav aria-label="Main navigation">
-        <ul>
-            <li><a href="index.html">Home</a></li>
+    <header class="site-header">
+        <!-- page-title is an ID because this page has exactly one primary title. -->
+        <h1 id="page-title">Welcome to Lido Grocery Store</h1>
+    </header>
+    <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+            <li><a href="index.html" aria-current="page">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="prices.html">Prices</a></li>
-            <li><a href="delivery.html" aria-current="page">Order and delivery</a></li>
+            <li><a href="delivery.html">Order and delivery</a></li>
             <li><a href="contacts.html">Contacts</a></li>
             <li><a href="colophon.html">About this site</a></li>
         </ul>
     </nav>
     
-    <main>
-    <section>
+    <!-- main-content is an ID because there is only one main content region per page. -->
+    <main id="main-content" class="site-main">
+    <section class="content-section about-section">
         <h2>About Us</h2>
-        <p>
+        <!-- Cascade demo: this single inline style overrides both the external and internal color rules. -->
+        <p id="cascade-note" class="cascade-demo" style="color: #23312b;">
            Welcome to Lido Grocery Store at Uly Dala 31.
             The Lido Grocery market has everything that is needed
             daily in any residential area. The products available include food, 
@@ -34,7 +45,7 @@
         </p>
     </section>
     <hr>
-    <section>
+    <section class="content-section products-summary">
         <h2>Our Products</h2>
         <p>
             Lido has a big range of commodities offered in various departments.
@@ -45,8 +56,7 @@
         </p>
     </section>
     <hr>
-    <section>
-        <!-- I used section because opening hours are a separate topic on the home page. -->
+    <section class="content-section opening-hours">
         <h2>Opening Hours</h2>
         <p>
             Lido Grocery Store is open <b>24/7</b>, which makes it convenient
@@ -56,7 +66,7 @@
         </p>
     </section>
     <hr>
-    <section>
+    <section class="content-section website-summary">
         <h2>About This Website</h2>
         <p>
             A website has been made to provide basic information regarding Lido Grocery Store.
@@ -65,14 +75,12 @@
             this website is dependent on our visit to the store and the information that we collected from there.
         </p>
     </section>
-    <!-- I used figure because the photo and its caption belong together as one piece of content. -->
-    <figure>
+    <figure class="store-figure">
         <img src="Лидо.jpg" alt="Front entrance of Lido Grocery Store" width="150" height="200">
         <figcaption>Main entrance of Lido Grocery Store</figcaption>
     </figure>
 </main>
-    <!-- Author: Temirlan -->
-     <footer>
+     <footer class="site-footer">
         <p>Lido Grocery Store</p>
         <p>&copy; 2026 Lido Grocery Store</p>
         <p>Contact: <a href="tel:+77479052505">+7 747 905 25 05</a></p>

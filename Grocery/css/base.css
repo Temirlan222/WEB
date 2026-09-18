@@ -1,0 +1,238 @@
+/*
+    
+    #24513b green is used for the store header and headings.
+    #d7a928 gold marks the current navigation link.
+    #f7f3e8 light cream is used for the page background.
+    #23312b dark green is used for readable text.
+    white   white keeps tables and form fields clear.
+*/
+
+/* The universal selector matches every element. */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f7f3e8;
+    color: rgb(35, 49, 43);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3 {
+    color: #24513b;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 26px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+a {
+    color: #24513b;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid white;
+}
+
+.site-header {
+    padding: 24px 16px;
+    background-color: #24513b;
+    color: white;
+    text-align: center;
+}
+
+.site-header h1,
+.site-header .site-name {
+    margin: 0;
+    color: white;
+}
+
+.site-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.site-nav {
+    position: static; /* Static is suitable because the menu stays in the normal page flow. */
+    padding: 10px;
+    background-color: #23312b;
+}
+
+/* Child selector: only the main list inside the navigation becomes flex. */
+.site-nav > .nav-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Descendant selector: all links inside the navigation get the same style. */
+.site-nav a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* :first-child matches the first menu item; ::before inserts the marker before its link. */
+.site-nav li:first-child a::before {
+    content: "> ";
+    color: #d7a928;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+    color: #d7a928;
+    text-decoration: underline;
+}
+
+.site-nav a[aria-current="page"] {
+    color: #d7a928;
+    border-bottom: 2px solid #d7a928;
+}
+
+.site-main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto; /* Centering technique 1: auto margins centre the main page column. */
+    padding: 30px 0;
+}
+
+#main-content {
+    min-height: 400px;
+}
+
+.content-section {
+    margin-bottom: 25px;
+    padding: 10px 0 20px;
+    border-bottom: 1px solid rgba(36, 81, 59, 0.3);
+}
+
+/* Padding stops the first heading margin from collapsing outside the section. */
+.content-section > :last-child {
+    margin-bottom: 0;
+}
+
+/* Adjacent sibling selector: a paragraph immediately after h2 has a readable width. */
+h2 + p {
+    max-width: 750px;
+}
+
+.cascade-demo {
+    color: #24513b;
+}
+
+figure {
+    margin: 25px 0;
+}
+
+figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+caption {
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+th,
+td {
+    padding: 8px;
+    border: 1px solid rgba(35, 49, 43, 0.3);
+    text-align: left;
+}
+
+th {
+    background-color: #24513b;
+    color: white;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+    padding: 7px;
+    border: 1px solid #24513b;
+    font: inherit;
+}
+
+button {
+    background-color: #24513b;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus {
+    background-color: #23312b;
+}
+
+/* Attribute selector: external links get a small symbol after them. */
+a[target="_blank"]::after {
+    content: " (external)";
+    font-size: 12px;
+}
+
+.site-footer {
+    padding: 20px;
+    background-color: #23312b;
+    color: white;
+    text-align: center;
+}
+
+.site-footer::before {
+    content: "Lido Grocery Store";
+    display: block;
+    margin-bottom: 10px;
+    color: #d7a928;
+    font-weight: 700;
+}
+
+.site-footer p {
+    margin: 6px 0;
+}
+
+.site-footer a {
+    color: white;
+}
+
+hr {
+    margin: 25px 0;
+    border: 0;
+    border-top: 1px solid #d7a928;
+}

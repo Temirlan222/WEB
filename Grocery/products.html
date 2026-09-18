@@ -6,29 +6,30 @@
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
     <title>Products | Grocery Store</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/temirlan.css">
 </head>
-<body>  
- <header>
-    <p>Lido Grocery Store</p>
+<body class="page-products">
+ <header class="site-header">
+    <p class="site-name">Lido Grocery Store</p>
  </header>
- <nav aria-label="Main navigation">
-        <ul>
+ <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
+            <li><a href="products.html" aria-current="page">Products</a></li>
             <li><a href="prices.html">Prices</a></li>
-            <li><a href="delivery.html" aria-current="page">Order and delivery</a></li>
+            <li><a href="delivery.html">Order and delivery</a></li>
             <li><a href="contacts.html">Contacts</a></li>
             <li><a href="colophon.html">About this site</a></li>
         </ul>
     </nav>
-    <main>
-        <h1>Products</h1>
-    <section>
-        <!-- Author: Temirlan -->
-         <!-- I used section because all content inside this block is related to one main topic: product categories. -->
-        
+    <!-- main-content is an ID because there is only one main content region per page. -->
+    <main id="main-content" class="site-main">
+        <!-- page-title is an ID because this page has exactly one primary title. -->
+        <h1 id="page-title">Products</h1>
+    <section class="content-section product-gallery">
         <h2>Food &amp; Household Products</h2>
-        <article>
+        <article class="product-card">
             <h3><em>Accessories and Miscellaneous</em></h3>
             <figure>
                 <img src="non-food.jpg" alt="Accessories and Miscellaneous" width="400" height="200">
@@ -36,7 +37,7 @@
             </figure>
         </article>
         <hr>
-        <article>
+        <article class="product-card">
             <h3><em>Product Variety</em></h3>
             <figure>
                 <img src="молочка.jpg" alt="Product Variety" width="400" height="200">
@@ -44,7 +45,7 @@
             </figure>
         </article>
         <hr>
-        <article>
+        <article class="product-card">
             <h3><em>Household cleaning</em></h3>
             <figure>
                 <img src="мыло.jpg" alt="Household cleaning products displayed in Lido Grocery Store" width="400" height="200">
@@ -56,8 +57,7 @@
 
     <br>
     <br>
-    <aside> 
-        <!-- I used aside because this information is additional and is not part of the main product category descriptions. -->
+    <aside class="content-section product-note">
         <p>Apart from packaged foods and household goods, fresh produce, particularly fruits and vegetables, is also sold in Lido on a daily basis.</p>
         <p>Products such as apples, bananas, tomatoes, cucumbers and potatoes can be found among all the usual products sold in Lido’s a shop. Lido has bottled water, juices, drinks and many other kinds of beverages.</p>
         <p>Several goods are stored in refrigerators so as to keep them fresh. The wide variety of foods and beverages helps the customers to make their daily purchases easily.</p>
@@ -67,7 +67,7 @@
     <hr>
     <br>
 
-    <section>
+    <section class="content-section category-list">
     <h2>Details on the remaining sections:</h2>
     <ol type ="1">
         <li>Quick bites</li>
@@ -86,7 +86,7 @@
         <li>Alcohol</li>
     </ol>
     </section>
-    <section>
+    <section class="content-section product-information">
     <h2>Product Information</h2>
 
     <p>
@@ -103,11 +103,10 @@
     </p>
     <p>
     Product availability:
-    <!-- I used span because only this small part of the sentence needs to be grouped and no semantic element is suitable. -->
     <span>may change during the day</span>.
     </p>
 </section>
-    <section>
+    <section class="content-section product-descriptions">
         
     <h2>Description of each section:</h2>
     <dl>
@@ -136,13 +135,13 @@
     <dd>Alcoholic beverages available for adult customers.</dd>
 </dl>
     </section>
-    <section>
+    <section class="content-section request-section">
     <h2>Product Request Form</h2>
     <p>
         Customers can use this form to request information about a product
         they are looking for.
     </p>
-    <section>
+    <section class="content-section store-quote">
     <h2>About the Store</h2>
     <blockquote>
         The best medicine is shopping!
@@ -155,7 +154,7 @@
         <q>We’re always happy to see you—come back again!</q>.
     </p>
 </section>
-    <form action="products.html" method="get">
+    <form class="request-form" action="products.html" method="get">
         <fieldset>
             <legend>Product Request</legend>
             <p>
@@ -170,7 +169,7 @@
             </p>
             <p>
                 <label for="customer-phone">Phone:</label>
-                <input type="tel" id="customer-phone" name="customer-phone" placeholder="+7 700 000 00 00"
+                <input type="tel" id="customer-phone" name="customer-phone" placeholder="+7 747 905 25 09"
                 >
             </p>
             <p>
@@ -219,18 +218,16 @@
                 <textarea id="request-comment" name="request-comment"  rows="5" cols="40"  placeholder="Describe the product you are looking for"></textarea>
             </p>
 
-            <!-- I used div because the buttons are only grouped as form controls and no semantic section element is appropriate here. -->
-            <div>
+            <div class="form-actions">
                 <button type="submit">Submit Request</button>
                 <button type="reset">Reset</button>
             </div>
-<!-- This form does not send data to a server because server-side handling has not been implemented yet. -->
         </fieldset>
 
     </form>
 </section>
     </main>
-    <footer>
+    <footer class="site-footer">
         <p>Lido Grocery Store</p>
         <p>&copy; 2026 Lido Grocery Store</p>
         <p>Contact: <a href="tel:+77479052505">+7 747 905 25 05</a></p>
