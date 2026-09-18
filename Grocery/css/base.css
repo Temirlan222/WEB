@@ -209,6 +209,12 @@ a[target="_blank"]::after {
 }
 
 .site-footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 16px;
     padding: 20px;
     background-color: #23312b;
     color: white;
@@ -221,9 +227,11 @@ a[target="_blank"]::after {
     margin-bottom: 10px;
     color: #d7a928;
     font-weight: 700;
+    flex-basis: 100%;
 }
 
 .site-footer p {
+    flex: 1 1 160px;
     margin: 6px 0;
 }
 

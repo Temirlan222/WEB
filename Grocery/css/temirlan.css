@@ -3,3 +3,95 @@
 .page-products .site-main {
     padding-top: 25px;
 }
+
+.store-photo {
+    float: left;
+    width: 150px;
+    margin: 0 15px 10px 0;
+}
+
+/* Without clear, the following content could move up beside the floated store photo. */
+.about-section + hr {
+    clear: both;
+}
+
+/* Grid is better than Flexbox here because the cards need both rows and columns. */
+.product-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.product-gallery > h2 {
+    grid-column: 1 / -1;
+}
+
+.product-gallery > hr {
+    display: none;
+}
+
+.product-card {
+    position: relative;
+    padding: 10px;
+    border: 1px solid rgba(36, 81, 59, 0.3);
+    background-color: white;
+}
+
+.product-card:first-of-type {
+    grid-column: span 2;
+}
+
+.product-card:first-of-type::after {
+    content: "Popular";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 4px 7px;
+    background-color: #d7a928;
+    color: #23312b;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    padding: 8px 12px;
+    background-color: #24513b;
+    color: white;
+    text-decoration: none;
+}
+
+/* Centering technique 2: Flexbox centres the form buttons and lets them wrap. */
+.form-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-actions button {
+    flex: 1 1 140px;
+    max-width: 180px;
+}
+
+/* Centering technique 3: Grid centres the short quotation in both directions. */
+.store-quote {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+/* Specificity 0-1-0: this rule loses to the more specific rule below. */
+.product-information {
+    border-left: 4px solid #d7a928;
+    padding-left: 12px;
+}
+
+/* Specificity 0-2-0: this rule wins and resolves the conflict through specificity. */
+.page-products .product-information {
+    border-left-color: #24513b;
+}
