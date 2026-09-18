@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/temirlan.css">
     <style>
-        /* Cascade demo: this internal ID rule overrides .cascade-demo in base.css. */
+        /* cascade demo internal id rule overrides the cascade demo class in base css */
         #cascade-note { color: #24513b; }
     </style>
 </head>
 <body class="page-home">
     
     <header class="site-header">
-        <!-- page-title is an ID because this page has exactly one primary title. -->
+        <!-- page title is an id because this page has one primary title -->
         <h1 id="page-title">Welcome to Lido Grocery Store</h1>
     </header>
     <nav class="site-nav" aria-label="Main navigation">
@@ -30,11 +30,11 @@
         </ul>
     </nav>
     
-    <!-- main-content is an ID because there is only one main content region per page. -->
+    <!-- main content is an id because this page has one main content region -->
     <main id="main-content" class="site-main">
     <section class="content-section about-section">
         <h2>About Us</h2>
-        <!-- Cascade demo: this single inline style overrides both the external and internal color rules. -->
+        <!-- cascade demo this inline style overrides the external and internal color rules -->
         <p id="cascade-note" class="cascade-demo" style="color: #23312b;">
             <img class="store-photo" src="Лидо.jpg" alt="Front entrance of Lido Grocery Store" width="150" height="200">
            Welcome to Lido Grocery Store at Uly Dala 31.
@@ -62,8 +62,10 @@
         <p>
             Lido Grocery Store is open <b>24/7</b>, which makes it convenient
             for customers who need to buy groceries early in the morning,
-            during the day, or late at night. The store can be used both
-            for quick purchases and for larger everyday shopping.
+            during the day, or late at night.
+        </p>
+        <p>
+            The store can be used both for quick purchases and for larger everyday shopping.
         </p>
     </section>
     <hr>

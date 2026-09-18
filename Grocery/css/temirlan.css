@@ -10,12 +10,12 @@
     margin: 0 15px 10px 0;
 }
 
-/* Without clear the following content could move up beside the floated store photo */
+/* without clear the following content could move beside the floated store photo */
 .about-section + hr {
     clear: both;
 }
 
-/* Grid is better than Flexbox here because the cards need both rows and columns */
+/* grid is better than flexbox here because the cards need rows and columns */
 .product-gallery {
     display: grid;
     grid-template-columns: repeat(3, minmax(180px, 1fr));
@@ -53,6 +53,19 @@
     font-weight: 700;
 }
 
+/* grid fits these sections because the heading spans columns and the content uses columns */
+.page-home .opening-hours,
+.page-prices .price-information {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.page-home .opening-hours > h2,
+.page-prices .price-information > h2 {
+    grid-column: span 2;
+}
+
 .back-to-top {
     position: fixed;
     right: 15px;
@@ -63,7 +76,7 @@
     text-decoration: none;
 }
 
-/* Centering technique 2: Flexbox centres the form buttons and lets them wrap. */
+/* centering technique two flexbox centers the form buttons and lets them wrap */
 .form-actions {
     display: flex;
     flex-direction: row;
@@ -78,20 +91,24 @@
     max-width: 180px;
 }
 
-/* Centering technique 3: Grid centres the short quotation in both directions. */
+/* centering technique three grid centers the short quotation in both directions */
 .store-quote {
     display: grid;
     place-items: center;
     text-align: center;
 }
 
-/* Specificity 0 1 0 this rule loses to the more specific rule below */
+/* specificity zero one zero this rule loses to the rule below */
 .product-information {
     border-left: 4px solid #d7a928;
     padding-left: 12px;
 }
 
-/* Specificity 0 2 0 this rule wins and resolves the conflict through specificity */
+/* specificity zero two zero this rule wins through specificity */
 .page-products .product-information {
     border-left-color: #24513b;
+}
+
+label[for="request-comment"] {
+    display: block;
 }

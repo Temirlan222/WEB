@@ -1,13 +1,13 @@
 /*
-    
-    #24513b green is used for the store header and headings
-    #d7a928 gold marks the current navigation link
-    #f7f3e8 light cream is used for the page background
-    #23312b dark green is used for readable text
-    white   white keeps tables and form fields clear
+    palette
+    24513b dark green for the store header and headings
+    d7a928 gold for the current navigation link
+    f7f3e8 light cream for the page background
+    23312b dark green for readable text
+    white for tables and form fields
 */
 
-/* The universal selector matches every elemen  */
+/* the universal selector matches every element */
 * {
     box-sizing: border-box;
 }
@@ -75,12 +75,12 @@ img {
 }
 
 .site-nav {
-    position: static; /* Static is suitable because the menu stays in the normal page flow */
+    position: static; /* static keeps the menu in normal flow */
     padding: 10px;
     background-color: #23312b;
 }
 
-/* Child selecto  only the main list inside the navigation becomes fle  */
+/* the child selector selects only the main list inside the navigation */
 .site-nav > .nav-list {
     display: flex;
     flex-direction: row;
@@ -93,14 +93,14 @@ img {
     list-style: none;
 }
 
-/* Descendant selector all links inside the navigation get the same style */
+/* the descendant selector selects all links inside the navigation */
 .site-nav a {
     color: white;
     font-weight: 700;
     text-decoration: none;
 }
 
-/* :first child matches the first menu item ::before inserts the marker before its link */
+/* first child selects the first menu item and before inserts its marker */
 .site-nav li:first-child a::before {
     content: "> ";
     color: #d7a928;
@@ -120,7 +120,7 @@ img {
 .site-main {
     width: 90%;
     max-width: 1000px;
-    margin: 0 auto; /* 1 auto margins centre the main page column*/
+    margin: 0 auto; /* centering technique one auto margins center the main page column */
     padding: 30px 0;
 }
 
@@ -128,24 +128,24 @@ img {
     min-height: 400px;
 }
 
+/* top padding prevents the first heading margin from collapsing outside the section */
 .content-section {
     margin-bottom: 25px;
     padding: 10px 0 20px;
     border-bottom: 1px solid rgba(36, 81, 59, 0.3);
 }
 
-/* Padding stops the first heading margin from collapsing outside the section. */
 .content-section > :last-child {
     margin-bottom: 0;
 }
 
-/* Adjacent sibling selector: a paragraph immediately after h2 has a readable width. */
+/* the adjacent sibling selector selects a paragraph immediately after h2 */
 h2 + p {
     max-width: 750px;
 }
 
 .cascade-demo {
-    color: #24513b;
+    color: #d7a928;
 }
 
 figure {
@@ -202,7 +202,7 @@ button:focus {
     background-color: #23312b;
 }
 
-/* Attribute selector: external links get a small symbol after them */
+/* the attribute selector selects external links with a blank target */
 a[target="_blank"]::after {
     content: " (external)";
     font-size: 12px;
