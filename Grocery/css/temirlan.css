@@ -1,5 +1,5 @@
 .page-home .site-main,
-.page-prices .site-main,
+
 .page-products .site-main {
     padding-top: 25px;
 }
@@ -54,15 +54,13 @@
 }
 
 /* grid fits these sections because the heading spans columns and the content uses columns */
-.page-home .opening-hours,
-.page-prices .price-information {
+.page-home .opening-hours {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 15px;
 }
 
-.page-home .opening-hours > h2,
-.page-prices .price-information > h2 {
+.page-home .opening-hours > h2{
     grid-column: span 2;
 }
 

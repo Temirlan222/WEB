@@ -1,0 +1,66 @@
+.page-prices .site-main {
+    padding-top: 25px;
+}
+
+/* Grid fits this section better than flexbox because the content uses rows and columns. */
+.page-prices .price-information {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+/* Specificity: 0,2,1 — this rule wins */
+.page-prices .price-information > h2 {
+    grid-column: span 2;
+    font-weight: 700;
+}
+
+/* Specificity: 0,1,1 */
+.price-information h2 {
+    font-weight: 400;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    padding: 8px 12px;
+    background-color: #24513b;
+    color: white;
+    text-decoration: none;
+}
+.page-delivery .site-main {
+    padding-top: 25px;
+}
+
+.page-delivery .shop-gallery {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+}
+.page-delivery .shop-gallery::after {
+    content: "Photos";
+    position: absolute;
+    top: 5px;
+    right: 0;
+    padding: 4px 8px;
+    background-color: #24513b;
+    color: white;
+}
+
+.page-delivery .shop-gallery > h2 {
+    flex-basis: 100%;
+}
+
+.page-delivery .shop-gallery figure {
+    flex: 1 1 300px;
+    margin: 0;
+}
+
+.page-delivery .shop-gallery img {
+    max-width: 100%;
+    height: auto;
+}

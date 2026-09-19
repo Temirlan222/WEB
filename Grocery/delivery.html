@@ -6,15 +6,17 @@
     <meta name="description" content="How to contact Lido grocery store in Astana by phone to ask about products and delivery.">
     <meta name="author" content="Saparali Shalkar">
     <title>Order and delivery | Lido Grocery Store</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/murager.css">
 </head>
-<body>
-    <!-- Page author: Saparali Shalkar. -->
-    <header>
-        <p>Lido Grocery Store</p>
+<body class="page-delivery">
+ 
+   <header class="site-header">
+        <p class="site-name">Lido Grocery Store</p>
     </header>
     <!-- Relative links keep the menu usable when these files are opened without a server. -->
-    <nav aria-label="Main navigation">
-        <ul>
+    <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="prices.html">Prices</a></li>
@@ -23,14 +25,16 @@
             <li><a href="colophon.html">About this site</a></li>
         </ul>
     </nav>
-    <main>
-        <h1>Ask about delivery</h1>
+    <!-- The main-content id is used because there is only one main content area on this page. -->
+    <main id="main-content" class="site-main">
+        <!-- The page-title id is used because this heading is unique on the page. -->
+        <h1 id="page-title">Ask about delivery</h1>
         <p>Contact Lido by phone to ask whether a delivery order is possible.
             The shop is at Uly Dala Avenue, 31, in Astana.
             <strong>Delivery availability and charges need confirmation from staff.</strong></p>
         <p><a href="#call">Find the phone number</a> or <a href="#steps">read what to ask</a>.</p>
 
-        <section id="call">
+        <section id="call" class="content-section">
             <h2>Call the shop</h2>
             <!-- A tel link lets the visitor use a calling app without entering personal details on this page. -->
             <p><a href="tel:+77479052505">Call Lido: +7 747 905 25 05</a></p>
@@ -41,7 +45,7 @@
                 Only the shop can confirm whether it can accept your request.</p>
         </section>
 
-        <section id="steps">
+        <section id="steps" class="content-section">
             <h2>What to ask</h2>
             <ol start="1">
                 <li>Ask whether delivery is available to your address.</li>
@@ -55,7 +59,7 @@
         </section>
 
         <hr>
-        <section>
+        <section class="content-section shop-gallery">
             <h2>Inside the shop</h2>
             <figure>
                 <img src="images/молочка.jpg" alt="Refrigerated drinks, freezer cabinets and snack shelves inside Lido" width="323">
@@ -67,8 +71,8 @@
             </figure>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2026 Lido student project &mdash; Saparali Shalkar.</p>
+    <footer class="site-footer">
+        <p>&copy; 2026 Lido student project &mdash; Nurbayev Murager</p>
         <p>Uly Dala Avenue, 31, Astana<br><a href="tel:+77479052505">+7&nbsp;747&nbsp;905&nbsp;25&nbsp;05</a></p>
     </footer>
 </body>

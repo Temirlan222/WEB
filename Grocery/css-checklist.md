@@ -1,6 +1,6 @@
 # Assignment 2 CSS checklist
 
-Student: Temirlan
+Students: Temirlan, Murager, Saparali Shalkar
 
 Line numbers are 1-based and refer to the current saved files. They must be updated if the HTML or CSS is edited.
 
@@ -72,6 +72,9 @@ Each ID appears once per page. The same ID name may be used once on each separat
 | Specificity experiment weaker rule | `.product-information`, specificity `0-1-0` | `css/temirlan.css` | 101 | Temirlan |
 | Specificity experiment winning rule | `.page-products .product-information`, specificity `0-2-0` | `css/temirlan.css` | 107 | Temirlan |
 | Conflict resolved normally | More specific selector changes the border colour | `css/temirlan.css` | 108 | Temirlan |
+| Specificity experiment weaker rule | `.price-information h2`, specificity `0-1-1` | `css/murager.css` | 31 | Murager |
+| Specificity experiment winning rule | `.page-prices .price-information > h2`, specificity `0-2-1` | `css/murager.css` | 21 | Murager |
+| Conflict resolved normally | More specific selector sets `font-weight: 700` | `css/murager.css` | 25 | Murager |
 | `!important` | Not used | `css/temirlan.css` | - | Temirlan |
 
 ## Flexbox
@@ -88,6 +91,11 @@ Each ID appears once per page. The same ID name may be used once on each separat
 | Additional container wraps | Footer `flex-wrap` | `css/base.css` | 214 | Temirlan |
 | Items grow and shrink | Footer paragraphs `flex: 1 1 160px` | `css/base.css` | 234 | Temirlan |
 | Personal flex container | Form buttons | `css/temirlan.css` | 80 | Temirlan |
+| Murager personal flex container | Delivery shop gallery | `css/murager.css` | 63 | Murager |
+| Murager `flex-direction` | Gallery row | `css/murager.css` | 67 | Murager |
+| Murager `flex-wrap` | Gallery wrapping | `css/murager.css` | 69 | Murager |
+| Murager `gap` | Gallery spacing | `css/murager.css` | 71 | Murager |
+| Murager grow and shrink items | Gallery figures `flex: 1 1 300px` | `css/murager.css` | 103 | Murager |
 
 ## Grid
 
@@ -102,9 +110,11 @@ Each ID appears once per page. The same ID name may be used once on each separat
 | Spanning item | First card spans two columns | `css/temirlan.css` | 41 | Temirlan |
 | Grid versus Flexbox explanation | Rows and columns comment | `css/temirlan.css` | 18 | Temirlan |
 | Grid on home page | Opening hours section | `css/temirlan.css` | 57 | Temirlan |
-| Grid on prices page | Price information section | `css/temirlan.css` | 58 | Temirlan |
-| Additional Grid columns | `repeat` `minmax` and `fr` | `css/temirlan.css` | 60 | Temirlan |
-| Additional spanning items | Section headings span two columns | `css/temirlan.css` | 66 | Temirlan |
+| Grid on prices page | Price information section | `css/murager.css` | 11 | Murager |
+| Grid versus Flexbox explanation | Price information uses rows and columns | `css/murager.css` | 7 | Murager |
+| Grid columns with `repeat`, `minmax` and `fr` | Two-column definition | `css/murager.css` | 13 | Murager |
+| Grid `gap` | Price information spacing | `css/murager.css` | 15 | Murager |
+| Spanning item | Price Information heading spans two columns | `css/murager.css` | 23 | Murager |
 
 ## Positioning float and centering
 
@@ -121,6 +131,9 @@ Each ID appears once per page. The same ID name may be used once on each separat
 | Centering technique 1 | Main column uses `margin: 0 auto` | `css/base.css` | 123 | Temirlan |
 | Centering technique 2 | Flexbox centres form buttons | `css/temirlan.css` | 79 | Temirlan |
 | Centering technique 3 | Grid centres the quotation | `css/temirlan.css` | 94 | Temirlan |
+| Murager `position: relative` | Shop gallery contains Photos label | `css/murager.css` | 65 | Murager |
+| Murager `position: absolute` | Photos label | `css/murager.css` | 81 | Murager |
+| Murager `position: fixed` | Back-to-top link | `css/murager.css` | 39 | Murager |
 
 ## Restrictions and validation
 
