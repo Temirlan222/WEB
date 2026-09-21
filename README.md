@@ -16,7 +16,9 @@ Temirlan is responsible for the home, products and prices pages. Saparali Shalka
 ## CSS files
 
 - `Grocery/css/base.css` contains the shared colours, typography, navigation, main content and footer styles.
-- `Grocery/css/temirlan.css` contains the personal layouts and demonstrations for Temirlan's three pages.
+- `Grocery/css/temirlan.css` contains the home and products layouts.
+- `Grocery/css/murager.css` contains the prices and delivery layouts.
+- `Grocery/css/shalkar.css` contains the contacts and colophon layouts, using the existing palette and shared navigation.
 
 The project demonstrates selectors, the cascade, specificity, the box model, Flexbox, Grid, positioning, float and clear, and three centering techniques. It does not use JavaScript, CSS frameworks or downloaded stylesheets.
 
@@ -32,3 +34,9 @@ On 18 September 2026, all six HTML pages passed the W3C Nu HTML Checker with zer
 
 The Assignment 2 requirement locations are recorded in `Grocery/css-checklist.md`.
 Before-and-after screenshots for the home and products pages are stored in `Grocery/evidence`.
+
+On 21 September 2026, the modified contacts, colophon and prices HTML files passed W3C Nu with zero errors and warnings. All six pages had valid local asset and navigation targets. The contacts and colophon layouts were also checked in the browser; their screenshots are in `Grocery/evidence`.
+
+Contacts and colophon use the same shared appearance as the existing pages, with normal single-column content. `shalkar.css` only matches the existing top padding and Top link.
+
+The simplified `shalkar.css` passed W3C CSS validation with 0 errors and 0 warnings on 21 September 2026.
