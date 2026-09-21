@@ -1,0 +1,78 @@
+{
+  "local": [
+    {
+      "file": "colophon.html",
+      "stylesheets": [
+        "css/base.css",
+        "css/shalkar.css"
+      ],
+      "broken_local_links": [],
+      "duplicate_ids": []
+    },
+    {
+      "file": "contacts.html",
+      "stylesheets": [
+        "css/base.css",
+        "css/shalkar.css"
+      ],
+      "broken_local_links": [],
+      "duplicate_ids": []
+    },
+    {
+      "file": "delivery.html",
+      "stylesheets": [
+        "css/base.css",
+        "css/murager.css"
+      ],
+      "broken_local_links": [],
+      "duplicate_ids": []
+    },
+    {
+      "file": "index.html",
+      "stylesheets": [
+        "css/base.css",
+        "css/temirlan.css"
+      ],
+      "broken_local_links": [],
+      "duplicate_ids": []
+    },
+    {
+      "file": "prices.html",
+      "stylesheets": [
+        "css/base.css",
+        "css/murager.css"
+      ],
+      "broken_local_links": [],
+      "duplicate_ids": []
+    },
+    {
+      "file": "products.html",
+      "stylesheets": [
+        "css/base.css",
+        "css/temirlan.css"
+      ],
+      "broken_local_links": [],
+      "duplicate_ids": []
+    }
+  ],
+  "w3c": [
+    {
+      "file": "contacts.html",
+      "messages": []
+    },
+    {
+      "file": "colophon.html",
+      "messages": []
+    },
+    {
+      "file": "prices.html",
+      "messages": []
+    },
+    {
+      "file": "css/shalkar.css",
+      "validity": "true",
+      "errorcount": "0",
+      "warningcount": "0"
+    }
+  ]
+}
