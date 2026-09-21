@@ -154,3 +154,18 @@ Each ID appears once per page. The same ID name may be used once on each separat
 The hand-drawn layouts for the home and products pages are included in the project photograph and on the first page of `evidence/Temirlan_Mukhametov_Assignment_2_Evidence.pdf`.
 
 The `evidence` folder contains before-and-after screenshots of the home and products pages. The before screenshots were rendered from the final Assignment 1 commit, before CSS was added.
+
+
+Contacts and colophon use the same shared styles as the other pages.
+
+| Change | File | Line |
+| --- | --- | ---: |
+| Shared stylesheet first | `contacts.html` | 9 |
+| Personal stylesheet second | `contacts.html` | 10 |
+| Shared stylesheet first | `colophon.html` | 9 |
+| Personal stylesheet second | `colophon.html` | 10 |
+| Main content ID | `contacts.html` | 27 |
+| Title ID | `contacts.html` | 28 |
+| Shared section class | `contacts.html` | 33 |
+| Main top padding | `css/shalkar.css` | 3 |
+| Fixed Top link | `css/shalkar.css` | 7 |

@@ -6,14 +6,16 @@
     <meta name="description" content="How the Lido student website is organised, how its telephone link works.">
     <meta name="author" content="Saparali Shalkar">
     <title>About this site | Lido Grocery Store</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/shalkar.css">
 </head>
-<body>
+<body class="page-colophon">
     <!-- Page author: Saparali Shalkar. -->
-    <header>
-        <p>Lido Grocery Store</p>
+    <header class="site-header">
+        <p class="site-name">Lido Grocery Store</p>
     </header>
-    <nav aria-label="Main navigation">
-        <ul>
+    <nav class="site-nav" aria-label="Main navigation">
+        <ul class="nav-list">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="prices.html">Prices</a></li>
@@ -22,20 +24,20 @@
             <li><a href="colophon.html" aria-current="page">About this site</a></li>
         </ul>
     </nav>
-    <main>
-        <h1>How this site was made</h1>
-        <section>
+    <main id="main-content" class="site-main">
+        <h1 id="page-title">How this site was made</h1>
+        <section class="content-section site-information">
             <h2>Files and responsibilities</h2>
             <p>This student project describes Lido in Astana. Temirlan is responsible for the home,
                 products and prices pages. Saparali Shalkar is responsible for delivery, contacts and this page.
                 The six HTML files belong in the same folder, with photographs inside <code>images/</code>.</p>
-            <p>These three pages use plain HTML. There is no CSS, JavaScript or framework.
+            <p>These pages use plain HTML and external CSS. There is no JavaScript or framework.
                 Opening a file directly in a browser displays its headings, text, links and photographs.
                 Relative links connect the local pages.</p>
         </section>
 
         <!-- Editing and telephone links have different purposes, so each topic has its own titled section. -->
-        <section>
+        <section class="content-section editing-notes">
             <h2>Editing and checking</h2>
             <p>Sublime Text can edit these files. On a Mac, press <kbd>Command</kbd> + <kbd>S</kbd>
                 to save, then reload the browser. The telephone link uses a simple address:</p>
@@ -47,14 +49,15 @@
                 A successful result reads <samp>Document checking completed. No errors or warnings to show.</samp></p>
         </section>
 
-        <section>
+        <section class="content-section telephone-notes">
             <h2>Telephone link and sources</h2>
             <p>The <code>tel:</code> link asks the device to open a calling app.
                 The visitor can then call the shop to discuss delivery. This website has no order form
                 and does not send customer details anywhere.</p>
         </section>
     </main>
-    <footer>
+    <a class="back-to-top" href="#page-title">Top</a>
+    <footer class="site-footer">
         <p>&copy; 2026 Lido student project &mdash; Saparali Shalkar.</p>
         <p>Uly Dala Avenue, 31, Astana<br><a href="tel:+77479052505">+7&nbsp;747&nbsp;905&nbsp;25&nbsp;05</a></p>
     </footer>
