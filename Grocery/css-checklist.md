@@ -156,7 +156,7 @@ The hand-drawn layouts for the home and products pages are included in the proje
 The `evidence` folder contains before-and-after screenshots of the home and products pages. The before screenshots were rendered from the final Assignment 1 commit, before CSS was added.
 
 
-Contacts and colophon use the same shared styles as the other pages.
+Contacts and colophon use the same shared palette as the other pages and add their page-specific layout in `css/shalkar.css`.
 
 | Change | File | Line |
 | --- | --- | ---: |
@@ -168,4 +168,15 @@ Contacts and colophon use the same shared styles as the other pages.
 | Title ID | `contacts.html` | 28 |
 | Shared section class | `contacts.html` | 33 |
 | Main top padding | `css/shalkar.css` | 3 |
-| Fixed Top link | `css/shalkar.css` | 7 |
+| Contacts Grid container | `css/shalkar.css` | 7 |
+| Grid `repeat()`, `minmax()` and `fr` | `css/shalkar.css` | 9 |
+| Grid column span | `css/shalkar.css` | 15 |
+| Weaker specificity rule | `css/shalkar.css` | 43 |
+| Winning specificity rule | `css/shalkar.css` | 50 |
+| Contacts Flexbox container | `css/shalkar.css` | 59 |
+| Flex items grow and shrink | `css/shalkar.css` | 73 |
+| Colophon Flexbox container | `css/shalkar.css` | 77 |
+| Adjacent sibling selector | `css/shalkar.css` | 95 |
+| Colophon Grid container | `css/shalkar.css` | 101 |
+| Fixed Top link | `css/shalkar.css` | 130 |
+| Top link hover and focus states | `css/shalkar.css` | 140 |
