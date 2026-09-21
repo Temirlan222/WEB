@@ -1,0 +1,14 @@
+.page-contacts .site-main,
+.page-colophon .site-main {
+    padding-top: 25px;
+}
+
+.back-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    padding: 8px 12px;
+    background-color: #24513b;
+    color: white;
+    text-decoration: none;
+}
