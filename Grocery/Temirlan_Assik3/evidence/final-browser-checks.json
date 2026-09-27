@@ -1,0 +1,44 @@
+[
+  {
+    "page": "index.html",
+    "width": 375,
+    "scrollWidth": 375,
+    "images": true,
+    "navbar": "passed"
+  },
+  {
+    "page": "index.html",
+    "width": 768,
+    "scrollWidth": 768,
+    "images": true,
+    "navbar": "passed"
+  },
+  {
+    "page": "index.html",
+    "width": 1366,
+    "scrollWidth": 1366,
+    "images": true,
+    "navbar": "passed"
+  },
+  {
+    "page": "products.html",
+    "width": 375,
+    "scrollWidth": 375,
+    "images": true,
+    "navbar": "passed"
+  },
+  {
+    "page": "products.html",
+    "width": 768,
+    "scrollWidth": 768,
+    "images": true,
+    "navbar": "passed"
+  },
+  {
+    "page": "products.html",
+    "width": 1366,
+    "scrollWidth": 1366,
+    "images": true,
+    "navbar": "passed"
+  }
+]
