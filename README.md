@@ -11,16 +11,16 @@ This repository contains a simple six-page website about Lido Grocery Store in A
 - `Grocery/contacts.html` - contact information
 - `Grocery/colophon.html` - information about the website
 
-Temirlan is responsible for the home, products and prices pages. Saparali Shalkar is responsible for delivery, contacts and colophon.
+For Assignment 3, Temirlan is responsible for Home and Products only. The other pages belong to the remaining team work.
 
 ## CSS files
 
 - `Grocery/css/base.css` contains the shared colours, typography, navigation, main content and footer styles.
-- `Grocery/css/temirlan.css` contains the home and products layouts.
+- `Grocery/css/temirlan.css` is the 25-line brand-colour correction layer for the Bootstrap home and products pages.
 - `Grocery/css/murager.css` contains the prices and delivery layouts.
 - `Grocery/css/shalkar.css` contains the contacts and colophon layouts, using the existing palette and shared navigation.
 
-The project demonstrates selectors, the cascade, specificity, the box model, Flexbox, Grid, positioning, float and clear, and three centering techniques. It does not use JavaScript, CSS frameworks or downloaded stylesheets.
+Assignment 2 demonstrated selectors, the cascade, specificity, the box model, Flexbox, Grid, positioning, float and clear, and three centering techniques. Assignment 3 now uses Bootstrap for Home and Products; the other four pages retain their Assignment 2 styles.
 
 ## Opening the website
 
@@ -40,3 +40,7 @@ On 21 September 2026, the modified contacts, colophon and prices HTML files pass
 Contacts and colophon use the same shared appearance as the existing pages, with normal single-column content. `shalkar.css` only matches the existing top padding and Top link.
 
 The simplified `shalkar.css` passed W3C CSS validation with 0 errors and 0 warnings on 21 September 2026.
+
+## Assignment 3 — Home and Products
+
+Temirlan's scope is `Grocery/index.html` and `Grocery/products.html`. Code stays in its existing locations. Documentation, CSS replacements, screenshots and validation results are grouped in [Grocery/Temirlan_Assik3](Grocery/Temirlan_Assik3/README.md).

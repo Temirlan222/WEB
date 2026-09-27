@@ -6,48 +6,62 @@
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
     <title>Home | Grocery Store</title>
-    <link rel="stylesheet" href="css/base.css">
+    <!-- Bootstrap 5.3.8 via CDN; the correction stylesheet follows Bootstrap. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/temirlan.css">
-    <style>
-        /* cascade demo internal id rule overrides the cascade demo class in base css */
-        #cascade-note { color: #24513b; }
-    </style>
 </head>
 <body class="page-home">
-    
-    <header class="site-header">
+
+    <!-- container-fluid keeps the coloured header full width. -->
+    <header class="site-header container-fluid py-4 text-center text-md-start">
+        <p class="lead fw-bold mb-2 text-warning">
+            Your local grocery store
+        </p>
         <!-- page title is an id because this page has one primary title -->
-        <h1 id="page-title">Welcome to Lido Grocery Store</h1>
+        <h1 id="page-title" class="display-5 fw-bold mb-0">Welcome to Lido Grocery Store</h1>
     </header>
-    <nav class="site-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-            <li><a href="index.html" aria-current="page">Home</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="prices.html">Prices</a></li>
-            <li><a href="delivery.html">Order and delivery</a></li>
-            <li><a href="contacts.html">Contacts</a></li>
-            <li><a href="colophon.html">About this site</a></li>
+    <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="dark" aria-label="Main navigation">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-navigation">
+        <ul class="nav-list navbar-nav mx-auto gap-lg-3">
+            <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="prices.html">Prices</a></li>
+            <li class="nav-item"><a class="nav-link" href="delivery.html">Order and delivery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+            <li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
         </ul>
+            </div>
+        </div>
     </nav>
-    
+
     <!-- main content is an id because this page has one main content region -->
-    <main id="main-content" class="site-main">
-    <section class="content-section about-section">
-        <h2>About Us</h2>
-        <!-- cascade demo this inline style overrides the external and internal color rules -->
-        <p id="cascade-note" class="cascade-demo" style="color: #23312b;">
-            <img class="store-photo" src="Лидо.jpg" alt="Front entrance of Lido Grocery Store" width="150" height="200">
+    <!-- container limits reading width on larger screens and adds phone gutters. -->
+    <main id="main-content" class="site-main container py-4">
+    <section class="content-section mb-4 pb-4 border-bottom about-section">
+        <h2 class="h3 fw-bold">About Us</h2>
+        <p id="cascade-note" class="row g-3 align-items-center mb-0">
+            <span class="col-12 col-md-4 col-lg-3 text-center text-md-start">
+            <img class="store-photo img-fluid rounded border border-white" src="Лидо.jpg" alt="Front entrance of Lido Grocery Store" width="150" height="200">
+            </span>
+            <span class="col-12 col-md-8 col-lg-9">
            Welcome to Lido Grocery Store at Uly Dala 31.
             The Lido Grocery market has everything that is needed
-            daily in any residential area. The products available include food, 
+            daily in any residential area. The products available include food,
             drinks, snacks, sweets, home care products, fresh fruits and vegetables,
             meat products, and other non-food items. The benefit of the Lido market is
             that you can go shopping at any time of day because the-store is operating around the clock 24/7.
+            </span>
         </p>
     </section>
-    <hr>
-    <section class="content-section products-summary">
-        <h2>Our Products</h2>
+
+
+    <hr class="my-4">
+    <section class="content-section mb-4 pb-4 border-bottom products-summary">
+        <h2 class="h3 fw-bold">Our Products</h2>
         <p>
             Lido has a big range of commodities offered in various departments.
             People may purchase dairy products, bread, beverages, frozen products,
@@ -56,21 +70,21 @@
             More details on these sections can be found on the Products page.
         </p>
     </section>
-    <hr>
-    <section class="content-section opening-hours">
-        <h2>Opening Hours</h2>
-        <p>
+    <hr class="my-4">
+    <section class="content-section mb-4 pb-4 border-bottom opening-hours row g-3">
+        <h2 class="h3 fw-bold col-12 mb-0">Opening Hours</h2>
+        <p class="col-12 col-md-6 mb-0">
             Lido Grocery Store is open <b>24/7</b>, which makes it convenient
             for customers who need to buy groceries early in the morning,
             during the day, or late at night.
         </p>
-        <p>
+        <p class="col-12 col-md-6 mb-0">
             The store can be used both for quick purchases and for larger everyday shopping.
         </p>
     </section>
-    <hr>
-    <section class="content-section website-summary">
-        <h2>About This Website</h2>
+    <hr class="my-4">
+    <section class="content-section mb-4 pb-4 border-bottom website-summary">
+        <h2 class="h3 fw-bold">About This Website</h2>
         <p>
             A website has been made to provide basic information regarding Lido Grocery Store.
             People can find out about various product categories, see different prices at the store,
@@ -79,18 +93,23 @@
         </p>
     </section>
 </main>
-    <a class="back-to-top" href="#page-title">Top</a>
-     <footer class="site-footer">
-        <p>Lido Grocery Store</p>
-        <p>&copy; 2026 Lido Grocery Store</p>
-        <p>Contact: <a href="tel:+77479052505">+7 747 905 25 05</a></p>
-        <p>Address: Uly dala 31</p>
-        <p> Email: <a href="mailto:253741@astanait.edu.kz"> 253741@astanait.edu.kz </a></p>
-        <p> <a href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" target="_blank" rel="noopener noreferrer">View Lido location on 2GIS </a></p>
+    <a class="back-to-top btn btn-outline-success btn-sm d-none d-md-inline-block ms-3 mb-3" href="#page-title">Top</a>
+     <footer class="site-footer container-fluid py-4 text-center text-md-start">
+        <div class="container">
+        <div class="row g-3 align-items-center small">
+        <p class="col-12 col-md-6 col-lg-4 mb-0">Lido Grocery Store</p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0">&copy; 2026 Lido Grocery Store</p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0">Contact: <a class="link-light text-break" href="tel:+77479052505">+7 747 905 25 05</a></p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0">Address: Uly dala 31</p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0"> Email: <a class="link-light text-break" href="mailto:253741@astanait.edu.kz"> 253741@astanait.edu.kz </a></p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0"> <a class="link-light text-break" href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" target="_blank" rel="noopener noreferrer">View Lido location on 2GIS </a></p>
+        </div>
+        </div>
     </footer>
 
 
-    
-    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

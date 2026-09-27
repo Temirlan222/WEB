@@ -1,0 +1,125 @@
+[
+  {
+    "page": "index.html",
+    "width": 375,
+    "viewport": 375,
+    "document": 375,
+    "body": 375,
+    "images": true,
+    "navbar": "flex",
+    "cardColumns": [],
+    "alignment": "center",
+    "topLinkDisplay": "none",
+    "nestedRow": false,
+    "toggler": "passed"
+  },
+  {
+    "page": "index.html",
+    "width": 768,
+    "viewport": 768,
+    "document": 768,
+    "body": 768,
+    "images": true,
+    "navbar": "flex",
+    "cardColumns": [],
+    "alignment": "left",
+    "topLinkDisplay": "inline-block",
+    "nestedRow": false,
+    "toggler": "passed"
+  },
+  {
+    "page": "index.html",
+    "width": 1366,
+    "viewport": 1366,
+    "document": 1366,
+    "body": 1366,
+    "images": true,
+    "navbar": "flex",
+    "cardColumns": [],
+    "alignment": "left",
+    "topLinkDisplay": "inline-block",
+    "nestedRow": false,
+    "toggler": "passed"
+  },
+  {
+    "page": "products.html",
+    "width": 375,
+    "viewport": 375,
+    "document": 375,
+    "body": 375,
+    "images": true,
+    "navbar": "flex",
+    "cardColumns": [
+      {
+        "x": 4,
+        "y": 270
+      },
+      {
+        "x": 4,
+        "y": 656
+      },
+      {
+        "x": 4,
+        "y": 1091
+      }
+    ],
+    "alignment": "center",
+    "topLinkDisplay": "none",
+    "nestedRow": true,
+    "toggler": "passed"
+  },
+  {
+    "page": "products.html",
+    "width": 768,
+    "viewport": 768,
+    "document": 768,
+    "body": 768,
+    "images": true,
+    "navbar": "flex",
+    "cardColumns": [
+      {
+        "x": 28,
+        "y": 283
+      },
+      {
+        "x": 384,
+        "y": 283
+      },
+      {
+        "x": 28,
+        "y": 730
+      }
+    ],
+    "alignment": "left",
+    "topLinkDisplay": "inline-block",
+    "nestedRow": true,
+    "toggler": "passed"
+  },
+  {
+    "page": "products.html",
+    "width": 1366,
+    "viewport": 1366,
+    "document": 1366,
+    "body": 1366,
+    "images": true,
+    "navbar": "flex",
+    "cardColumns": [
+      {
+        "x": 117,
+        "y": 297
+      },
+      {
+        "x": 494,
+        "y": 297
+      },
+      {
+        "x": 872,
+        "y": 297
+      }
+    ],
+    "alignment": "left",
+    "topLinkDisplay": "inline-block",
+    "nestedRow": true,
+    "toggler": "passed"
+  }
+]

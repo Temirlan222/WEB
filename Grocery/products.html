@@ -6,65 +6,89 @@
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
     <title>Products | Grocery Store</title>
-    <link rel="stylesheet" href="css/base.css">
+    <!-- Bootstrap 5.3.8 via CDN; the correction stylesheet follows Bootstrap. -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/temirlan.css">
 </head>
 <body class="page-products">
- <header class="site-header">
-    <p class="site-name">Lido Grocery Store</p>
+ <!-- container-fluid keeps the coloured header full width. -->
+    <header class="site-header container-fluid py-4 text-center text-md-start">
+    <p class="site-name lead fw-bold mb-0">Lido Grocery Store</p>
  </header>
- <nav class="site-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html" aria-current="page">Products</a></li>
-            <li><a href="prices.html">Prices</a></li>
-            <li><a href="delivery.html">Order and delivery</a></li>
-            <li><a href="contacts.html">Contacts</a></li>
-            <li><a href="colophon.html">About this site</a></li>
+ <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="dark" aria-label="Main navigation">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-navigation">
+        <ul class="nav-list navbar-nav mx-auto gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="products.html" aria-current="page">Products</a></li>
+            <li class="nav-item"><a class="nav-link" href="prices.html">Prices</a></li>
+            <li class="nav-item"><a class="nav-link" href="delivery.html">Order and delivery</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+            <li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
         </ul>
+            </div>
+        </div>
     </nav>
     <!-- main content is an id because this page has one main content region -->
-    <main id="main-content" class="site-main">
+    <!-- container limits reading width on larger screens and adds phone gutters. -->
+    <main id="main-content" class="site-main container py-4">
         <!-- page title is an id because this page has one primary title -->
-        <h1 id="page-title">Products</h1>
-    <section class="content-section product-gallery">
-        <h2>Food &amp; Household Products</h2>
-        <article class="product-card">
-            <h3><em>Accessories and Miscellaneous</em></h3>
-            <figure>
-                <img src="non-food.jpg" alt="Accessories and Miscellaneous" width="400" height="200">
-                <figcaption>This section offers various non-food items such as toys, socks, small household goods, and other useful everyday accessories.</figcaption>
+        <h1 id="page-title" class="display-5 fw-bold mb-4">Products</h1>
+    <!-- Bootstrap Card: official card/card-body/card-title markup adapted to the existing product articles and figures. -->
+    <section class="content-section mb-4 pb-4 border-bottom product-gallery row g-3">
+        <h2 class="h3 fw-bold col-12">Food &amp; Household Products</h2>
+        <div class="col-12 col-md-6 col-lg-4">
+        <article class="product-card card h-100 shadow-sm">
+            <div class="card-body">
+            <span class="badge text-bg-warning mb-2">Popular</span>
+            <h3 class="card-title h5 fw-bold"><em>Accessories and Miscellaneous</em></h3>
+            <figure class="figure mb-0">
+                <img class="figure-img img-fluid rounded" src="non-food.jpg" alt="Accessories and Miscellaneous" width="400" height="200">
+                <figcaption class="figure-caption">This section offers various non-food items such as toys, socks, small household goods, and other useful everyday accessories.</figcaption>
             </figure>
+            </div>
         </article>
-        <hr>
-        <article class="product-card">
-            <h3><em>Product Variety</em></h3>
-            <figure>
-                <img src="молочка.jpg" alt="Product Variety" width="400" height="200">
-                <figcaption>This part contains many different items such as ice cream, beverages, snacks, candies, dairy products, and little toys. Consumers will obtain both culinary and non-culinary goods in one space.</figcaption>
+        </div>
+        <hr class="d-none">
+        <div class="col-12 col-md-6 col-lg-4">
+        <article class="product-card card h-100 shadow-sm">
+            <div class="card-body">
+            <h3 class="card-title h5 fw-bold"><em>Product Variety</em></h3>
+            <figure class="figure mb-0">
+                <img class="figure-img img-fluid rounded" src="молочка.jpg" alt="Product Variety" width="400" height="200">
+                <figcaption class="figure-caption">This part contains many different items such as ice cream, beverages, snacks, candies, dairy products, and little toys. Consumers will obtain both culinary and non-culinary goods in one space.</figcaption>
             </figure>
+            </div>
         </article>
-        <hr>
-        <article class="product-card">
-            <h3><em>Household cleaning</em></h3>
-            <figure>
-                <img src="мыло.jpg" alt="Household cleaning products displayed in Lido Grocery Store" width="400" height="200">
-                <figcaption>Cleaning items for home use including soaps, detergents for laundry clothes, dishwashing fluids, cleaning sprays, sponges, and more are all addressed in this paragraph. </figcaption>
+        </div>
+        <hr class="d-none">
+        <div class="col-12 col-md-6 col-lg-4">
+        <article class="product-card card h-100 shadow-sm">
+            <div class="card-body">
+            <h3 class="card-title h5 fw-bold"><em>Household cleaning</em></h3>
+            <figure class="figure mb-0">
+                <img class="figure-img img-fluid rounded" src="мыло.jpg" alt="Household cleaning products displayed in Lido Grocery Store" width="400" height="200">
+                <figcaption class="figure-caption">Cleaning items for home use including soaps, detergents for laundry clothes, dishwashing fluids, cleaning sprays, sponges, and more are all addressed in this paragraph. </figcaption>
             </figure>
+            </div>
         </article>
-        <hr>
+        </div>
+        <hr class="d-none">
     </section>
 
-    <aside class="content-section product-note">
+    <aside class="content-section mb-4 pb-4 border-bottom product-note bg-white p-3 rounded">
         <p>Apart from packaged foods and household goods, fresh produce, particularly fruits and vegetables, is also sold in Lido on a daily basis.</p>
         <p>Products such as apples, bananas, tomatoes, cucumbers and potatoes can be found among all the usual products sold in Lido’s a shop. Lido has bottled water, juices, drinks and many other kinds of beverages.</p>
         <p>Several goods are stored in refrigerators so as to keep them fresh. The wide variety of foods and beverages helps the customers to make their daily purchases easily.</p>
     </aside>
     
-    <hr>
+    <hr class="my-4">
 
-    <section class="content-section category-list">
-    <h2>Details on the remaining sections:</h2>
+    <section class="content-section mb-4 pb-4 border-bottom category-list">
+    <h2 class="h3 fw-bold">Details on the remaining sections:</h2>
     <ol type ="1">
         <li>Quick bites</li>
         <li>Beverages
@@ -82,8 +106,8 @@
         <li>Alcohol</li>
     </ol>
     </section>
-    <section class="content-section product-information">
-    <h2>Product Information</h2>
+    <section class="content-section mb-4 pb-4 border-bottom product-information border-start border-success border-4 ps-3">
+    <h2 class="h3 fw-bold">Product Information</h2>
 
     <p>
         Lido offers <strong>everyday essentials</strong> and
@@ -95,98 +119,100 @@
     </p>
 
     <p>
-        <small>Product availability may change during the day.</small>
+        <small class="text-body-secondary">Product availability may change during the day.</small>
     </p>
     <p>
     Product availability:
-    <span>may change during the day</span>.
+    <span class="text-body-secondary">may change during the day</span>.
     </p>
 </section>
-    <section class="content-section product-descriptions">
+    <section class="content-section mb-4 pb-4 border-bottom product-descriptions">
         
-    <h2>Description of each section:</h2>
-    <dl>
-    <dt><strong>Quick bites:</strong></dt>
-    <dd>Ready-to-eat food and small meals for a quick snack.</dd>
+    <h2 class="h3 fw-bold">Description of each section:</h2>
+    <dl class="row g-2">
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Quick bites:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Ready-to-eat food and small meals for a quick snack.</dd>
 
-    <dt><strong>Beverages:</strong></dt>
-    <dd>Water, juices, soft drinks, energy drinks and other beverages.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Beverages:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Water, juices, soft drinks, energy drinks and other beverages.</dd>
 
-    <dt><strong>Fruit and vegetables:</strong></dt>
-    <dd>Fresh fruits, vegetables and other everyday produce.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Fruit and vegetables:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Fresh fruits, vegetables and other everyday produce.</dd>
 
-    <dt><strong>Snacks:</strong></dt>
-    <dd>Chips, crackers, nuts and other light snacks.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Snacks:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Chips, crackers, nuts and other light snacks.</dd>
 
-    <dt><strong>Sweets:</strong></dt>
-    <dd>Chocolate, candies, biscuits and other sweet products.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Sweets:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Chocolate, candies, biscuits and other sweet products.</dd>
 
-    <dt><strong>Food products:</strong></dt>
-    <dd>Everyday groceries such as bread, pasta, rice, dairy products and canned food.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Food products:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Everyday groceries such as bread, pasta, rice, dairy products and canned food.</dd>
 
-    <dt><strong>Meat:</strong></dt>
-    <dd>Fresh and packaged meat products, sausages and other meat items.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Meat:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Fresh and packaged meat products, sausages and other meat items.</dd>
 
-    <dt><strong>Alcohol:</strong></dt>
-    <dd>Alcoholic beverages available for adult customers.</dd>
+    <dt class="col-12 col-md-4 col-lg-3"><strong>Alcohol:</strong></dt>
+    <dd class="col-12 col-md-8 col-lg-9">Alcoholic beverages available for adult customers.</dd>
 </dl>
     </section>
-    <section class="content-section request-section">
-    <h2>Product Request Form</h2>
+    <section class="content-section mb-4 pb-4 border-bottom request-section">
+    <h2 class="h3 fw-bold">Product Request Form</h2>
     <p>
         Customers can use this form to request information about a product
         they are looking for.
     </p>
-    <section class="content-section store-quote">
-    <h2>About the Store</h2>
-    <blockquote>
+    <section class="content-section mb-4 pb-4 border-bottom store-quote text-center text-md-start bg-white p-3 rounded">
+    <h2 class="h3 fw-bold">About the Store</h2>
+    <blockquote class="blockquote">
         The best medicine is shopping!
     </blockquote>
     <p>
-        <cite>Gulzhan, 13 September 2026</cite>
+        <cite class="small text-body-secondary">Gulzhan, 13 September 2026</cite>
     </p>
     <p>
         During our visit, the employee also said,
         <q>We’re always happy to see you—come back again!</q>.
     </p>
 </section>
-    <form class="request-form" action="products.html" method="get">
-        <fieldset>
+    <form class="request-form row g-3" action="products.html" method="get">
+        <fieldset class="col-12">
             <legend>Product Request</legend>
-            <p>
-                <label for="customer-name">Name:</label>
-                <input type="text" id="customer-name" name="customer-name" placeholder="Enter your name" required
+            <!-- Nested row inside the fieldset column: fields stack on phones, then use two or three columns. -->
+            <div class="row g-3">
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="customer-name">Name:</label>
+                <input class="form-control" type="text" id="customer-name" name="customer-name" placeholder="Enter your name" required
                 >
             </p>
-            <p>
-                <label for="customer-email">Email:</label>
-                <input type="email" id="customer-email" name="customer-email" placeholder="Enter your email" required
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="customer-email">Email:</label>
+                <input class="form-control" type="email" id="customer-email" name="customer-email" placeholder="Enter your email" required
                 >
             </p>
-            <p>
-                <label for="customer-phone">Phone:</label>
-                <input type="tel" id="customer-phone" name="customer-phone" placeholder="+7 747 905 25 09"
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="customer-phone">Phone:</label>
+                <input class="form-control" type="tel" id="customer-phone" name="customer-phone" placeholder="+7 747 905 25 09"
                 >
             </p>
-            <p>
-                <label for="product-name">Product name:</label>
-                <input type="text" id="product-name" name="product-name" placeholder="Example: Milk" required
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="product-name">Product name:</label>
+                <input class="form-control" type="text" id="product-name" name="product-name" placeholder="Example: Milk" required
                 >
             </p>
-            <p>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" min="1" required
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="quantity">Quantity:</label>
+                <input class="form-control" type="number" id="quantity" name="quantity" min="1" required
                 >
             </p>
-            <p>
-                <label for="request-date">Preferred date:</label>
-                <input type="date" id="request-date" name="request-date"
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="request-date">Preferred date:</label>
+                <input class="form-control" type="date" id="request-date" name="request-date"
                 >
             </p>
-            <p>
-                <label for="category">Product category:</label>
+            <p class="col-12 col-md-6 col-lg-4 mb-0">
+                <label class="form-label" for="category">Product category:</label>
 
-                <select id="category" name="category">
+                <select class="form-select" id="category" name="category">
                     <option value="beverages">Beverages</option>
                     <option value="snacks">Snacks</option>
                     <option value="sweets">Sweets</option>
@@ -194,43 +220,52 @@
                     <option value="household">Household Cleaning</option>
                 </select>
             </p>
-            <p>Preferred contact method:</p>
-            <input type="radio" id="contact-email" name="contact-method" value="email" required
+            <div class="col-12">
+            <p class="mb-2">Preferred contact method:</p>
+            <input class="form-check-input" type="radio" id="contact-email" name="contact-method" value="email" required
             >
-            <label for="contact-email">Email</label>
-            <input type="radio" id="contact-phone" name="contact-method" value="phone"
+            <label class="form-check-label me-3" for="contact-email">Email</label>
+            <input class="form-check-input" type="radio" id="contact-phone" name="contact-method" value="phone"
             >
-            <label for="contact-phone">Phone</label>
-            <p>
-                <input type="checkbox" id="contact-permission" name="contact-permission" required
+            <label class="form-check-label me-3" for="contact-phone">Phone</label>
+            </div>
+            <p class="col-12 mb-0">
+                <input class="form-check-input" type="checkbox" id="contact-permission" name="contact-permission" required
                 >
-                <label for="contact-permission">
+                <label class="form-check-label me-3" for="contact-permission">
                     I agree to be contacted about this request.
                 </label>
             </p>
-            <p>
-                <label for="request-comment">Additional information:</label>
-                <textarea id="request-comment" name="request-comment"  rows="5" cols="40"  placeholder="Describe the product you are looking for"></textarea>
+            <p class="col-12 mb-0">
+                <label class="form-label" for="request-comment">Additional information:</label>
+                <textarea class="form-control" id="request-comment" name="request-comment"  rows="5" cols="40"  placeholder="Describe the product you are looking for"></textarea>
             </p>
 
-            <div class="form-actions">
-                <button type="submit">Submit Request</button>
-                <button type="reset">Reset</button>
+            <div class="form-actions col-12 d-flex flex-wrap gap-2 align-items-center">
+                <button class="btn btn-success btn-lg disabled" type="submit" disabled aria-describedby="request-status">Submit Request</button>
+                <button class="btn btn-outline-success" type="reset">Reset</button>
+            </div>
             </div>
         </fieldset>
 
     </form>
+    <p id="request-status" class="small text-body-secondary mt-3">This local demonstration form does not send requests. Submission is unavailable; please contact the store using the details below.</p>
 </section>
     </main>
-    <a class="back-to-top" href="#page-title">Top</a>
-    <footer class="site-footer">
-        <p>Lido Grocery Store</p>
-        <p>&copy; 2026 Lido Grocery Store</p>
-        <p>Contact: <a href="tel:+77479052505">+7 747 905 25 05</a></p>
-        <p>Address: Uly dala 31</p>
-        <p> Email: <a href="mailto:253741@astanait.edu.kz"> 253741@astanait.edu.kz </a></p>
-        <p> <a href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" target="_blank" rel="noopener noreferrer">View Lido location on 2GIS </a></p>
+    <a class="back-to-top btn btn-outline-success btn-sm d-none d-md-inline-block ms-3 mb-3" href="#page-title">Top</a>
+    <footer class="site-footer container-fluid py-4 text-center text-md-start">
+        <div class="container">
+        <div class="row g-3 align-items-center small">
+        <p class="col-12 col-md-6 col-lg-4 mb-0">Lido Grocery Store</p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0">&copy; 2026 Lido Grocery Store</p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0">Contact: <a class="link-light text-break" href="tel:+77479052505">+7 747 905 25 05</a></p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0">Address: Uly dala 31</p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0"> Email: <a class="link-light text-break" href="mailto:253741@astanait.edu.kz"> 253741@astanait.edu.kz </a></p>
+        <p class="col-12 col-md-6 col-lg-4 mb-0"> <a class="link-light text-break" href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" target="_blank" rel="noopener noreferrer">View Lido location on 2GIS </a></p>
+        </div>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

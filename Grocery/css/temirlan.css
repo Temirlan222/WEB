@@ -1,112 +1,25 @@
-.page-home .site-main,
-
-.page-products .site-main {
-    padding-top: 25px;
-}
-
-.store-photo {
-    float: left;
-    width: 150px;
-    margin: 0 15px 10px 0;
-}
-
-/* without clear the following content could move beside the floated store photo */
-.about-section + hr {
-    clear: both;
-}
-
-/* grid is better than flexbox here because the cards need rows and columns */
-.product-gallery {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(180px, 1fr));
-    gap: 15px;
-}
-
-.product-gallery > h2 {
-    grid-column: 1 / -1;
-}
-
-.product-gallery > hr {
-    display: none;
-}
-
-.product-card {
-    position: relative;
-    padding: 10px;
-    border: 1px solid rgba(36, 81, 59, 0.3);
-    background-color: white;
-}
-
-.product-card:first-of-type {
-    grid-column: span 2;
-}
-
-.product-card:first-of-type::after {
-    content: "Popular";
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    padding: 4px 7px;
-    background-color: #d7a928;
+/* Assignment 3 correction layer: brand colours only; Bootstrap controls layout. */
+body {
+    background-color: #f7f3e8;
     color: #23312b;
-    font-size: 12px;
-    font-weight: 700;
 }
 
-/* grid fits these sections because the heading spans columns and the content uses columns */
-.page-home .opening-hours {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
+h1, h2, h3 {
+    color: #24513b;
 }
 
-.page-home .opening-hours > h2{
-    grid-column: span 2;
-}
-
-.back-to-top {
-    position: fixed;
-    right: 15px;
-    bottom: 15px;
-    padding: 8px 12px;
+/* Preserve the original green header; Bootstrap supplies padding and alignment. */
+.site-header {
     background-color: #24513b;
     color: white;
-    text-decoration: none;
 }
 
-/* centering technique two flexbox centers the form buttons and lets them wrap */
-.form-actions {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.site-header h1 {
+    color: white;
 }
 
-.form-actions button {
-    flex: 1 1 140px;
-    max-width: 180px;
-}
-
-/* centering technique three grid centers the short quotation in both directions */
-.store-quote {
-    display: grid;
-    place-items: center;
-    text-align: center;
-}
-
-/* specificity zero one zero this rule loses to the rule below */
-.product-information {
-    border-left: 4px solid #d7a928;
-    padding-left: 12px;
-}
-
-/* specificity zero two zero this rule wins through specificity */
-.page-products .product-information {
-    border-left-color: #24513b;
-}
-
-label[for="request-comment"] {
-    display: block;
+/* Preserve the original dark navigation and footer backgrounds. */
+.site-nav, .site-footer {
+    background-color: #23312b;
+    color: white;
 }
