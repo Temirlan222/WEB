@@ -25,3 +25,7 @@ The four required screenshots are in `evidence/`: `contacts-375.png`, `contacts-
 Both HTML files passed the **local Nu Html Checker 26.9.27 (0788818)** with zero messages. All local links and the photograph target exist. The mobile menu opened on both pages during browser checks.
 
 Open `../contacts.html` or `../colophon.html` in a browser with internet access for the Bootstrap CDN. The pages also work through the existing site navigation.
+
+## What to submit
+
+Submit the [GitHub repository](https://github.com/Temirlan222/WEB) and the four screenshots in vidence/ at 375, 768 and 1366 pixels, plus the collapsed phone menu. The course document asks for screenshots instead of a written report. [Submission PDF](Shalkar_Assignment3_Submission.pdf) is an optional three-page overview with the GitHub link and screenshots if a single PDF is useful.
