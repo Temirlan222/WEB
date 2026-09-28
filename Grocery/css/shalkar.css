@@ -1,14 +1,19 @@
-.page-contacts .site-main,
-.page-colophon .site-main {
-    padding-top: 25px;
+/* Assignment 3 correction layer: Bootstrap handles layout, navigation and spacing. */
+body {
+    background-color: #f7f3e8;
+    color: #23312b;
 }
 
-.back-to-top {
-    position: fixed;
-    right: 15px;
-    bottom: 15px;
-    padding: 8px 12px;
+h1, h2 {
+    color: #24513b;
+}
+
+.site-header {
     background-color: #24513b;
     color: white;
-    text-decoration: none;
+}
+
+.site-nav, .site-footer {
+    background-color: #23312b;
+    color: white;
 }

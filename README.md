@@ -11,16 +11,16 @@ This repository contains a simple six-page website about Lido Grocery Store in A
 - `Grocery/contacts.html` - contact information
 - `Grocery/colophon.html` - information about the website
 
-For Assignment 3, Temirlan is responsible for Home and Products only. The other pages belong to the remaining team work.
+For Assignment 3, Temirlan handles Home and Products; Murager handles Prices and Order and delivery; Saparali Shalkar handles Contacts and About this site.
 
 ## CSS files
 
-- `Grocery/css/base.css` contains the shared colours, typography, navigation, main content and footer styles.
+- `Grocery/css/base.css` is the original Assignment 2 stylesheet; the migrated pages no longer load it.
 - `Grocery/css/temirlan.css` is the 25-line brand-colour correction layer for the Bootstrap home and products pages.
 - `Grocery/css/murager.css` contains the prices and delivery layouts.
-- `Grocery/css/shalkar.css` contains the contacts and colophon layouts, using the existing palette and shared navigation.
+- `Grocery/css/shalkar.css` is the short colour correction layer for Contacts and About this site.
 
-Assignment 2 demonstrated selectors, the cascade, specificity, the box model, Flexbox, Grid, positioning, float and clear, and three centering techniques. Assignment 3 now uses Bootstrap for Home and Products; the other four pages retain their Assignment 2 styles.
+Assignment 2 demonstrated selectors, the cascade, specificity, the box model, Flexbox, Grid, positioning, float and clear, and three centering techniques. Assignment 3 now uses Bootstrap on all six pages, with small page-specific correction stylesheets.
 
 ## Opening the website
 
@@ -37,10 +37,14 @@ Before-and-after screenshots for the home and products pages are stored in `Groc
 
 On 21 September 2026, the modified contacts, colophon and prices HTML files passed W3C Nu with zero errors and warnings. All six pages had valid local asset and navigation targets. The contacts and colophon layouts were also checked in the browser; their screenshots are in `Grocery/evidence`.
 
-Contacts and colophon use the same shared appearance as the existing pages, with normal single-column content. `shalkar.css` only matches the existing top padding and Top link.
+Contacts and colophon now use Bootstrap responsive columns and a collapsing navbar. `shalkar.css` keeps only the site colours.
 
-The simplified `shalkar.css` passed W3C CSS validation with 0 errors and 0 warnings on 21 September 2026.
+The Assignment 2 version of `shalkar.css` passed W3C CSS validation on 21 September 2026. The Assignment 3 version is a shorter colour-only layer.
 
 ## Assignment 3 — Home and Products
 
 Temirlan's scope is `Grocery/index.html` and `Grocery/products.html`. Code stays in its existing locations. Documentation, CSS replacements, screenshots and validation results are grouped in [Grocery/Temirlan_Assik3](Grocery/Temirlan_Assik3/README.md).
+
+## Assignment 3 — Contacts and About this site
+
+Saparali Shalkar's code remains in Grocery/contacts.html, Grocery/colophon.html, and Grocery/css/shalkar.css. The CSS replacement list and four screenshots are in [Grocery/ShalkarSaparali](Grocery/ShalkarSaparali/README.md).
