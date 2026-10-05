@@ -1,5 +1,7 @@
 # Temirlan Assignment 3
 
+This folder preserves the Assignment 3 submission and evidence. Home and Products have since been extended for midterm; their current implementation is described in [the midterm package](../Temirlan_Midterm/README.md). The descriptions below refer to the Assignment 3 version.
+
 Scope: **Home and Products only**. HTML and CSS remain in the existing Grocery folder: `../index.html`, `../products.html`, and `../css/temirlan.css`. This folder groups the submission PDF, supporting documents, four required screenshots, and validation results. Other pages are outside Temirlan's Assignment 3 responsibilities.
 
 Only `../index.html` and `../products.html` were migrated. Both load Bootstrap 5.3.8 CSS and its JavaScript bundle through CDN, followed by `../css/temirlan.css`; neither loads the old `base.css`. No custom JavaScript or build tools are required. Open the HTML files directly; an internet connection is needed for the CDN.

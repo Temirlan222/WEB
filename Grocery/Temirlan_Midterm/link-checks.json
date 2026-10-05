@@ -1,0 +1,16 @@
+[
+  {
+    "page": "index.html",
+    "localLinksAndAssets": "passed",
+    "idsUnique": true,
+    "allControlsHaveIds": true,
+    "labelsConnected": true
+  },
+  {
+    "page": "products.html",
+    "localLinksAndAssets": "passed",
+    "idsUnique": true,
+    "allControlsHaveIds": true,
+    "labelsConnected": true
+  }
+]

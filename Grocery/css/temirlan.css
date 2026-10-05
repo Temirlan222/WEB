@@ -1,25 +1,47 @@
-/* Assignment 3 correction layer: brand colours only; Bootstrap controls layout. */
+/* Midterm correction layer. Bootstrap supplies all layout, spacing and buttons. */
 body {
     background-color: #f7f3e8;
     color: #23312b;
 }
-
 h1, h2, h3 {
     color: #24513b;
 }
-
-/* Preserve the original green header; Bootstrap supplies padding and alignment. */
 .site-header {
     background-color: #24513b;
     color: white;
 }
-
-.site-header h1 {
-    color: white;
-}
-
-/* Preserve the original dark navigation and footer backgrounds. */
 .site-nav, .site-footer {
     background-color: #23312b;
     color: white;
+}
+/* Navigation uses the store palette; Bootstrap still supplies its layout. */
+.site-nav .nav-link {
+    color: white;
+}
+.site-nav .nav-link:hover, .site-nav .nav-link:focus, .site-nav .active {
+    color: #d7a928;
+    text-decoration: underline;
+}
+/* Predefined states for later class switching. No custom layout rules. */
+.hidden, .result-confirmation {
+    display: none;
+}
+.selected {
+    outline: 2px solid #24513b;
+    background-color: #edf5ef;
+}
+.error {
+    color: #842029;
+    background-color: #f8d7da;
+}
+.success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+}
+/* A native form opens this fragment; CSS reveals the existing result message. */
+.request-result:target .result-pending {
+    display: none;
+}
+.request-result:target .result-confirmation {
+    display: block;
 }

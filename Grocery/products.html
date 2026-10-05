@@ -5,89 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
-    <title>Products | Grocery Store</title>
+    <title>Products | Lido Grocery Store</title>
     <!-- Bootstrap 5.3.8 via CDN; the correction stylesheet follows Bootstrap. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/temirlan.css">
 </head>
-<body class="page-products">
- <!-- container-fluid keeps the coloured header full width. -->
+<body class="page-products d-flex flex-column min-vh-100">
+    <a class="visually-hidden-focusable btn btn-light" href="#main-content">Skip to content</a>
+    <!-- container-fluid fills the screen; container aligns the shared header content. -->
     <header class="site-header container-fluid py-4 text-center text-md-start">
-    <p class="site-name lead fw-bold mb-0">Lido Grocery Store</p>
- </header>
- <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="dark" aria-label="Main navigation">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="main-navigation">
-        <ul class="nav-list navbar-nav mx-auto gap-lg-3">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link active" href="products.html" aria-current="page">Products</a></li>
-            <li class="nav-item"><a class="nav-link" href="prices.html">Prices</a></li>
-            <li class="nav-item"><a class="nav-link" href="delivery.html">Order and delivery</a></li>
-            <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
-            <li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
-        </ul>
-            </div>
+            <p class="site-name h2 fw-bold mb-1">Lido Grocery Store</p>
+            <p class="mb-0">Your local grocery store at Uly Dala Avenue, 31</p>
+        </div>
+    </header>
+ <!-- Native details/summary opens the phone menu without any scripts. Bootstrap controls its layout. -->
+    <nav class="site-nav py-2" aria-label="Main navigation">
+        <div class="container">
+            <details id="mobile-navigation" class="d-lg-none">
+                <summary class="btn btn-outline-light w-100 text-start">Menu</summary>
+                <ul class="nav flex-column mt-2">
+                    <li class="nav-item"><a id="mobile-nav-index" class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a id="mobile-nav-products" class="nav-link active" aria-current="page" href="products.html">Products</a></li>
+                    <li class="nav-item"><a id="mobile-nav-prices" class="nav-link" href="prices.html">Prices</a></li>
+                    <li class="nav-item"><a id="mobile-nav-delivery" class="nav-link" href="delivery.html">Order and delivery</a></li>
+                    <li class="nav-item"><a id="mobile-nav-contacts" class="nav-link" href="contacts.html">Contacts</a></li>
+                    <li class="nav-item"><a id="mobile-nav-colophon" class="nav-link" href="colophon.html">About this site</a></li>
+                </ul>
+            </details>
+            <ul id="desktop-navigation" class="nav d-none d-lg-flex justify-content-center gap-2">
+                    <li class="nav-item"><a id="nav-index" class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a id="nav-products" class="nav-link active" aria-current="page" href="products.html">Products</a></li>
+                    <li class="nav-item"><a id="nav-prices" class="nav-link" href="prices.html">Prices</a></li>
+                    <li class="nav-item"><a id="nav-delivery" class="nav-link" href="delivery.html">Order and delivery</a></li>
+                    <li class="nav-item"><a id="nav-contacts" class="nav-link" href="contacts.html">Contacts</a></li>
+                    <li class="nav-item"><a id="nav-colophon" class="nav-link" href="colophon.html">About this site</a></li>
+            </ul>
         </div>
     </nav>
     <!-- main content is an id because this page has one main content region -->
     <!-- container limits reading width on larger screens and adds phone gutters. -->
-    <main id="main-content" class="site-main container py-4">
+    <main id="main-content" class="site-main container py-4 flex-grow-1">
         <!-- page title is an id because this page has one primary title -->
         <h1 id="page-title" class="display-5 fw-bold mb-4">Products</h1>
+    <p class="d-flex flex-wrap gap-2 mb-4">
+        <a id="view-categories" class="btn btn-outline-success" href="#product-categories">Product categories</a>
+        <a id="view-request" class="btn btn-success" href="#product-request">Prepare a request</a>
+        <a id="view-prices" class="btn btn-outline-success" href="prices.html">View prices</a>
+    </p>
     <!-- Bootstrap Card: official card/card-body/card-title markup adapted to the existing product articles and figures. -->
-    <section class="content-section mb-4 pb-4 border-bottom product-gallery row g-3">
+    <section id="product-gallery" class="content-section mb-4 pb-4 border-bottom product-gallery row g-3">
         <h2 class="h3 fw-bold col-12">Food &amp; Household Products</h2>
         <div class="col-12 col-md-6 col-lg-4">
-        <article class="product-card card h-100 shadow-sm">
+        <article id="product-accessories" class="product-card card h-100 shadow-sm">
             <div class="card-body">
-            <span class="badge text-bg-warning mb-2">Popular</span>
-            <h3 class="card-title h5 fw-bold"><em>Accessories and Miscellaneous</em></h3>
+                        <h3 class="card-title h5 fw-bold"><em>Accessories and Miscellaneous</em></h3>
             <figure class="figure mb-0">
-                <img class="figure-img img-fluid rounded" src="non-food.jpg" alt="Accessories and Miscellaneous" width="400" height="200">
+                <img class="figure-img img-fluid rounded" src="non-food.jpg" alt="Accessories and everyday non-food items on shelves inside Lido" width="400" height="200">
                 <figcaption class="figure-caption">This section offers various non-food items such as toys, socks, small household goods, and other useful everyday accessories.</figcaption>
             </figure>
             </div>
         </article>
         </div>
-        <hr class="d-none">
-        <div class="col-12 col-md-6 col-lg-4">
-        <article class="product-card card h-100 shadow-sm">
+                <div class="col-12 col-md-6 col-lg-4">
+        <article id="product-variety" class="product-card card h-100 shadow-sm">
             <div class="card-body">
             <h3 class="card-title h5 fw-bold"><em>Product Variety</em></h3>
             <figure class="figure mb-0">
-                <img class="figure-img img-fluid rounded" src="молочка.jpg" alt="Product Variety" width="400" height="200">
+                <img class="figure-img img-fluid rounded" src="молочка.jpg" alt="Drinks, chilled food and snack displays inside Lido" width="400" height="200">
                 <figcaption class="figure-caption">This part contains many different items such as ice cream, beverages, snacks, candies, dairy products, and little toys. Consumers will obtain both culinary and non-culinary goods in one space.</figcaption>
             </figure>
             </div>
         </article>
         </div>
-        <hr class="d-none">
-        <div class="col-12 col-md-6 col-lg-4">
-        <article class="product-card card h-100 shadow-sm">
+                <div class="col-12 col-md-6 col-lg-4">
+        <article id="product-household" class="product-card card h-100 shadow-sm">
             <div class="card-body">
             <h3 class="card-title h5 fw-bold"><em>Household cleaning</em></h3>
             <figure class="figure mb-0">
                 <img class="figure-img img-fluid rounded" src="мыло.jpg" alt="Household cleaning products displayed in Lido Grocery Store" width="400" height="200">
-                <figcaption class="figure-caption">Cleaning items for home use including soaps, detergents for laundry clothes, dishwashing fluids, cleaning sprays, sponges, and more are all addressed in this paragraph. </figcaption>
+                <figcaption class="figure-caption">Household products include soap, laundry detergent, dishwashing liquid, cleaning sprays and sponges. </figcaption>
             </figure>
             </div>
         </article>
         </div>
-        <hr class="d-none">
-    </section>
+            </section>
 
     <aside class="content-section mb-4 pb-4 border-bottom product-note bg-white p-3 rounded">
         <p>Apart from packaged foods and household goods, fresh produce, particularly fruits and vegetables, is also sold in Lido on a daily basis.</p>
-        <p>Products such as apples, bananas, tomatoes, cucumbers and potatoes can be found among all the usual products sold in Lido’s a shop. Lido has bottled water, juices, drinks and many other kinds of beverages.</p>
+        <p>Products such as apples, bananas, tomatoes, cucumbers and potatoes can be found among all the usual products sold in Lido. Lido has bottled water, juices, drinks and many other kinds of beverages.</p>
         <p>Several goods are stored in refrigerators so as to keep them fresh. The wide variety of foods and beverages helps the customers to make their daily purchases easily.</p>
     </aside>
     
     <hr class="my-4">
 
-    <section class="content-section mb-4 pb-4 border-bottom category-list">
+    <section id="product-categories" class="content-section mb-4 pb-4 border-bottom category-list">
     <h2 class="h3 fw-bold">Details on the remaining sections:</h2>
     <ol type ="1">
         <li>Quick bites</li>
@@ -155,11 +167,10 @@
     <dd class="col-12 col-md-8 col-lg-9">Alcoholic beverages available for adult customers.</dd>
 </dl>
     </section>
-    <section class="content-section mb-4 pb-4 border-bottom request-section">
+    <section id="product-request" class="content-section mb-4 pb-4 border-bottom request-section">
     <h2 class="h3 fw-bold">Product Request Form</h2>
     <p>
-        Customers can use this form to request information about a product
-        they are looking for.
+        Prepare the details of the product you are looking for. Check the required fields to open the result below. This page does not send a request to the shop.
     </p>
     <section class="content-section mb-4 pb-4 border-bottom store-quote text-center text-md-start bg-white p-3 rounded">
     <h2 class="h3 fw-bold">About the Store</h2>
@@ -174,24 +185,25 @@
         <q>We’re always happy to see you—come back again!</q>.
     </p>
 </section>
-    <form class="request-form row g-3" action="products.html" method="get">
+    <form id="product-request-form" class="request-form row g-3" action="products.html#request-result" method="get" aria-describedby="request-status">
+        <!-- No server or scripts: native browser validation checks fields, then GET opens the result anchor. -->
         <fieldset class="col-12">
             <legend>Product Request</legend>
             <!-- Nested row inside the fieldset column: fields stack on phones, then use two or three columns. -->
             <div class="row g-3">
             <p class="col-12 col-md-6 col-lg-4 mb-0">
                 <label class="form-label" for="customer-name">Name:</label>
-                <input class="form-control" type="text" id="customer-name" name="customer-name" placeholder="Enter your name" required
+                <input class="form-control" type="text" id="customer-name" name="customer-name" autocomplete="name" maxlength="100" placeholder="Enter your name" required
                 >
             </p>
             <p class="col-12 col-md-6 col-lg-4 mb-0">
                 <label class="form-label" for="customer-email">Email:</label>
-                <input class="form-control" type="email" id="customer-email" name="customer-email" placeholder="Enter your email" required
+                <input class="form-control" type="email" id="customer-email" name="customer-email" autocomplete="email" placeholder="Enter your email" required
                 >
             </p>
             <p class="col-12 col-md-6 col-lg-4 mb-0">
                 <label class="form-label" for="customer-phone">Phone:</label>
-                <input class="form-control" type="tel" id="customer-phone" name="customer-phone" placeholder="+7 747 905 25 09"
+                <input class="form-control" type="tel" id="customer-phone" name="customer-phone" autocomplete="tel" placeholder="Your contact number"
                 >
             </p>
             <p class="col-12 col-md-6 col-lg-4 mb-0">
@@ -201,7 +213,7 @@
             </p>
             <p class="col-12 col-md-6 col-lg-4 mb-0">
                 <label class="form-label" for="quantity">Quantity:</label>
-                <input class="form-control" type="number" id="quantity" name="quantity" min="1" required
+                <input class="form-control" type="number" id="quantity" name="quantity" min="1" max="999" value="1" required
                 >
             </p>
             <p class="col-12 col-md-6 col-lg-4 mb-0">
@@ -213,6 +225,10 @@
                 <label class="form-label" for="category">Product category:</label>
 
                 <select class="form-select" id="category" name="category">
+                    <option value="dairy">Dairy</option>
+                    <option value="food">Food products</option>
+                    <option value="produce">Fruit and vegetables</option>
+                    <option value="accessories">Accessories</option>
                     <option value="beverages">Beverages</option>
                     <option value="snacks">Snacks</option>
                     <option value="sweets">Sweets</option>
@@ -233,39 +249,48 @@
                 <input class="form-check-input" type="checkbox" id="contact-permission" name="contact-permission" required
                 >
                 <label class="form-check-label me-3" for="contact-permission">
-                    I agree to be contacted about this request.
+                    I understand that this form does not send my request to the shop.
                 </label>
             </p>
             <p class="col-12 mb-0">
                 <label class="form-label" for="request-comment">Additional information:</label>
-                <textarea class="form-control" id="request-comment" name="request-comment"  rows="5" cols="40"  placeholder="Describe the product you are looking for"></textarea>
+                <textarea class="form-control" id="request-comment" name="request-comment" maxlength="1000" rows="5" cols="40"  placeholder="Describe the product you are looking for"></textarea>
             </p>
 
             <div class="form-actions col-12 d-flex flex-wrap gap-2 align-items-center">
-                <button class="btn btn-success btn-lg disabled" type="submit" disabled aria-describedby="request-status">Submit Request</button>
-                <button class="btn btn-outline-success" type="reset">Reset</button>
+                <button id="request-submit" class="btn btn-success btn-lg" type="submit" aria-describedby="request-status">Check request</button>
+                <button id="request-reset" class="btn btn-outline-success" type="reset">Reset</button>
             </div>
             </div>
         </fieldset>
 
     </form>
-    <p id="request-status" class="small text-body-secondary mt-3">This local demonstration form does not send requests. Submission is unavailable; please contact the store using the details below.</p>
+    <p id="request-status" class="small text-body-secondary mt-3">Checking reloads this local page and opens the result below. Entries are included in the page URL; nothing is sent to Lido and no order is placed.</p>
+    <!-- Empty message and summary hooks are ready for future interaction; the result area is already visible. -->
+    <section id="request-result" class="request-result border rounded bg-white p-3 mt-3" aria-labelledby="result-title">
+        <h3 id="result-title" class="h5 fw-bold">Request result</h3>
+        <p class="result-pending">Complete the form and choose Check request to reach this result area.</p>
+        <p class="result-confirmation success">Your request has not been sent to the shop. You can use the item details to ask about availability or plan your visit.</p>
+        <dl id="request-summary" class="row g-2 mb-0"></dl>
+        <p id="request-confirmation" class="hidden success" role="status"></p>
+        <p id="request-error" class="hidden error" role="alert"></p>
+        <p class="d-flex flex-wrap gap-2 mb-0">
+            <a id="result-contact" class="btn btn-success btn-sm" href="tel:+77479052505">Call Lido</a>
+            <a id="result-edit" class="btn btn-outline-success btn-sm" href="#product-request">Back to the form</a>
+            <a id="result-hours" class="btn btn-outline-success btn-sm" href="index.html#opening-hours">Plan a visit</a>
+        </p>
+    </section>
 </section>
     </main>
-    <a class="back-to-top btn btn-outline-success btn-sm d-none d-md-inline-block ms-3 mb-3" href="#page-title">Top</a>
-    <footer class="site-footer container-fluid py-4 text-center text-md-start">
+    <p class="container d-none d-md-block mb-3"><a id="back-to-top" class="btn btn-outline-success btn-sm" href="#page-title">Top</a></p>
+    <footer id="site-footer" class="site-footer container-fluid py-4 text-center text-md-start">
         <div class="container">
-        <div class="row g-3 align-items-center small">
-        <p class="col-12 col-md-6 col-lg-4 mb-0">Lido Grocery Store</p>
-        <p class="col-12 col-md-6 col-lg-4 mb-0">&copy; 2026 Lido Grocery Store</p>
-        <p class="col-12 col-md-6 col-lg-4 mb-0">Contact: <a class="link-light text-break" href="tel:+77479052505">+7 747 905 25 05</a></p>
-        <p class="col-12 col-md-6 col-lg-4 mb-0">Address: Uly dala 31</p>
-        <p class="col-12 col-md-6 col-lg-4 mb-0"> Email: <a class="link-light text-break" href="mailto:253741@astanait.edu.kz"> 253741@astanait.edu.kz </a></p>
-        <p class="col-12 col-md-6 col-lg-4 mb-0"> <a class="link-light text-break" href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" target="_blank" rel="noopener noreferrer">View Lido location on 2GIS </a></p>
-        </div>
+            <div class="row g-3 align-items-center small">
+                <p class="col-12 col-md-6 col-lg-4 mb-0">Lido Grocery Store<br>&copy; 2026 Lido student project</p>
+                <p class="col-12 col-md-6 col-lg-4 mb-0">Uly Dala Avenue, 31, Astana<br><a id="shop-phone" class="link-light text-break" href="tel:+77479052505">+7 747 905 25 05</a></p>
+                <p class="col-12 col-md-6 col-lg-4 mb-0"><a id="shop-map" class="link-light" href="https://2gis.kz/astana/firm/70000001066901298" target="_blank" rel="noopener noreferrer">View Lido on the map</a><br><a id="team-email" class="link-light text-break" href="mailto:253741@astanait.edu.kz">Email the website team</a></p>
+            </div>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

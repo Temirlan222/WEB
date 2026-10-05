@@ -1,50 +1,39 @@
 # Lido Grocery Store
 
-This repository contains a simple six-page website about Lido Grocery Store in Astana. It was created for the Introduction to Web Technologies course and continues the HTML work from Assignment 1 with CSS for Assignment 2.
+A six-page website about Lido Grocery Store at Uly Dala Avenue, 31, Astana. The project continues the same repository from Assignments 1-3.
 
-## Pages
+## Pages and responsibilities
 
-- `Grocery/index.html` - home page
-- `Grocery/products.html` - products and product request form
-- `Grocery/prices.html` - example product prices
-- `Grocery/delivery.html` - order and delivery information
-- `Grocery/contacts.html` - contact information
-- `Grocery/colophon.html` - information about the website
+- `Grocery/index.html`: Home, Temirlan.
+- `Grocery/products.html`: Products and product request form, Temirlan.
+- `Grocery/prices.html`: Prices, Murager.
+- `Grocery/delivery.html`: Order and delivery information, Murager.
+- `Grocery/contacts.html`: Contacts, Saparali Shalkar.
+- `Grocery/colophon.html`: About this site, Saparali Shalkar.
 
-For Assignment 3, Temirlan handles Home and Products; Murager handles Prices and Order and delivery; Saparali Shalkar handles Contacts and About this site.
+## Midterm contribution
 
-## CSS files
+Only Home, Products and `Grocery/css/temirlan.css` were updated for Temirlan's midterm contribution. They use Bootstrap 5.3.8 CSS from CDN, native HTML navigation and form validation, with no scripts. The two pages have the same header, footer, navigation, title pattern and brand styling. Other contributors' pages retain their previous implementations.
 
-- `Grocery/css/base.css` is the original Assignment 2 stylesheet; the migrated pages no longer load it.
-- `Grocery/css/temirlan.css` is the 25-line brand-colour correction layer for the Bootstrap home and products pages.
-- `Grocery/css/murager.css` contains the prices and delivery layouts.
-- `Grocery/css/shalkar.css` is the short colour correction layer for Contacts and About this site.
+Open `Grocery/index.html` in a browser. An internet connection loads Bootstrap CSS. The phone menu uses details/summary and works without JavaScript. The product request checks required fields and opens an existing result area; it does not send a message to Lido or create an order.
 
-Assignment 2 demonstrated selectors, the cascade, specificity, the box model, Flexbox, Grid, positioning, float and clear, and three centering techniques. Assignment 3 now uses Bootstrap on all six pages, with small page-specific correction stylesheets.
+## Three visitor journeys
 
-## Opening the website
+1. Plan a visit: Home -> Opening hours -> read the schedule -> footer address and map. The visitor knows where and when to visit.
+2. Explore the range: Home -> Browse products -> photo cards -> Product categories -> department descriptions. The visitor identifies a department; View prices also opens the existing Prices page.
+3. Prepare a product request: Home -> Prepare a product request -> fill the required fields -> Check request -> Request result. The visitor sees that nothing was sent and can find the shop's telephone number or opening hours.
 
-Open `Grocery/index.html` in a browser. In VS Code, open the `Grocery` folder and press `F5`, then select `Open Grocery website` if VS Code asks for a configuration.
+## Submission materials
 
-Keep the HTML files, the `css` folder and the images in their current locations so that links, styles and photographs continue to work.
+[Temirlan's midterm package](Grocery/Temirlan_Midterm/README.md) contains the page scope, detailed journeys, a quality-pass list, recorded validation, screenshots and a short report.
 
-## Validation
+The form, controls, cards and navigation have ids for later interaction work. Result, confirmation and error areas already exist, as do the hidden, active, selected, error and success state classes. Bootstrap owns the layout; the shared correction layer for these two pages is 47 lines.
 
-On 18 September 2026, all six HTML pages passed the W3C Nu HTML Checker with zero errors and zero warnings. Both CSS files passed the W3C CSS Validator with zero errors and zero warnings.
+## Previous assignments
 
-The Assignment 2 requirement locations are recorded in `Grocery/css-checklist.md`.
-Before-and-after screenshots for the home and products pages are stored in `Grocery/evidence`.
+- [Temirlan Assignment 3](Grocery/Temirlan_Assik3/README.md): original report and responsive evidence.
+- [Shalkar Assignment 3](Grocery/ShalkarSaparali/README.md): original Contacts and About contribution.
+- `Grocery/evidence/`: earlier screenshots and validation records.
+- `Grocery/tag-checklist.md` and `Grocery/css-checklist.md`: earlier assignment checklists. Their line references describe those earlier versions.
 
-On 21 September 2026, the modified contacts, colophon and prices HTML files passed W3C Nu with zero errors and warnings. All six pages had valid local asset and navigation targets. The contacts and colophon layouts were also checked in the browser; their screenshots are in `Grocery/evidence`.
-
-Contacts and colophon now use Bootstrap responsive columns and a collapsing navbar. `shalkar.css` keeps only the site colours.
-
-The Assignment 2 version of `shalkar.css` passed W3C CSS validation on 21 September 2026. The Assignment 3 version is a shorter colour-only layer.
-
-## Assignment 3 — Home and Products
-
-Temirlan's scope is `Grocery/index.html` and `Grocery/products.html`. Code stays in its existing locations. Documentation, CSS replacements, screenshots and validation results are grouped in [Grocery/Temirlan_Assik3](Grocery/Temirlan_Assik3/README.md).
-
-## Assignment 3 — Contacts and About this site
-
-Saparali Shalkar's code remains in Grocery/contacts.html, Grocery/colophon.html, and Grocery/css/shalkar.css. The CSS replacement list and four screenshots are in [Grocery/ShalkarSaparali](Grocery/ShalkarSaparali/README.md).
+The original Assignment 2 stylesheets and teammates' files remain available. They were not changed as part of Temirlan's midterm scope.
