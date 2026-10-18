@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-18",
+  "catalogue": "passed",
+  "cart": "passed",
+  "keyboard": "passed",
+  "sharedNavigation": "passed",
+  "form": "passed",
+  "safeText": "passed",
+  "corruptStorage": "passed",
+  "localLinksChecked": 78,
+  "results": [
+    {
+      "page": "index",
+      "width": 375,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "products",
+      "width": 375,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "prices",
+      "width": 375,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "delivery",
+      "width": 375,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "contacts",
+      "width": 375,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "colophon",
+      "width": 375,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "index",
+      "width": 768,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "products",
+      "width": 768,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "prices",
+      "width": 768,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "delivery",
+      "width": 768,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "contacts",
+      "width": 768,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "colophon",
+      "width": 768,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "index",
+      "width": 1366,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "products",
+      "width": 1366,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "prices",
+      "width": 1366,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "delivery",
+      "width": 1366,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "contacts",
+      "width": 1366,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    },
+    {
+      "page": "colophon",
+      "width": 1366,
+      "overflow": false,
+      "missingImages": 0,
+      "duplicateIds": 0
+    }
+  ],
+  "errors": []
+}
