@@ -23,11 +23,13 @@
 
 ## Tasks
 
-- [ ] 1. Test then implement store.js pure functions (filter/find/cart totals/normalization/validation/reference). Commit the logic and tag assignment-4 after green tests.
-- [ ] 2. In parallel, implement products.js catalogue and request.js validation against the documented Lido API; tests cover their user flows. Do not commit shared files from agents.
-- [ ] 3. Implement main.js shared cart, persistence, prepared-container cart and runtime price anchors. Restore six HTML snapshots from midterm with script links only. Browser-test catalogue/cart/form integration.
-- [ ] 4. Run full browser suite at three widths, HTML validator, syntax/static/freeze checks; independent code review and focused repairs.
-- [ ] 5. Generate exact-line checklist, README plan, evidence and PDF; render and inspect all PDF pages. Tag assignment-5 after verified completion; push main and both assignment tags, preserve midterm. Sync only delivered files into VS Code after backup.
+- [x] 1. Test then implement store.js pure functions (filter/find/cart totals/normalization/validation/reference). Commit the logic and tag assignment-4 after green tests.
+- [x] 2. Implement products.js catalogue and request.js validation against the documented Lido API; tests cover their user flows.
+- [x] 3. Implement main.js shared cart, persistence, prepared-container cart and runtime price anchors. Restore six HTML snapshots from midterm with script links only. Browser-test catalogue/cart/form integration.
+- [x] 4. Run full browser suite at three widths, HTML validator, syntax/static/freeze checks; independent code review and focused repairs. Keyboard focus was repaired and checked again; no unresolved findings in the approved scope.
+- [x] 5. Generate exact-line checklist, README plan, evidence and two-page PDF; render and inspect both PDF pages.
+
+Publication procedure: commit the verified materials, tag assignment-5, fast-forward main and push main plus both assignment tags atomically. Keep midterm unchanged. Back up the VS Code checkout, update delivered files and preserve the unrelated local base.css changes.
 
 ## Execution rulings
 

@@ -1,39 +1,62 @@
 # Lido Grocery Store
 
-A six-page website about Lido Grocery Store at Uly Dala Avenue, 31, Astana. The project continues the same repository from Assignments 1-3.
+A six-page website for Lido Grocery Store, Uly Dala Avenue 31, Astana. It continues the same project and repository from Assignments 1–3 and the Midterm Project.
+
+[Repository](https://github.com/Temirlan222/WEB) · [Midterm](https://github.com/Temirlan222/WEB/tree/midterm) · [Assignment 4](https://github.com/Temirlan222/WEB/tree/assignment-4) · [Assignment 5](https://github.com/Temirlan222/WEB/tree/assignment-5)
 
 ## Pages and responsibilities
 
-- `Grocery/index.html`: Home, Temirlan.
-- `Grocery/products.html`: Products and product request form, Temirlan.
-- `Grocery/prices.html`: Prices, Murager.
-- `Grocery/delivery.html`: Order and delivery information, Murager.
-- `Grocery/contacts.html`: Contacts, Saparali Shalkar.
-- `Grocery/colophon.html`: About this site, Saparali Shalkar.
+| Page | Responsible student |
+| --- | --- |
+| `Grocery/index.html` — Home | Temirlan |
+| `Grocery/products.html` — Products and product request | Temirlan |
+| `Grocery/prices.html` — Prices | Murager |
+| `Grocery/delivery.html` — Delivery information | Murager |
+| `Grocery/contacts.html` — Contacts | Saparali Shalkar |
+| `Grocery/colophon.html` — About this site | Saparali Shalkar |
 
-## Midterm contribution
+## Run the website
 
-Only Home, Products and `Grocery/css/temirlan.css` were updated for Temirlan's midterm contribution. They use Bootstrap 5.3.8 CSS from CDN, native HTML navigation and form validation, with no scripts. The two pages have the same header, footer, navigation, title pattern and brand styling. Other contributors' pages retain their previous implementations.
+Open `Grocery/index.html` in a browser with JavaScript enabled. Internet access loads the existing Bootstrap CDN files. No build command, package installation, backend or account is needed.
 
-Open `Grocery/index.html` in a browser. An internet connection loads Bootstrap CSS. The phone menu uses details/summary and works without JavaScript. The product request checks required fields and opens an existing result area; it does not send a message to Lido or create an order.
+Browse the catalogue on Products, combine search and category filters, add items and open the cart. Its shared link shows the quantity on all six pages. `localStorage` keeps only product IDs and quantities between navigation and reload. If browser storage is unavailable, the current page works, but the cart cannot persist between pages.
 
-## Three visitor journeys
+Prices are recorded project examples. Product pictures are illustrative; [image sources are credited](Grocery/images/catalog/sources.md). Confirm current prices and availability with the store. Checkout and the request form are front-end demonstrations: they send nothing and create no real order or payment.
 
-1. Plan a visit: Home -> Opening hours -> read the schedule -> footer address and map. The visitor knows where and when to visit.
-2. Explore the range: Home -> Browse products -> photo cards -> Product categories -> department descriptions. The visitor identifies a department; View prices also opens the existing Prices page.
-3. Prepare a product request: Home -> Prepare a product request -> fill the required fields -> Check request -> Request result. The visitor sees that nothing was sent and can find the shop's telephone number or opening hours.
+## Assignment 4–5 Functionality Plan
 
-## Submission materials
+This submission implements Temirlan's Home and Products contribution and one shared site feature. Catalogue filtering and the validated request form are his two substantial page features; the cart completes the product selection journey.
 
-[Temirlan's midterm package](Grocery/Temirlan_Midterm/README.md) contains the page scope, detailed journeys, a quality-pass list, recorded validation, screenshots and a short report.
+| Page | Visitor goal | Planned function | Expected result | Responsible student |
+| --- | --- | --- | --- | --- |
+| Home | Continue shopping from the entry page | Shared cart link and quantity | Open the same saved cart on Products | Temirlan |
+| Products | Find a suitable product | Connected search and category filter | Matching cards/count, no-results message, reset and Add to cart | Temirlan |
+| Products | Check a selection and its cost | Add, increase/decrease, remove, clear and demo checkout | Updated subtotals, quantity and total; demo summary/reference | Temirlan |
+| Products | Prepare a product enquiry | Field validation, counter and local summary | Specific errors/first-error focus, or a safe summary with no-submission notice | Temirlan |
+| All six pages | Keep the selection while navigating | Shared cart storage and quantity link | Consistent product IDs/quantities after navigation or reload | Temirlan |
 
-The form, controls, cards and navigation have ids for later interaction work. Result, confirmation and error areas already exist, as do the hidden, active, selected, error and success state classes. Bootstrap owns the layout; the shared correction layer for these two pages is 47 lines.
+The remaining contributors' features, including the Contacts review module, are outside this individual contribution. This package does not claim that the whole team's Assignment 4–5 requirements are complete. No booking or login pages were added.
 
-## Previous assignments
+## Files and frozen baseline
 
-- [Temirlan Assignment 3](Grocery/Temirlan_Assik3/README.md): original report and responsive evidence.
-- [Shalkar Assignment 3](Grocery/ShalkarSaparali/README.md): original Contacts and About contribution.
-- `Grocery/evidence/`: earlier screenshots and validation records.
-- `Grocery/tag-checklist.md` and `Grocery/css-checklist.md`: earlier assignment checklists. Their line references describe those earlier versions.
+- `Grocery/js/store.js`: eight product objects, filtering, quantities, totals, validation and demo references.
+- `Grocery/js/main.js`: shared cart state/storage/link and the Products cart interface.
+- `Grocery/js/products.js`: catalogue cards, connected controls and selection feedback.
+- `Grocery/js/request.js`: request validation, summary and character counter.
 
-The original Assignment 2 stylesheets and teammates' files remain available. They were not changed as part of Temirlan's midterm scope.
+All six HTML files start from `midterm`; only deferred local script links are added directly. New controls/messages are created through DOM methods in the existing gallery and result containers. CSS is unchanged. Post-midterm catalogue additions are supplied through JavaScript; the original store photos remain available below the catalogue. No essential midterm HTML/CSS correction was needed.
+
+`assignment-4` records working data and calculation/validation logic. `assignment-5` records the complete interactions and submission materials. The `midterm` tag is preserved. Git history records actual work dates; this package does not assert that the required multi-day contribution history has been fulfilled.
+
+## Submission materials and checks
+
+The [Assignment 4–5 package](Grocery/Temirlan_Assignment4-5/README.md) contains the exact-line JavaScript checklist, browser evidence and `Temirlan_Assignment4-5_Report.pdf` with the repository link.
+
+Recorded checks cover logic, catalogue/cart/form interactions, safe text, corrupt storage and shared navigation. All six pages were checked at 375, 768 and 1366 px with no overflow, missing images, duplicate IDs or browser errors. Source comparisons confirm six midterm HTML snapshots plus script links and all four CSS files unchanged. Nu HTML validation reports no messages. Evidence and the precise test scope are in the submission package.
+
+## Previous coursework
+
+- [Temirlan's midterm package](Grocery/Temirlan_Midterm/README.md)
+- [Temirlan's Assignment 3](Grocery/Temirlan_Assik3/README.md)
+- [Shalkar's Assignment 3](Grocery/ShalkarSaparali/README.md)
+- Older evidence is in `Grocery/evidence/`; the earlier HTML/CSS checklists describe those earlier versions.
