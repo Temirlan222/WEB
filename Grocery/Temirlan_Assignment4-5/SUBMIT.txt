@@ -1,0 +1,37 @@
+Assignment 4-5: Temirlan's submission
+Verified: 23 October 2026
+
+MAIN SUBMISSION
+https://github.com/Temirlan222/WEB
+Use the latest main branch. Start the website at Grocery/index.html.
+
+REQUIRED MILESTONES (original published snapshots are preserved)
+Assignment 4: https://github.com/Temirlan222/WEB/tree/assignment-4
+Assignment 5: https://github.com/Temirlan222/WEB/tree/assignment-5
+Midterm: https://github.com/Temirlan222/WEB/tree/midterm
+
+FILES ALREADY IN THE REPOSITORY
+- Grocery/js/: shared data, shared cart, catalogue and request form.
+- README.md: Functionality Plan, responsibility and run instructions.
+- Grocery/Temirlan_Assignment4-5/javascript-checklist.md: exact current lines.
+- Grocery/Temirlan_Assignment4-5/evidence/: current checks and screenshots.
+- Grocery/Temirlan_Assignment4-5/Temirlan_Assignment4-5_Report.pdf:
+  supplemental English report with the GitHub link.
+
+The assignment document requires the repository and its materials.
+It does not specify a separate PDF or ZIP upload. Attach the report or
+backup ZIP only if the submission form or teacher asks for those files.
+
+CONTRIBUTION
+Temirlan: Home and Products; connected catalogue controls, full product
+request validation, and a shared cart link/count across all six pages.
+The cart is a demonstration. It does not place orders or take payment.
+
+SUBMISSION BOUNDARY
+This is Temirlan's contribution, not a claim that all teammates' work
+is complete. The Contacts reviews module belongs to the other student.
+AI log remains excluded under the user's earlier instruction; therefore
+that required artifact is absent. Functional checks do not establish
+compliance with the assignment's authorship/AI policy.
+Commit dates are genuine. The full team must satisfy the per-member
+commit-history requirement and complete the oral defense.

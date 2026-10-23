@@ -6,12 +6,14 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.enums import TA_LEFT
 import json
+from datetime import date
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / 'Grocery' / 'Temirlan_Assignment4-5'
 OUT = PACKAGE / 'Temirlan_Assignment4-5_Report.pdf'
 EVIDENCE = PACKAGE / 'evidence'
 checks = json.loads((EVIDENCE / 'browser-checks.json').read_text(encoding='utf-8-sig'))
+verification_date = date.fromisoformat(checks['date']).strftime('%d %B %Y')
 assert checks['errors'] == [] and len(checks['results']) == 18
 assert json.loads((EVIDENCE / 'source-checks.json').read_text())['passed']
 for name in ['html-validation.json', 'generated-html-validation.json']:
@@ -45,8 +47,9 @@ def table(rows, widths):
     story.append(item)
 
 p('Lido Grocery Store', 'ReportTitle')
-p('Assignment 4-5 | JavaScript implementation report<br/>Author: Temirlan | 18 October 2026', 'ReportSub')
+p('Assignment 4-5 | JavaScript implementation report<br/>Author: Temirlan | Verified: ' + verification_date, 'ReportSub')
 p('<b>Repository:</b> <link href="https://github.com/Temirlan222/WEB" color="#24513b">github.com/Temirlan222/WEB</link>')
+p('Current submission: <link href="https://github.com/Temirlan222/WEB/tree/main" color="#24513b">latest main branch</link>. Published milestone tags below retain their original snapshots.', 'ReportSmall')
 p('<b>Milestones:</b> <link href="https://github.com/Temirlan222/WEB/tree/assignment-4" color="#24513b">assignment-4</link> - data and logic; '
   '<link href="https://github.com/Temirlan222/WEB/tree/assignment-5" color="#24513b">assignment-5</link> - complete interactions and evidence.', 'ReportSmall')
 p('Contribution and purpose', 'ReportHead')
@@ -56,7 +59,7 @@ table([
     ['Feature', 'Completed behaviour'],
     ['Product catalogue', 'Eight existing project products are rendered from one array. Search and category filtering work together. The visitor sees a matching count, an empty state, a reset option and an Add to cart button. Original store photographs remain available below the catalogue.'],
     ['Shared shopping cart', 'Add products, increase or decrease quantity, remove an item and clear the basket. Every change recalculates line subtotals, total quantity and total price. The count survives navigation through localStorage. Empty checkout is disabled.'],
-    ['Product enquiry', 'The existing form checks name, email, phone, product, quantity, category, contact method, acknowledgement and optional date/comment. Phone contact requires a valid phone number. Errors appear beside fields; the first invalid field receives focus. A valid form produces a local summary.'],
+    ['Product enquiry', 'The existing form checks name, email, phone, product, quantity, category, contact method, acknowledgement and optional date/comment. Phone contact requires a valid phone number. Errors appear beside fields; the first invalid field receives focus. A valid form produces a local summary and focuses its confirmation.'],
 ], [110, 385])
 p('Implementation approach', 'ReportHead')
 p('The site uses plain JavaScript and the existing Bootstrap styles. Shared data and reusable functions are in store.js; main.js manages the cart and shared navigation. products.js builds the catalogue; request.js handles the enquiry form. Scripts use defer, strict mode, const and let.')
@@ -71,7 +74,7 @@ p('Recorded checks', 'ReportHead')
 table([
     ['Check', 'Observed result'],
     ['Calculations', 'Milk (846 ₸) + bread (230 ₸) = 1,076 ₸. Increasing milk to two units gives 1,922 ₸. Decrease, remove, clear and empty checkout were also exercised.'],
-    ['Input and state', 'Combined filters, no results, reset, invalid/valid form paths, the phone preference rule, literal HTML-like input, corrupted storage and repeat keyboard quantity changes passed.'],
+    ['Input and state', 'Combined filters, no results, reset, invalid/valid form paths, phone preference, safe literal text, corrupt storage and repeat keyboard changes passed. Successful form confirmation stays visible/focused at 375 px with eight cart items; Reset preserves the cart.'],
     ['Responsive interface', 'All six pages were checked at 375, 768 and 1366 px: no horizontal overflow, missing images or duplicate IDs. Browser checks found no console or script errors.'],
     ['Source and markup', 'Source-freeze and JavaScript syntax checks passed. Nu HTML validation reported no messages for all six source pages and their generated DOM snapshots. Local links and fragment targets were checked.'],
 ], [110, 385])

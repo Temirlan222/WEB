@@ -48,9 +48,13 @@ All six HTML files start from `midterm`; only deferred local script links are ad
 
 `assignment-4` records working data and calculation/validation logic. `assignment-5` records the complete interactions and submission materials. The `midterm` tag is preserved. Git history records actual work dates; this package does not assert that the required multi-day contribution history has been fulfilled.
 
+The original published milestone tags remain unchanged. The latest main branch includes the 23 October verification and a small accessibility fix: a successful request now receives focus, including on a phone with a long cart.
+
 ## Submission materials and checks
 
 The [Assignment 4–5 package](Grocery/Temirlan_Assignment4-5/README.md) contains the exact-line JavaScript checklist, browser evidence and `Temirlan_Assignment4-5_Report.pdf` with the repository link.
+
+[What to submit](Grocery/Temirlan_Assignment4-5/SUBMIT.txt) lists the repository materials and scope. The document requires the repository; the PDF and backup ZIP are supplemental. The AI log remains excluded at the user's request and is not represented as complete.
 
 Recorded checks cover logic, catalogue/cart/form interactions, safe text, corrupt storage and shared navigation. All six pages were checked at 375, 768 and 1366 px with no overflow, missing images, duplicate IDs or browser errors. Source comparisons confirm six midterm HTML snapshots plus script links and all four CSS files unchanged. Nu HTML validation reports no messages. Evidence and the precise test scope are in the submission package.
 

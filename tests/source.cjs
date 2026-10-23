@@ -26,6 +26,7 @@ for (const name of fs.readdirSync(path.join(root,'Grocery/js'))) {
     assert.equal(/\bvar\s|\.innerHTML\b|\.style\b|\beval\s*\(|(?<![=!])==(?!=)|(?<!!)!=(?!=)/.test(source),false,name+': prohibited code');
     assert.equal(/\bon\w+\s*=/.test(source),false,name+': no inline events');
 }
-const result = {date:'2026-10-18',sourceHtml:'six midterm snapshots plus deferred script links only',css:'all four stylesheets unchanged',javascript:'strict mode; const/let; no unsafe HTML, styles, inline events or loose equality',passed:true};
+const verificationDate = process.env.VERIFIED_ON || new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Qyzylorda'}).format(new Date());
+const result = {date:verificationDate,sourceHtml:'six midterm snapshots plus deferred script links only',css:'all four stylesheets unchanged',javascript:'strict mode; const/let; no unsafe HTML, styles, inline events or loose equality',passed:true};
 fs.writeFileSync(path.join(root,'Grocery/Temirlan_Assignment4-5/evidence/source-checks.json'),JSON.stringify(result,null,2));
 console.log('PASS: six HTML snapshots, four frozen stylesheets, script order and prohibited-pattern checks.');

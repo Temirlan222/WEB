@@ -1,1 +1,14 @@
-{"version":"26.9.27 (0788818)","messages":[]}
+{
+  "version": "26.9.27 (0788818)",
+  "messages": [],
+  "date": "2026-10-23",
+  "kind": "source HTML",
+  "files": [
+    "Grocery/index.html",
+    "Grocery/products.html",
+    "Grocery/prices.html",
+    "Grocery/delivery.html",
+    "Grocery/contacts.html",
+    "Grocery/colophon.html"
+  ]
+}

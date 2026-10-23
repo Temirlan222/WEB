@@ -4,9 +4,10 @@ Project: Lido Grocery Store. Contribution: Home, Products and a shared cart acro
 
 ## Submission files
 
+- [What to submit](SUBMIT.txt): repository link, milestones and exact material list. The PDF/ZIP are supplemental, not extra formats required by the assignment document.
 - [Repository](https://github.com/Temirlan222/WEB)
 - [Assignment 4 milestone](https://github.com/Temirlan222/WEB/tree/assignment-4): product data and reusable project logic.
-- [Assignment 5 milestone](https://github.com/Temirlan222/WEB/tree/assignment-5): complete interactions and submission materials.
+- [Assignment 5 milestone](https://github.com/Temirlan222/WEB/tree/assignment-5): original completed interactions and submission materials. Use the latest main branch for the 23 October verification and request-confirmation focus fix; published milestone tags are unchanged.
 - [PDF report](Temirlan_Assignment4-5_Report.pdf): description of the work and GitHub link, without source code.
 - [JavaScript checklist](javascript-checklist.md): exact files and line numbers.
 - [Functionality Plan](../../README.md): visitor goals, expected results and responsibility.
@@ -16,7 +17,7 @@ Project: Lido Grocery Store. Contribution: Home, Products and a shared cart acro
 
 1. Find a product: Home → Products → search and category → matching count/cards or an empty message → reset or Add to cart.
 2. Review a selection: add products → shared cart → change quantities/remove/clear → updated totals → demo checkout summary/reference. Empty cart disables checkout. Later cart changes clear outdated confirmation.
-3. Prepare a request: enter details → Check request → errors beside fields and focus on the first error, or a summary of the choices. Editing clears outdated success feedback. Reset clears form feedback and the counter without clearing the cart.
+3. Prepare a request: enter details → Check request → errors beside fields and focus on the first error, or a summary of the choices and focus on the successful confirmation. Editing clears outdated success feedback. Reset clears form feedback and the counter without clearing the cart.
 
 Eight product entries contain ID, name, category, unit, price and image. Prices are recorded examples. References begin with `DEMO-` and do not identify real orders. No request or payment is sent to a server. Personal form details are not stored.
 
@@ -37,15 +38,18 @@ All six HTML files use the `midterm` interface plus deferred local script links.
 | Invalid form, first-error focus, phone/contact comparison, valid summary, counter and reset | Passed | Browser record and test |
 | Literal user text without HTML interpretation | Passed | Browser record and test |
 | Repeated keyboard quantity changes, local links and fragment targets | Passed; 78 local links checked | Browser record and test |
+| Successful form result with all eight cart items on a phone; Reset preserving that cart | Passed; confirmation is visible and focused | Browser record; `evidence/request-success.png` |
 | All six pages at 375, 768 and 1366 px | No overflow, missing images or duplicate IDs | Browser record; Home/Products screenshots |
 | Browser console/runtime errors in the recorded run | None | `errors: []` in the browser record |
 | Source HTML/CSS freeze and forbidden JavaScript patterns | Passed | `evidence/source-checks.json` |
 | Nu HTML validation of all six source pages and generated DOM | No messages | `evidence/html-validation.json`; `evidence/generated-html-validation.json` |
 
-Browser checks were recorded on 18 October 2026 using Microsoft Edge. Tests are development tools and are not loaded by the site.
+Browser checks were rerun on 23 October 2026 using Microsoft Edge. Tests are development tools and are not loaded by the site. Set `VERIFIED_ON=YYYY-MM-DD` when recording a run for a specific local date; otherwise the checks use Asia/Qyzylorda time. Pure logic tests use fixed date fixtures intentionally.
 
 ## Contribution boundary
 
 Catalogue filtering and the complete request form are Temirlan's two substantial page features. The cart is an additional complete selection/calculation flow and the common site feature. Teammates' Contacts reviews and other page features are not implemented in this contribution. There are no existing login or booking pages to extend.
 
 Tags identify the actual milestones; commit dates remain genuine. The separate requirement for every team member's meaningful commits across three days is not claimed as fulfilled by this one contribution. Submission of the entire team must also include the remaining members' work.
+
+The AI log remains excluded at the user's explicit request. That artifact is required by the assignment and is absent; functional verification cannot establish compliance with the assignment's separate AI/authorship policy. No missing history or log is fabricated.
