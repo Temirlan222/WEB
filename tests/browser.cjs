@@ -8,6 +8,7 @@ const evidence = path.join(site, 'Temirlan_Assignment4-5/evidence');
 fs.mkdirSync(evidence,{recursive:true});
 const domFolder = path.resolve(__dirname,'../tmp/browser-dom');
 fs.mkdirSync(domFolder,{recursive:true});
+const verificationDate = process.env.VERIFIED_ON || new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Qyzylorda'}).format(new Date());
 (async()=>{
  const browser = await chromium.launch({channel:'msedge',headless:true});
  try {
@@ -78,16 +79,25 @@ fs.mkdirSync(domFolder,{recursive:true});
   await page.locator('#customer-phone').fill('+7 700 000 00 00');
   await page.locator('#request-comment').fill('Hello');
   assert.match(await page.locator('#comment-counter').textContent(),/5.*1000/);
+  for (const id of ['milk','bread','apples','twix','juice','chips','ariel','sausage']) {
+   await page.locator('[data-add-product="'+id+'"]').click();
+  }
+  await page.setViewportSize({width:375,height:900});
   await page.locator('#request-submit').click();
   assert.equal(await page.locator('#request-error').isVisible(),false);
   assert.match(await page.locator('#request-summary').textContent(),/<b>Temirlan<\/b>/);
   assert.equal(await page.locator('#request-summary b').count(),0);
   assert.equal(new URL(page.url()).search,'');
   assert.match(await page.locator('#request-confirmation').textContent(),/no|not|demo/i);
+  assert.equal(await page.locator('#request-confirmation').evaluate(e=>e===document.activeElement),true,'Successful request must bring the confirmation into keyboard focus, even with a long cart');
+  await page.waitForFunction(()=>{const r=document.getElementById('request-confirmation').getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;});
+  assert.equal(await page.locator('#request-confirmation').evaluate(e=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;}),true,'Successful request confirmation must be in view on a phone');
+  await page.locator('#request-confirmation').screenshot({path:path.join(evidence,'request-success.png')});
   await page.locator('#request-reset').click();
   assert.equal(await page.locator('#request-confirmation').isVisible(),false);
   assert.equal(await page.locator('#request-error').isVisible(),false);
   assert.match(await page.locator('#comment-counter').textContent(),/^0/);
+  assert.match(await page.locator('#cart-quantity').textContent(),/8/,'Resetting the request form must preserve the cart');
   await page.evaluate(()=>localStorage.setItem('lido-cart','broken JSON'));
   await go('products');
   assert.equal(await page.locator('#cart-empty').isVisible(),true);
@@ -121,7 +131,7 @@ fs.mkdirSync(domFolder,{recursive:true});
    }
   }
   assert.deepEqual(errors,[]);
-  fs.writeFileSync(path.join(evidence,'browser-checks.json'),JSON.stringify({date:'2026-10-18',catalogue:'passed',cart:'passed',keyboard:'passed',sharedNavigation:'passed',form:'passed',safeText:'passed',corruptStorage:'passed',localLinksChecked:links.length,results,errors},null,2));
+  fs.writeFileSync(path.join(evidence,'browser-checks.json'),JSON.stringify({date:verificationDate,catalogue:'passed',cart:'passed',keyboard:'passed',sharedNavigation:'passed',form:'passed',safeText:'passed',corruptStorage:'passed',phoneSuccessInView:'passed',resetPreservesCart:'passed',localLinksChecked:links.length,results,errors},null,2));
   console.log('PASS: catalogue/cart/form/shared navigation/safe text and six pages at three widths.');
  } finally {await browser.close();}
 })().catch(e=>{console.error(e.stack);process.exit(1)});

@@ -20,6 +20,7 @@ function setupRequestForm() {
     ];
     const summary = document.getElementById('request-summary');
     const confirmation = document.getElementById('request-confirmation');
+    confirmation.tabIndex = -1;
     const errorSummary = document.getElementById('request-error');
     const comment = document.getElementById('request-comment');
     let counter = document.getElementById('comment-counter');
@@ -163,6 +164,7 @@ function setupRequestForm() {
         confirmation.textContent = 'Demo: your details passed the checks on this page. No data was sent to a server or the shop, and no order was created.';
         confirmation.classList.remove('hidden');
         confirmation.hidden = false;
+        confirmation.focus();
     }
 
     function editRequest(event) {
