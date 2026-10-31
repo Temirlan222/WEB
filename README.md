@@ -17,13 +17,49 @@ A six-page website for Lido Grocery Store, Uly Dala Avenue 31, Astana. It contin
 
 ## Run the website
 
-Open `Grocery/index.html` in a browser with JavaScript enabled. Internet access loads the existing Bootstrap CDN files. No build command, package installation, backend or account is needed.
+Open `Grocery/index.html` in a browser with JavaScript enabled. Internet access loads the existing Bootstrap CDN files and jQuery 3.7.1 full from the official CDN. No build command, package installation, backend or account is needed.
 
 Browse the catalogue on Products, combine search and category filters, add items and open the cart. Its shared link shows the quantity on all six pages. `localStorage` keeps only product IDs and quantities between navigation and reload. If browser storage is unavailable, the current page works, but the cart cannot persist between pages.
 
 Prices are recorded project examples. Product pictures are illustrative; [image sources are credited](Grocery/images/catalog/sources.md). Confirm current prices and availability with the store. Checkout and the request form are front-end demonstrations: they send nothing and create no real order or payment.
 
-## Assignment 4–5 Functionality Plan
+## Assignment 6 — jQuery (current submission)
+
+The supplied file is `assignment6_jquery.docx`; its internal heading says “Assignment 4”, but this section follows that supplied jQuery rubric. The same site and pages continue; no redesign, new page, plugin or CSS rule was added.
+
+Temirlan rewrote three existing features: catalogue, shared cart and product-request form. jQuery **3.7.1 full** is loaded from its official CDN before all local scripts on all six pages. The full build includes the required effects. Data and validation rules stay in `store.js`; active DOM/event code uses jQuery throughout. `old-js-version.js` is comparison material only and never executes.
+
+After successful validation the form resets to its original defaults. The summary uses captured values and stays visible, with focus moved after the slide effect. Manual Reset clears feedback/results and leaves the cart alone. .text() handles visitor text; .html() is used only for a fixed demo notice. .prop('checked') reads the current checkbox state; .attr('checked') would describe its initial markup.
+
+| Rubric requirement | Where to show it |
+| --- | --- |
+| Three rewritten features | `Grocery/js/products.js:7`; `Grocery/js/main.js:19`; `Grocery/js/request.js:7` — catalogue, shared cart and main form; comparison comments are immediately above each block. |
+| Ready and version | `Grocery/js/main.js:5`; each file uses ready. The first comments identify jQuery 3.7.1, the full build/effects and why CDN/ready order matters. |
+| ID/class/element/attribute selectors and a filter | `Grocery/js/main.js:70`; `Grocery/js/main.js:56`; `Grocery/js/products.js:126`; `Grocery/js/main.js:129`; `Grocery/js/request.js:86` |
+| Traversal | `Grocery/js/main.js:65` — find; `Grocery/js/products.js:122` — closest; `Grocery/js/request.js:65` — parent; `Grocery/js/request.js:62` — siblings; `Grocery/js/products.js:65` — each. |
+| $(this) in event handlers | `Grocery/js/products.js:121`; `Grocery/js/main.js:130`; `Grocery/js/request.js:159` |
+| At least two chains of three or more methods | `Grocery/js/main.js:46` — attr/addClass/text/appendTo; `Grocery/js/products.js:32` — val/text/appendTo. Both have a chain explanation comment. |
+| text/html/val/attr/prop | `Grocery/js/request.js:35` uses trusted constant markup only; `Grocery/js/request.js:74`; `Grocery/js/request.js:88`. Visitor summary values use .text(). |
+| All existing-class helpers | `Grocery/js/main.js:107`; `Grocery/js/main.js:164`; `Grocery/js/products.js:70`; `Grocery/js/products.js:125` |
+| Cards generated from an array | `Grocery/js/products.js:84` — jQuery nodes and append/appendTo; no card markup added to source HTML. |
+| on/delegation/event types | `Grocery/js/products.js:120`; `Grocery/js/request.js:48`; `Grocery/js/request.js:49`. Rebuilt card/cart buttons are delegated; comments explain why direct binding would miss later elements. |
+| Three useful effects | `Grocery/js/products.js:77` — replace outdated add feedback with fadeOut/fadeIn; `Grocery/js/request.js:173` — reveal a valid confirmation. Durations and completion callbacks are real; reduced motion is respected. |
+| Complete jQuery validation | `Grocery/js/request.js:77`; `Grocery/js/request.js:114`; `Grocery/js/request.js:138`; `Grocery/js/request.js:178`. Trimmed text, email/phone formats, quantities/date/selections and cross-field phone rule remain checked. |
+| Valid-submit reset and HTML fallback | `Grocery/js/request.js:159` resets only after checks pass; captured values build the safe summary afterwards. required/min/maxlength remain in HTML. Comments explain preventDefault and why a browser check never replaces server validation. |
+| Original comparison version | `Grocery/js/old-js-version.js` preserves all four original sources from 3c83c69 and is not linked to any page. |
+| Freeze and no mixed DOM approaches | All six source pages differ from Assignment 5 only by the jQuery CDN line. All four stylesheets remain unchanged. Active features use jQuery DOM/events only; ordinary array/calculation/JSON/localStorage APIs are retained for data logic. |
+
+### Verification and submission
+
+Recorded on **31 October 2026**: pure logic, full user flows on all six pages at 375/768/1366 px, 78 local links/targets, safe input, quantity changes, storage recovery, keyboard focus, valid-submit defaults and retained summary. A separate non-reduced-motion run exercises fadeOut/fadeIn/slideDown with duration and completion callbacks, rapid-action cancellation and immediate field-error correction. Source and generated HTML validation report no messages; no console errors were recorded.
+
+Run the current checks with Node: `tests/logic.cjs`, `tests/assignment6-source.cjs`, `tests/assignment6-browser.cjs`, `tests/assignment6-effects.cjs`. The older Assignment 4–5 checks/evidence describe those historical milestone snapshots. Test tools are not loaded by the website.
+
+Submit this same repository. [Submission instructions](Grocery/Temirlan_Assignment6/SUBMIT.txt) and [verification evidence](Grocery/Temirlan_Assignment6/evidence/) are included. **The jQuery assignment requires no written report or recording**; a ZIP is an optional backup. At defense demonstrate the live features and compare the old/new code.
+
+The AI log remains excluded under the user's explicit instruction; that required artifact and the document's separate AI/authorship restriction are not represented as satisfied. Commit dates and authors are genuine; this run does not fabricate four commits across three days or other students' contributions. Each team member must complete their own history and live defense.
+
+## Assignment 4–5 Functionality Plan (previous milestone)
 
 This submission implements Temirlan's Home and Products contribution and one shared site feature. Catalogue filtering and the validated request form are his two substantial page features; the cart completes the product selection journey.
 
@@ -44,7 +80,7 @@ The remaining contributors' features, including the Contacts review module, are 
 - `Grocery/js/products.js`: catalogue cards, connected controls and selection feedback.
 - `Grocery/js/request.js`: request validation, summary and character counter.
 
-All six HTML files start from `midterm`; only deferred local script links are added directly. New controls/messages are created through DOM methods in the existing gallery and result containers. CSS is unchanged. Post-midterm catalogue additions are supplied through JavaScript; the original store photos remain available below the catalogue. No essential midterm HTML/CSS correction was needed.
+All six HTML files start from `midterm`; only deferred script links (including the jQuery CDN for Assignment 6) are added directly. New controls/messages are created through DOM methods in the existing gallery and result containers. CSS is unchanged. Post-midterm catalogue additions are supplied through JavaScript; the original store photos remain available below the catalogue. No essential midterm HTML/CSS correction was needed.
 
 `assignment-4` records working data and calculation/validation logic. `assignment-5` records the complete interactions and submission materials. The `midterm` tag is preserved. Git history records actual work dates; this package does not assert that the required multi-day contribution history has been fulfilled.
 
