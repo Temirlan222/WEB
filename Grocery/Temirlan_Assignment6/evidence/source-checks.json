@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-31",
+  "baseline": "3c83c69336164c918538f859eb6a52d50596f181",
+  "html": "six previous pages plus jQuery CDN script only",
+  "css": "all four files unchanged",
+  "oldVersion": "all four original sources preserved, no page loads comparison file",
+  "activeDOM": "jQuery only; no unsafe native DOM/style or inline handlers",
+  "methods": "required traversal, attributes, classes, events and effects found",
+  "passed": true
+}

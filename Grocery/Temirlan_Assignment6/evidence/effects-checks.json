@@ -1,0 +1,122 @@
+{
+  "date": "2026-10-31",
+  "jquery": "3.7.1",
+  "realMotion": true,
+  "effects": {
+    "calls": [
+      {
+        "method": "fadeOut",
+        "duration": 80,
+        "ids": [
+          "catalogue-feedback"
+        ],
+        "callback": true
+      },
+      {
+        "method": "fadeOut",
+        "duration": 80,
+        "ids": [
+          "catalogue-feedback"
+        ],
+        "callback": true
+      },
+      {
+        "method": "fadeIn",
+        "duration": 120,
+        "ids": [
+          "catalogue-feedback"
+        ],
+        "callback": true
+      },
+      {
+        "method": "slideDown",
+        "duration": 160,
+        "ids": [
+          "cart-confirmation"
+        ],
+        "callback": true
+      },
+      {
+        "method": "fadeOut",
+        "duration": 80,
+        "ids": [
+          "catalogue-feedback"
+        ],
+        "callback": true
+      },
+      {
+        "method": "slideDown",
+        "duration": 160,
+        "ids": [
+          "cart-confirmation"
+        ],
+        "callback": true
+      },
+      {
+        "method": "fadeOut",
+        "duration": 80,
+        "ids": [
+          "catalogue-feedback"
+        ],
+        "callback": true
+      },
+      {
+        "method": "fadeIn",
+        "duration": 120,
+        "ids": [
+          "catalogue-feedback"
+        ],
+        "callback": true
+      },
+      {
+        "method": "slideDown",
+        "duration": 160,
+        "ids": [
+          "request-confirmation"
+        ],
+        "callback": true
+      },
+      {
+        "method": "slideDown",
+        "duration": 160,
+        "ids": [
+          "request-confirmation"
+        ],
+        "callback": true
+      }
+    ],
+    "completed": [
+      {
+        "method": "fadeOut",
+        "id": "catalogue-feedback"
+      },
+      {
+        "method": "fadeIn",
+        "id": "catalogue-feedback"
+      },
+      {
+        "method": "slideDown",
+        "id": "cart-confirmation"
+      },
+      {
+        "method": "fadeOut",
+        "id": "catalogue-feedback"
+      },
+      {
+        "method": "fadeIn",
+        "id": "catalogue-feedback"
+      },
+      {
+        "method": "slideDown",
+        "id": "request-confirmation"
+      }
+    ]
+  },
+  "cancelledStaleMessages": true,
+  "liveFieldCorrection": true,
+  "validSubmitReset": true,
+  "retainedSafeSummary": true,
+  "htmlFallbackAttributes": true,
+  "temporaryEffectStylesCleaned": true,
+  "errors": []
+}
