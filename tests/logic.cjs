@@ -4,7 +4,7 @@ const vm = require('node:vm');
 const path = require('node:path');
 const source = path.join(__dirname, '../Grocery/js/store.js');
 assert.ok(fs.existsSync(source), 'Assignment 4 product and cart logic must exist');
-const context = { window: {}, Date, Math, Intl };
+const context = { window: {}, Date, Math, Intl, $: function (ready) { ready(); } };
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(source, 'utf8'), context);
 const s = context.window.Lido;

@@ -1,8 +1,11 @@
-'use strict';
+// jQuery 3.7.1 full is loaded first; ready waits until the form's HTML exists.
+$(function () {
+    'use strict';
 
-function setupRequestForm() {
-    const form = document.getElementById('product-request-form');
-    if (!form || !window.Lido) {
+    // .find(), .val(), .text() and .on() replace native lookups, values, textContent and listeners.
+    // The field rules are unchanged; jQuery makes the DOM updates shorter and clearer.
+    const $form = $('#product-request-form');
+    if (!$form.length || !window.Lido) {
         return;
     }
 
@@ -18,142 +21,147 @@ function setupRequestForm() {
         { key: 'permission', ids: ['contact-permission'], errorId: 'contact-permission-error' },
         { key: 'comment', ids: ['request-comment'], errorId: 'request-comment-error' }
     ];
-    const summary = document.getElementById('request-summary');
-    const confirmation = document.getElementById('request-confirmation');
-    confirmation.tabIndex = -1;
-    const errorSummary = document.getElementById('request-error');
-    const comment = document.getElementById('request-comment');
-    let counter = document.getElementById('comment-counter');
+    const $summary = $('#request-summary');
+    const $confirmation = $('#request-confirmation').prop('tabIndex', -1);
+    const $errorSummary = $('#request-error');
+    const $comment = $('#request-comment');
+    let $counter = $('#comment-counter');
     let hasValidated = false;
 
-    form.noValidate = true;
-    document.getElementById('request-date').min = Lido.today();
-    document.getElementById('request-status').textContent =
-        'JavaScript checks your entries on this page. Nothing is sent to a server, saved, or placed in the page URL. No order is created.';
+    // Keep required/min/maxlength in HTML for the browser fallback when scripts are disabled.
+    $form.prop('noValidate', true);
+    $('#request-date').attr('min', Lido.today());
+    // .html() is only for this trusted constant markup; visitor input always uses .text().
+    $('#request-status').html('<strong>Demo only.</strong> JavaScript checks your entries on this page. Nothing is sent to a server, saved, or placed in the page URL. No order is created.');
 
-    if (!counter) {
-        counter = Lido.makeElement('small', '', 'small d-block');
-        counter.id = 'comment-counter';
-        comment.insertAdjacentElement('afterend', counter);
+    if (!$counter.length) {
+        $counter = $('<small>').attr('id', 'comment-counter').addClass('small d-block');
+        $comment.after($counter);
     }
-    addDescription(comment, counter.id);
+    addDescription($comment, 'comment-counter');
     fields.forEach(prepareFeedback);
     showInstructions();
-    hideMessage(confirmation);
-    hideMessage(errorSummary);
+    hideMessage($confirmation);
+    hideMessage($errorSummary);
     updateCounter();
 
-    form.addEventListener('submit', submitRequest);
-    form.addEventListener('input', editRequest);
-    form.addEventListener('change', editRequest);
-    form.addEventListener('reset', resetRequest);
+    $form.on('submit', submitRequest);
+    $form.on('input change', 'input, select, textarea', editRequest);
+    $form.on('reset', resetRequest);
 
-    function addDescription(control, id) {
-        const descriptions = (control.getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean);
+    function addDescription($control, id) {
+        const descriptions = ($control.attr('aria-describedby') || '').split(/\s+/).filter(Boolean);
         if (!descriptions.includes(id)) {
             descriptions.push(id);
         }
-        control.setAttribute('aria-describedby', descriptions.join(' '));
+        $control.attr('aria-describedby', descriptions.join(' '));
     }
 
     function prepareFeedback(field) {
-        const feedback = document.getElementById(field.errorId) ||
-            Lido.makeElement('small', '', 'small d-block text-break');
-        if (!feedback.parentElement) {
-            feedback.id = field.errorId;
-            document.getElementById(field.ids[0]).parentElement.appendChild(feedback);
+        const $control = $('#' + field.ids[0]);
+        let $feedback = $control.siblings('#' + field.errorId);
+        if (!$feedback.length) {
+            $feedback = $('<small>').attr('id', field.errorId).addClass('small d-block text-break');
+            $control.parent().append($feedback);
         }
-        feedback.hidden = true;
+        $feedback.addClass('hidden').removeClass('d-block');
         field.ids.forEach(function describeField(id) {
-            addDescription(document.getElementById(id), field.errorId);
+            addDescription($('#' + id), field.errorId);
         });
     }
 
+    function readValue(selector) {
+        return String($form.find(selector).val() || '').trim();
+    }
+
     function collectValues() {
-        const contact = form.querySelector('input[name="contact-method"]:checked');
         return {
-            name: document.getElementById('customer-name').value.trim(),
-            email: document.getElementById('customer-email').value.trim(),
-            phone: document.getElementById('customer-phone').value.trim(),
-            product: document.getElementById('product-name').value.trim(),
-            quantity: document.getElementById('quantity').value,
-            date: document.getElementById('request-date').value,
-            category: document.getElementById('category').value,
-            method: contact ? contact.value : '',
-            permission: document.getElementById('contact-permission').checked,
-            comment: comment.value.trim()
+            name: readValue('#customer-name'),
+            email: readValue('#customer-email'),
+            phone: readValue('#customer-phone'),
+            product: readValue('#product-name'),
+            quantity: readValue('#quantity'),
+            date: readValue('#request-date'),
+            category: readValue('#category'),
+            method: readValue('input[name="contact-method"]:checked'),
+            // .prop('checked') reads the live choice; .attr('checked') describes the initial markup.
+            permission: $('#contact-permission').prop('checked'),
+            comment: readValue('#request-comment')
         };
     }
 
     function updateCounter() {
-        counter.textContent = comment.value.length + ' / 1000 characters';
+        $counter.text(String($comment.val() || '').length + ' / 1000 characters');
     }
 
-    function hideMessage(element) {
-        element.textContent = '';
-        element.hidden = true;
-        element.classList.add('hidden');
+    function hideMessage($message) {
+        // Cancel an obsolete effect before clearing it; no stale completion callback can reveal it.
+        $message.stop(true, false).addClass('hidden').removeAttr('style').empty();
     }
 
     function addSummaryRow(label, value) {
-        summary.appendChild(Lido.makeElement('dt', label, 'col-12 col-md-4'));
-        summary.appendChild(Lido.makeElement('dd', value, 'col-12 col-md-8 text-break'));
+        // .text() sets literal content, .addClass() applies existing classes, .appendTo() adds the row.
+        $('<dt>').text(label).addClass('col-12 col-md-4').appendTo($summary);
+        $('<dd>').text(value).addClass('col-12 col-md-8 text-break').appendTo($summary);
     }
 
     function showInstructions() {
-        summary.replaceChildren();
+        $summary.empty();
         addSummaryRow('Prepare a request', 'Enter your name, email, product and quantity, then choose a contact method and acknowledge the demo notice.');
         addSummaryRow('Check your details', 'Choose Check request to validate the fields and review a local summary. Nothing is sent to the shop.');
     }
 
     function showFeedback(errors) {
         fields.forEach(function updateField(field) {
-            const feedback = document.getElementById(field.errorId);
+            const $control = $('#' + field.ids[0]);
             const invalid = Boolean(errors[field.key]);
-            feedback.textContent = invalid ? 'Error: ' + errors[field.key] : 'Valid.';
-            feedback.hidden = false;
-            feedback.classList.toggle('error', invalid);
-            feedback.classList.toggle('success', !invalid);
+            $control.siblings('#' + field.errorId)
+                .text(invalid ? 'Error: ' + errors[field.key] : 'Valid.')
+                .removeClass('hidden').addClass('d-block')
+                .toggleClass('error', invalid)
+                .toggleClass('success', !invalid);
             field.ids.forEach(function updateControl(id) {
-                const control = document.getElementById(id);
-                control.setAttribute('aria-invalid', String(invalid));
-                control.classList.toggle('is-invalid', invalid);
-                control.classList.toggle('is-valid', !invalid);
+                $('#' + id).attr('aria-invalid', String(invalid))
+                    .toggleClass('is-invalid', invalid)
+                    .toggleClass('is-valid', !invalid);
             });
         });
         const messages = Object.values(errors);
         if (messages.length) {
-            errorSummary.textContent = 'Please correct ' + messages.length + ' field(s): ' + messages.join(' ');
-            errorSummary.classList.remove('hidden');
-            errorSummary.hidden = false;
+            $errorSummary.text('Please correct ' + messages.length + ' field(s): ' + messages.join(' '))
+                .removeClass('hidden');
         } else {
-            hideMessage(errorSummary);
+            hideMessage($errorSummary);
         }
     }
 
     function submitRequest(event) {
+        // Without this, the HTML GET would reload the page and put these entries in its URL.
         event.preventDefault();
         hasValidated = true;
         const values = collectValues();
+        // Browser checks never replace server validation; this demo has no server submission.
         const errors = Lido.validateRequest(values, Lido.today());
         showFeedback(errors);
-        hideMessage(confirmation);
+        hideMessage($confirmation);
 
         const firstInvalid = fields.find(function findInvalid(field) {
             return Boolean(errors[field.key]);
         });
         if (firstInvalid) {
             showInstructions();
-            document.getElementById(firstInvalid.ids[0]).focus();
+            $('#' + firstInvalid.ids[0]).trigger('focus');
             return;
         }
 
-        summary.replaceChildren();
+        const categoryLabel = $form.find('#category option:selected').text();
+        // Reset only after all checks pass; captured values still build the summary afterwards.
+        $(this).trigger('reset');
+        $summary.empty();
         addSummaryRow('Name', values.name);
         addSummaryRow('Product', values.product);
         addSummaryRow('Quantity', values.quantity);
-        const category = document.getElementById('category');
-        addSummaryRow('Category', category.options[category.selectedIndex].textContent);
+        addSummaryRow('Category', categoryLabel);
         addSummaryRow('Preferred date', values.date || 'Not specified');
         addSummaryRow('Email', values.email);
         if (values.phone) {
@@ -161,18 +169,17 @@ function setupRequestForm() {
         }
         addSummaryRow('Preferred contact', values.method === 'phone' ? 'Phone' : 'Email');
         addSummaryRow('Additional information', values.comment || 'None');
-        confirmation.textContent = 'Demo: your details passed the checks on this page. No data was sent to a server or the shop, and no order was created.';
-        confirmation.classList.remove('hidden');
-        confirmation.hidden = false;
-        confirmation.focus();
+        $confirmation.text('Demo: your details passed the checks on this page. No data was sent to a server or the shop, and no order was created.')
+            .slideDown(160, function confirmationShown() {
+                $(this).removeClass('hidden').removeAttr('style').trigger('focus');
+            });
     }
 
-    function editRequest(event) {
-        if (!event.target.matches('input, select, textarea')) {
-            return;
+    function editRequest() {
+        if ($(this).is('#request-comment')) {
+            updateCounter();
         }
-        updateCounter();
-        hideMessage(confirmation);
+        hideMessage($confirmation);
         showInstructions();
         if (hasValidated) {
             showFeedback(Lido.validateRequest(collectValues(), Lido.today()));
@@ -182,21 +189,15 @@ function setupRequestForm() {
     function resetRequest() {
         hasValidated = false;
         fields.forEach(function clearField(field) {
-            const feedback = document.getElementById(field.errorId);
-            feedback.textContent = '';
-            feedback.hidden = true;
-            feedback.classList.remove('error', 'success');
+            $('#' + field.ids[0]).siblings('#' + field.errorId)
+                .empty().addClass('hidden').removeClass('d-block error success');
             field.ids.forEach(function clearControl(id) {
-                const control = document.getElementById(id);
-                control.removeAttribute('aria-invalid');
-                control.classList.remove('is-invalid', 'is-valid');
+                $('#' + id).removeAttr('aria-invalid').removeClass('is-invalid is-valid');
             });
         });
-        hideMessage(errorSummary);
-        hideMessage(confirmation);
+        hideMessage($errorSummary);
+        hideMessage($confirmation);
         showInstructions();
-        counter.textContent = '0 / 1000 characters';
+        $counter.text('0 / 1000 characters');
     }
-}
-
-setupRequestForm();
+});

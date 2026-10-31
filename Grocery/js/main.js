@@ -1,25 +1,30 @@
 'use strict';
 
-function setupSharedCart() {
+// jQuery 3.7.1 full CDN loads first: effects need the full build.
+// Ready waits for the document; this file also supplies the shared cart on all six pages.
+$(function () {
     const store = window.Lido;
     if (!store) return;
-    const make = store.makeElement;
+    const $page = $(window);
+    $.fx.off = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    // Rewrite 2: $(), .on(), .text(), .append() and class methods replace native cart DOM/events.
+    // Traversal and button creation are shorter; the calculation/storage rules remain plain JavaScript.
     try {
         store.cart = store.normalizeCart(JSON.parse(localStorage.getItem('lido-cart')));
     } catch (error) {
         store.cart = [];
     }
 
-    // Store only product ids and quantities, never the request form's details.
     store.saveCart = function () {
         store.cart = store.normalizeCart(store.cart);
         try {
+            // Only product ids and quantities are stored, never personal form values.
             localStorage.setItem('lido-cart', JSON.stringify(store.cart));
         } catch (error) {
-            // The current page still works if browser storage is unavailable.
+            // The current page still works when storage is unavailable.
         }
-        window.dispatchEvent(new Event('cart-updated'));
+        $page.trigger('cart-updated');
     };
     store.addToCart = function (id) {
         const before = store.cartTotals(store.cart).quantity;
@@ -36,144 +41,129 @@ function setupSharedCart() {
         store.saveCart();
     };
 
-    const linkRow = make('p', '', 'mb-3');
-    const link = make('a', '', 'btn btn-outline-success btn-sm');
-    link.id = 'cart-link';
-    link.href = 'products.html#request-result';
-    linkRow.append(link);
-    document.querySelector('main').prepend(linkRow);
+    const $linkRow = $('<p>').addClass('mb-3').prependTo('main');
+    // Chain: attr sets the link/id, addClass uses existing styling, text sets its label, appendTo inserts it.
+    const $link = $('<a>').attr({ id: 'cart-link', href: 'products.html#request-result' })
+        .addClass('btn btn-outline-success btn-sm').text('Shopping cart (0)').appendTo($linkRow);
 
     function updateCartLink() {
-        link.textContent = 'Shopping cart (' + store.cartTotals(store.cart).quantity + ')';
+        $link.text('Shopping cart (' + store.cartTotals(store.cart).quantity + ')');
     }
-    window.addEventListener('cart-updated', updateCartLink);
+    $page.on('cart-updated', updateCartLink);
     updateCartLink();
 
     const currentPage = location.pathname.split('/').pop() || 'index.html';
-    for (const navLink of document.querySelectorAll('nav a')) {
-        const active = navLink.getAttribute('href') === currentPage;
-        navLink.classList.toggle('active', active);
-        if (active) navLink.setAttribute('aria-current', 'page');
-        else navLink.removeAttribute('aria-current');
+    $('nav a').each(function () {
+        const $link = $(this);
+        const active = $link.attr('href') === currentPage;
+        $link.toggleClass('active', active);
+        if (active) $link.attr('aria-current', 'page');
+        else $link.removeAttr('aria-current');
+    });
+    $('tbody tr').each(function () {
+        const $row = $(this);
+        const name = $row.find('td').first().text().trim();
+        const product = store.products.find(function (item) { return item.name === name; });
+        if (product) $row.attr('id', 'price-' + product.id);
+    });
+
+    const $result = $('#request-result');
+    if (!$result.length) return;
+    $result.find('.result-pending, .result-confirmation').remove();
+    $('#result-title').text('Cart and request result');
+
+    function make(tag, text, classes) {
+        return $('<' + tag + '>').text(text || '').addClass(classes || '');
     }
 
-    // Keep price-table anchors without changing the frozen midterm HTML.
-    for (const row of document.querySelectorAll('tbody tr')) {
-        const product = store.products.find(function (item) {
-            return row.cells[0].textContent.trim() === item.name;
-        });
-        if (product) row.id = 'price-' + product.id;
-    }
-
-    const result = document.getElementById('request-result');
-    if (!result) return;
-    for (const message of result.querySelectorAll('.result-pending, .result-confirmation')) {
-        message.remove();
-    }
-    document.getElementById('result-title').textContent = 'Cart and request result';
-    const cart = make('section', '', 'mb-4 pb-4 border-bottom');
-    cart.id = 'shopping-cart';
-    cart.setAttribute('aria-labelledby', 'cart-title');
-    const title = make('h4', 'Shopping cart', 'h5 fw-bold');
-    title.id = 'cart-title';
-    const notice = make('p', 'Example prices only. This cart demonstrates calculations; checkout does not send an order or take payment.', 'small');
-    const empty = make('p', 'Your cart is empty. Add a product from the catalogue.');
-    empty.id = 'cart-empty';
-    const items = make('ul', '', 'list-unstyled');
-    items.id = 'cart-items';
-    const quantity = make('p', '', 'mb-1');
-    quantity.id = 'cart-quantity';
-    const total = make('p', '', 'fw-bold');
-    total.id = 'cart-total';
-    const actions = make('div', '', 'd-flex flex-wrap gap-2');
-    const clear = make('button', 'Clear cart', 'btn btn-outline-success');
-    clear.id = 'cart-clear';
-    clear.type = 'button';
-    const checkout = make('button', 'Demo checkout', 'btn btn-success');
-    checkout.id = 'cart-checkout';
-    checkout.type = 'button';
-    const confirmation = make('div', '', 'success rounded p-3 mt-3');
-    confirmation.id = 'cart-confirmation';
-    confirmation.setAttribute('role', 'status');
-    confirmation.tabIndex = -1;
-    confirmation.classList.add('hidden');
-    actions.append(clear, checkout);
-    cart.append(title, notice, empty, items, quantity, total, actions, confirmation);
-    result.insertBefore(cart, document.getElementById('request-summary'));
+    const $cart = make('section', '', 'mb-4 pb-4 border-bottom')
+        .attr({ id: 'shopping-cart', 'aria-labelledby': 'cart-title' });
+    const $title = make('h4', 'Shopping cart', 'h5 fw-bold').attr('id', 'cart-title');
+    const $notice = make('p', 'Example prices only. This cart demonstrates calculations; checkout does not send an order or take payment.', 'small');
+    const $empty = make('p', 'Your cart is empty. Add a product from the catalogue.').attr('id', 'cart-empty');
+    const $items = make('ul', '', 'list-unstyled').attr('id', 'cart-items');
+    const $quantity = make('p', '', 'mb-1').attr('id', 'cart-quantity');
+    const $total = make('p', '', 'fw-bold').attr('id', 'cart-total');
+    const $actions = make('div', '', 'd-flex flex-wrap gap-2');
+    const $clear = make('button', 'Clear cart', 'btn btn-outline-success')
+        .attr('id', 'cart-clear').prop('type', 'button');
+    const $checkout = make('button', 'Demo checkout', 'btn btn-success')
+        .attr('id', 'cart-checkout').prop('type', 'button');
+    const $confirmation = make('div', '', 'hidden success rounded p-3 mt-3')
+        .attr({ id: 'cart-confirmation', role: 'status' }).prop('tabIndex', -1);
+    $actions.append($clear, $checkout);
+    $cart.append($title, $notice, $empty, $items, $quantity, $total, $actions, $confirmation);
+    $cart.insertBefore('#request-summary');
 
     function lineButton(action, text, product, disabled) {
-        const button = make('button', text, 'btn btn-outline-success btn-sm');
-        button.type = 'button';
-        button.dataset.cartAction = action;
-        button.dataset.productId = product.id;
-        button.setAttribute('aria-label', action + ' ' + product.name);
-        button.disabled = disabled;
-        return button;
+        return make('button', text, 'btn btn-outline-success btn-sm')
+            .attr({ 'data-cart-action': action, 'data-product-id': product.id, 'aria-label': action + ' ' + product.name })
+            .prop({ type: 'button', disabled: disabled });
     }
 
     function renderCart() {
-        items.replaceChildren();
-        confirmation.classList.add('hidden');
-        confirmation.replaceChildren();
+        $items.empty();
+        // Cancel an unfinished effect before hiding an outdated result; clear only effect-generated styles.
+        $confirmation.stop(true, false).addClass('hidden').removeAttr('style').empty();
         for (const line of store.cart) {
             const product = store.findProduct(line.id);
-            const item = make('li', '', 'border-bottom py-3');
-            const description = make('p', product.name + ' (' + product.unit + ') - ' + store.formatMoney(product.price) + ' each', 'mb-1');
-            const subtotal = make('p', 'Quantity: ' + line.quantity + ' | Subtotal: ' + store.formatMoney(product.price * line.quantity), 'mb-2');
-            const buttons = make('div', '', 'd-flex flex-wrap gap-2');
-            buttons.append(
+            const $item = make('li', '', 'border-bottom py-3');
+            const $description = make('p', product.name + ' (' + product.unit + ') - ' + store.formatMoney(product.price) + ' each', 'mb-1');
+            const $subtotal = make('p', 'Quantity: ' + line.quantity + ' | Subtotal: ' + store.formatMoney(product.price * line.quantity), 'mb-2');
+            const $buttons = make('div', '', 'd-flex flex-wrap gap-2');
+            $buttons.append(
                 lineButton('decrease', '-', product, line.quantity === 1),
                 lineButton('increase', '+', product, line.quantity === 999),
                 lineButton('remove', 'Remove', product, false)
             );
-            item.append(description, subtotal, buttons);
-            items.append(item);
+            $item.append($description, $subtotal, $buttons).appendTo($items);
         }
         const totals = store.cartTotals(store.cart);
-        quantity.textContent = 'Total quantity: ' + totals.quantity + ' listed unit(s)';
-        total.textContent = 'Total: ' + store.formatMoney(totals.total);
-        empty.classList.toggle('hidden', totals.quantity !== 0);
-        clear.disabled = totals.quantity === 0;
-        checkout.disabled = totals.quantity === 0;
+        $quantity.text('Total quantity: ' + totals.quantity + ' listed unit(s)');
+        $total.text('Total: ' + store.formatMoney(totals.total));
+        $empty.toggleClass('hidden', totals.quantity !== 0);
+        $clear.add($checkout).prop('disabled', totals.quantity === 0);
     }
 
-    items.addEventListener('click', function (event) {
-        const button = event.target.closest('[data-cart-action]');
-        if (!button) return;
-        const line = store.cart.find(function (item) { return item.id === button.dataset.productId; });
+    // Delegate to the stable list: direct binding to today's buttons would miss buttons created by the next render.
+    $items.on('click', '[data-cart-action]', function () {
+        const $button = $(this);
+        const id = $button.attr('data-product-id');
+        const line = store.cart.find(function (item) { return item.id === id; });
         if (!line) return;
-        const action = button.dataset.cartAction;
+        const action = $button.attr('data-cart-action');
         const next = action === 'remove' ? 0 : line.quantity + (action === 'increase' ? 1 : -1);
         store.setCartQuantity(line.id, next);
-        // Rendering replaces the buttons; keep keyboard focus in the task.
-        const sameAction = items.querySelector('[data-product-id="' + line.id + '"][data-cart-action="' + action + '"]:not(:disabled)');
-        const nextControl = sameAction || items.querySelector('button:not(:disabled)') || document.getElementById('catalogue-search');
-        nextControl.focus();
+
+        let $target = $items.find('[data-product-id="' + id + '"][data-cart-action="' + action + '"]:not(:disabled)').first();
+        if (!$target.length) $target = $items.find('button:not(:disabled)').first();
+        if (!$target.length) $target = $('#catalogue-search');
+        $target.trigger('focus');
     });
-    clear.addEventListener('click', function () {
+    $clear.on('click', function () {
         store.clearCart();
-        document.getElementById('catalogue-search').focus();
+        $('#catalogue-search').trigger('focus');
     });
-    checkout.addEventListener('click', function () {
+    $checkout.on('click', function () {
         const totals = store.cartTotals(store.cart);
         if (totals.quantity === 0) return;
-        const summary = make('ul', '', 'mb-2');
+        const $summary = make('ul', '', 'mb-2');
         for (const line of store.cart) {
             const product = store.findProduct(line.id);
-            summary.append(make('li', product.name + ' (' + product.unit + ') x ' + line.quantity + ' = ' + store.formatMoney(product.price * line.quantity)));
+            $summary.append(make('li', product.name + ' (' + product.unit + ') x ' + line.quantity + ' = ' + store.formatMoney(product.price * line.quantity)));
         }
         store.clearCart();
-        confirmation.append(
+        $confirmation.append(
             make('p', 'Demo reference: ' + store.makeReference(), 'fw-bold mb-2'),
-            summary,
+            $summary,
             make('p', 'Total: ' + store.formatMoney(totals.total) + ' for ' + totals.quantity + ' listed unit(s).', 'mb-2'),
             make('p', 'Demonstration only. No data was sent, no real order was created and no payment was taken. The cart has been cleared.', 'mb-0')
         );
-        confirmation.classList.remove('hidden');
-        confirmation.focus();
+        // Reveal the completed result, then focus it after the effect; no new CSS rules are written.
+        $confirmation.slideDown(160, function () {
+            $(this).removeClass('hidden').removeAttr('style').trigger('focus');
+        });
     });
-    window.addEventListener('cart-updated', renderCart);
+    $page.on('cart-updated', renderCart);
     renderCart();
-}
-
-setupSharedCart();
+});
