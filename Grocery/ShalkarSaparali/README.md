@@ -1,5 +1,13 @@
 # Assignment 3 — Saparali Shalkar
 
+## Assignment 6 jQuery continuation
+
+The Contacts block appended to `../js/main.js` runs after jQuery 3.7.1. It rewrites the review translation, helpful-review state and phone-copy feature with jQuery; creates a topic list and form from arrays/code; uses delegated events and purposeful effects; and validates each form field separately. The plain-JavaScript comparison is appended to `../js/old-js-version.js`, which is not linked to any page.
+
+Only existing elements and Bootstrap classes are used; `../contacts.html` and `../css/shalkar.css` remain frozen. No new page, plugin, template, CSS rule or AI log was added.
+
+The remaining sections record the earlier Assignment 3 milestone.
+
 Scope: **Contacts** and **About this site** only. The original pages remain at `../contacts.html` and `../colophon.html`; their stylesheet is `../css/shalkar.css`. No page was added or rebuilt from scratch.
 
 Both pages load Bootstrap 5.3.8 CSS and its JavaScript bundle from a CDN. The bundle operates the collapsing menu; there is no custom JavaScript. `shalkar.css` is a short correction layer for the site's green and cream colours. These two pages no longer load the old `base.css`.

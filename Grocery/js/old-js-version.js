@@ -719,3 +719,99 @@ function setupRequestForm() {
 }
 
 setupRequestForm();
+
+
+// ===== Original Shalkar Contacts features (plain JavaScript) =====
+// Comparison only. The active versions are rewritten in contacts.js with jQuery.
+
+function setupContactTranslationOld() {
+    const review = document.querySelector('.customer-review');
+    const translation = document.createElement('p');
+    const button = document.createElement('button');
+
+    translation.id = 'review-translation';
+    translation.className = 'alert alert-light border mt-3';
+    translation.lang = 'en';
+    translation.textContent = 'Good shop with reasonable prices and kind owners.';
+    translation.hidden = true;
+
+    button.id = 'toggle-review';
+    button.className = 'btn btn-outline-success btn-sm';
+    button.type = 'button';
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', 'review-translation');
+    button.textContent = 'Show English translation';
+
+    review.querySelector('blockquote').after(translation, button);
+    button.addEventListener('click', function () {
+        const willShow = translation.hidden;
+        translation.hidden = !willShow;
+        button.classList.toggle('active', willShow);
+        button.setAttribute('aria-expanded', String(willShow));
+        button.textContent = willShow ? 'Hide English translation' : 'Show English translation';
+    });
+}
+
+function setupHelpfulReviewOld() {
+    const translationButton = document.getElementById('toggle-review');
+    const button = document.createElement('button');
+    let helpful = false;
+
+    try {
+        helpful = window.localStorage.getItem('lido-contact-review-helpful') === 'true';
+    } catch (error) {
+        helpful = false;
+    }
+
+    function update() {
+        button.classList.toggle('active', helpful);
+        button.setAttribute('aria-pressed', String(helpful));
+        button.textContent = helpful ? 'Helpful 1' : 'Helpful 0';
+    }
+
+    button.id = 'helpful-review';
+    button.className = 'btn btn-outline-success btn-sm ms-2';
+    button.type = 'button';
+    translationButton.after(button);
+    update();
+
+    button.addEventListener('click', function () {
+        helpful = !helpful;
+        update();
+        try {
+            window.localStorage.setItem('lido-contact-review-helpful', String(helpful));
+        } catch (error) {
+            // The button still works without storage.
+        }
+    });
+}
+
+function setupPhoneCopyOld() {
+    const actions = document.getElementById('contact-actions');
+    const button = document.createElement('button');
+    const status = document.createElement('span');
+
+    button.className = 'btn btn-outline-success btn-sm';
+    button.type = 'button';
+    button.dataset.phone = '+77479052505';
+    button.textContent = 'Copy phone number';
+    status.className = 'small text-success';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    actions.append(button, status);
+
+    button.addEventListener('click', async function () {
+        const phone = button.dataset.phone;
+        try {
+            await navigator.clipboard.writeText(phone);
+            status.textContent = 'Phone copied.';
+            button.textContent = 'Copied ✓';
+        } catch (error) {
+            status.textContent = 'Use ' + phone + '.';
+        }
+    });
+}
+
+setupContactTranslationOld();
+setupHelpfulReviewOld();
+setupPhoneCopyOld();

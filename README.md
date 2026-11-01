@@ -29,6 +29,8 @@ The supplied file is `assignment6_jquery.docx`; its internal heading says “Ass
 
 Temirlan rewrote three existing features: catalogue, shared cart and product-request form. jQuery **3.7.1 full** is loaded from its official CDN before all local scripts on all six pages. The full build includes the required effects. Data and validation rules stay in `store.js`; active DOM/event code uses jQuery throughout. `old-js-version.js` is comparison material only and never executes.
 
+Shalkar's Contacts block is appended to `Grocery/js/main.js`: review translation, helpful state and phone copy are rewritten with jQuery; a topic list and validated contact form are generated in code. Its plain-JavaScript comparison is appended to `old-js-version.js`. Contacts uses only the existing HTML and Bootstrap/project classes, so the page source and stylesheet remain unchanged.
+
 After successful validation the form resets to its original defaults. The summary uses captured values and stays visible, with focus moved after the slide effect. Manual Reset clears feedback/results and leaves the cart alone. .text() handles visitor text; .html() is used only for a fixed demo notice. .prop('checked') reads the current checkbox state; .attr('checked') would describe its initial markup.
 
 | Rubric requirement | Where to show it |
@@ -46,8 +48,8 @@ After successful validation the form resets to its original defaults. The summar
 | Three useful effects | `Grocery/js/products.js:77` — replace outdated add feedback with fadeOut/fadeIn; `Grocery/js/request.js:173` — reveal a valid confirmation. Durations and completion callbacks are real; reduced motion is respected. |
 | Complete jQuery validation | `Grocery/js/request.js:77`; `Grocery/js/request.js:114`; `Grocery/js/request.js:138`; `Grocery/js/request.js:178`. Trimmed text, email/phone formats, quantities/date/selections and cross-field phone rule remain checked. |
 | Valid-submit reset and HTML fallback | `Grocery/js/request.js:159` resets only after checks pass; captured values build the safe summary afterwards. required/min/maxlength remain in HTML. Comments explain preventDefault and why a browser check never replaces server validation. |
-| Original comparison version | `Grocery/js/old-js-version.js` preserves all four original sources from 3c83c69 and is not linked to any page. |
-| Freeze and no mixed DOM approaches | All six source pages differ from Assignment 5 only by the jQuery CDN line. All four stylesheets remain unchanged. Active features use jQuery DOM/events only; ordinary array/calculation/JSON/localStorage APIs are retained for data logic. |
+| Original comparison version | `Grocery/js/old-js-version.js` preserves Temirlan's four original sources from 3c83c69 and Shalkar's three Contacts comparisons; it is not linked to any page. |
+| Freeze and no mixed DOM approaches | All six source pages differ from Assignment 5 only by the jQuery CDN line, and all four stylesheets remain unchanged. Contacts selects existing blocks with traversal; its list and form are generated in code. Active features use jQuery DOM/events only; ordinary array/calculation/JSON/localStorage APIs are retained for data logic. |
 
 ### Verification and submission
 
