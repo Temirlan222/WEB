@@ -2,7 +2,7 @@
 
 A six-page website for Lido Grocery Store, Uly Dala Avenue 31, Astana. It continues the same project and repository from Assignments 1–3 and the Midterm Project.
 
-[Repository](https://github.com/Temirlan222/WEB) · [Midterm](https://github.com/Temirlan222/WEB/tree/midterm) · [Assignment 4](https://github.com/Temirlan222/WEB/tree/assignment-4) · [Assignment 5](https://github.com/Temirlan222/WEB/tree/assignment-5)
+[Repository](https://github.com/Temirlan222/WEB) · [Midterm](https://github.com/Temirlan222/WEB/tree/midterm) · [Assignment 4](https://github.com/Temirlan222/WEB/tree/assignment-4) · [Assignment 5](https://github.com/Temirlan222/WEB/tree/assignment-5) · [Assignment 6](https://github.com/Temirlan222/WEB/tree/assignment-6)
 
 ## Pages and responsibilities
 
@@ -21,9 +21,21 @@ Open `Grocery/index.html` in a browser with JavaScript enabled. Internet access 
 
 Browse the catalogue on Products, combine search and category filters, add items and open the cart. Its shared link shows the quantity on all six pages. `localStorage` keeps only product IDs and quantities between navigation and reload. If browser storage is unavailable, the current page works, but the cart cannot persist between pages.
 
-Prices are recorded project examples. Product pictures are illustrative; [image sources are credited](Grocery/images/catalog/sources.md). Confirm current prices and availability with the store. Checkout and the request form are front-end demonstrations: they send nothing and create no real order or payment.
+The current catalogue contains **50 products in five categories**, with ten in each: Dairy & eggs, Fruit & vegetables, Meat & fish, Bakery and Pantry. Exact names, sizes, prices and corresponding photographs were recorded from Galmart Avstriyskiy Kvartal, Kaldayakov 6, Astana, via its public Wolt listings on **2 November 2026**. [Per-product sources and original image URLs](Grocery/images/catalogue/sources.json) are included. Prices are snapshots of the retailer's online listing, not live Lido prices or stock; confirm the final price with Lido before buying. All 50 product photographs are served locally.
 
-## Assignment 6 — jQuery (current submission)
+Home links directly to each category. Products combines bilingual name/brand search, category selection and numeric price sorting. The existing cart sits beside the catalogue on desktop, with direct cart links on phones. Reviewing a shopping list preserves its contents; only Clear cart removes the whole list. The enquiry form remains a secondary, collapsible action. No online order or payment is submitted.
+
+### Current catalogue checks
+
+With Node.js: `node tests/logic.cjs`, `node tests/catalogue-data.cjs`, `node tests/catalogue-browser.cjs`. The browser check uses Playwright from the bundled runtime (or `PLAYWRIGHT_PATH`) and Microsoft Edge. It saves current evidence to `tmp/catalogue-evidence` by default; `EVIDENCE_DIR` can override that folder. These checks cover the expanded catalogue; older Assignment 4-6 checks remain tied to their historical tags.
+
+Verified on **2 November 2026**: five categories of ten, all 50 photographs, bilingual search, category/price sorting, all 50 delegated Add buttons, independent cart arithmetic, keyboard quantity changes, retained/repeated list review, storage recovery and safe request validation/reset. All six pages were checked at 375/768/1366 px; 133 local links/targets passed with no broken images, horizontal overflow, duplicate IDs or console/page errors. A regression also verifies that reviewing all fifty items fits the desktop viewport and that its final total is reachable by scrolling the sidebar.
+
+The latest teammate Contacts contribution is retained. Only Home, Products, their data and the shared cart were changed for the catalogue expansion. The historical Prices page belongs to a separate contribution and retains its older price examples; use the catalogue cards for this selection's recorded prices.
+
+## Assignment 6 — jQuery (historical milestone)
+
+This section and its line pointers describe the published `assignment-6` version. The newer 50-product catalogue intentionally changes Home/Products markup and the small CSS correction layer; the old frozen-source checks apply to the tag, not current main.
 
 The supplied file is `assignment6_jquery.docx`; its internal heading says “Assignment 4”, but this section follows that supplied jQuery rubric. The same site and pages continue; no redesign, new page, plugin or CSS rule was added.
 
@@ -55,7 +67,7 @@ After successful validation the form resets to its original defaults. The summar
 
 Recorded on **31 October 2026**: pure logic, full user flows on all six pages at 375/768/1366 px, 78 local links/targets, safe input, quantity changes, storage recovery, keyboard focus, valid-submit defaults and retained summary. A separate non-reduced-motion run exercises fadeOut/fadeIn/slideDown with duration and completion callbacks, rapid-action cancellation and immediate field-error correction. Source and generated HTML validation report no messages; no console errors were recorded.
 
-Run the current checks with Node: `tests/logic.cjs`, `tests/assignment6-source.cjs`, `tests/assignment6-browser.cjs`, `tests/assignment6-effects.cjs`. The older Assignment 4–5 checks/evidence describe those historical milestone snapshots. Test tools are not loaded by the website.
+At the historical `assignment-6` tag, run `tests/logic.cjs`, `tests/assignment6-source.cjs`, `tests/assignment6-browser.cjs`, `tests/assignment6-effects.cjs` with Node. The older Assignment 4–5 checks/evidence describe those historical milestone snapshots. Test tools are not loaded by the website.
 
 Submit this same repository. [Submission instructions](Grocery/Temirlan_Assignment6/SUBMIT.txt) and [verification evidence](Grocery/Temirlan_Assignment6/evidence/) are included. **The jQuery assignment requires no written report or recording**; a ZIP is an optional backup. At defense demonstrate the live features and compare the old/new code.
 
@@ -75,7 +87,7 @@ This submission implements Temirlan's Home and Products contribution and one sha
 
 The remaining contributors' features, including the Contacts review module, are outside this individual contribution. This package does not claim that the whole team's Assignment 4–5 requirements are complete. No booking or login pages were added.
 
-## Files and frozen baseline
+## Files and frozen baseline (Assignments 4–5)
 
 - `Grocery/js/store.js`: eight product objects, filtering, quantities, totals, validation and demo references.
 - `Grocery/js/main.js`: shared cart state/storage/link and the Products cart interface.
@@ -86,7 +98,7 @@ All six HTML files start from `midterm`; only deferred script links (including t
 
 `assignment-4` records working data and calculation/validation logic. `assignment-5` records the complete interactions and submission materials. The `midterm` tag is preserved. Git history records actual work dates; this package does not assert that the required multi-day contribution history has been fulfilled.
 
-The original published milestone tags remain unchanged. The latest main branch includes the 23 October verification and a small accessibility fix: a successful request now receives focus, including on a phone with a long cart.
+The original published milestone tags remain unchanged. The Assignment 5 milestone includes the 23 October verification and a small accessibility fix: a successful request now receives focus, including on a phone with a long cart.
 
 ## Submission materials and checks
 

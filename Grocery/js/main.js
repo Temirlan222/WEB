@@ -10,8 +10,13 @@ $(function () {
 
     // Rewrite 2: $(), .on(), .text(), .append() and class methods replace native cart DOM/events.
     // Traversal and button creation are shorter; the calculation/storage rules remain plain JavaScript.
+    let catalogueUpdated = false;
     try {
-        store.cart = store.normalizeCart(JSON.parse(localStorage.getItem('lido-cart')));
+        const savedCart = JSON.parse(localStorage.getItem('lido-cart'));
+        store.cart = store.normalizeCart(savedCart);
+        catalogueUpdated = Array.isArray(savedCart) && savedCart.some(function (line) {
+            return line && !store.findProduct(line.id);
+        });
     } catch (error) {
         store.cart = [];
     }
@@ -43,7 +48,7 @@ $(function () {
 
     const $linkRow = $('<p>').addClass('mb-3').prependTo('main');
     // Chain: attr sets the link/id, addClass uses existing styling, text sets its label, appendTo inserts it.
-    const $link = $('<a>').attr({ id: 'cart-link', href: 'products.html#request-result' })
+    const $link = $('<a>').attr({ id: 'cart-link', href: 'products.html#shopping-cart' })
         .addClass('btn btn-outline-success btn-sm').text('Shopping cart (0)').appendTo($linkRow);
 
     function updateCartLink() {
@@ -51,6 +56,24 @@ $(function () {
     }
     $page.on('cart-updated', updateCartLink);
     updateCartLink();
+
+    const $homeCategories = $('#home-category-list');
+    if ($homeCategories.length) {
+        for (const category of store.categories) {
+            const products = store.products.filter(function (product) { return product.category === category.id; });
+            const $column = $('<div>').addClass('col');
+            const $card = $('<a>').addClass('category-card card h-100 text-decoration-none text-reset shadow-sm')
+                .attr('href', 'products.html?category=' + category.id + '#product-gallery');
+            $('<img>').addClass('category-photo img-fluid w-100 rounded-top').attr({
+                src: products[0].image, alt: category.label, width: 240, height: 120, loading: 'lazy'
+            }).appendTo($card);
+            const $body = $('<div>').addClass('card-body');
+            $('<h3>').addClass('h6 fw-bold').text(category.label).appendTo($body);
+            $('<p>').addClass('small mb-0 text-body-secondary').text(products.length + ' products').appendTo($body);
+            $card.append($body).appendTo($column);
+            $homeCategories.append($column);
+        }
+    }
 
     const currentPage = location.pathname.split('/').pop() || 'index.html';
     $('nav a').each(function () {
@@ -76,24 +99,30 @@ $(function () {
         return $('<' + tag + '>').text(text || '').addClass(classes || '');
     }
 
-    const $cart = make('section', '', 'mb-4 pb-4 border-bottom')
+    const $cart = make('section', '', 'card bg-white p-3 shadow-sm mb-4')
         .attr({ id: 'shopping-cart', 'aria-labelledby': 'cart-title' });
-    const $title = make('h4', 'Shopping cart', 'h5 fw-bold').attr('id', 'cart-title');
-    const $notice = make('p', 'Example prices only. This cart demonstrates calculations; checkout does not send an order or take payment.', 'small');
+    const $title = make('h2', 'Your shopping list', 'h4 fw-bold').attr('id', 'cart-title');
+    const $notice = make('p', 'Check quantities and the total below. To buy, call Lido or visit the store. Online orders and payments are not available yet.', 'small text-body-secondary');
     const $empty = make('p', 'Your cart is empty. Add a product from the catalogue.').attr('id', 'cart-empty');
-    const $items = make('ul', '', 'list-unstyled').attr('id', 'cart-items');
+    const $items = make('ul', '', 'list-unstyled overflow-auto').attr('id', 'cart-items');
     const $quantity = make('p', '', 'mb-1').attr('id', 'cart-quantity');
     const $total = make('p', '', 'fw-bold').attr('id', 'cart-total');
     const $actions = make('div', '', 'd-flex flex-wrap gap-2');
     const $clear = make('button', 'Clear cart', 'btn btn-outline-success')
         .attr('id', 'cart-clear').prop('type', 'button');
-    const $checkout = make('button', 'Demo checkout', 'btn btn-success')
+    const $checkout = make('button', 'Review shopping list', 'btn btn-success')
         .attr('id', 'cart-checkout').prop('type', 'button');
+    const $contact = make('a', 'Call the store', 'btn btn-outline-success').attr('href', 'tel:+77479052505');
     const $confirmation = make('div', '', 'hidden success rounded p-3 mt-3')
         .attr({ id: 'cart-confirmation', role: 'status' }).prop('tabIndex', -1);
-    $actions.append($clear, $checkout);
+    $actions.append($checkout, $contact, $clear);
     $cart.append($title, $notice, $empty, $items, $quantity, $total, $actions, $confirmation);
-    $cart.insertBefore('#request-summary');
+    if (catalogueUpdated) {
+        make('p', 'The catalogue has changed. Items no longer listed were removed from your saved cart.', 'small alert alert-info')
+            .attr({ id: 'cart-catalogue-notice', role: 'status' }).insertAfter($notice);
+    }
+    if ($('#catalogue-cart').length) $cart.appendTo('#catalogue-cart');
+    else $cart.insertBefore('#request-summary');
 
     function lineButton(action, text, product, disabled) {
         return make('button', text, 'btn btn-outline-success btn-sm')
@@ -147,17 +176,17 @@ $(function () {
     $checkout.on('click', function () {
         const totals = store.cartTotals(store.cart);
         if (totals.quantity === 0) return;
+        $confirmation.stop(true, false).addClass('hidden').removeAttr('style').empty();
         const $summary = make('ul', '', 'mb-2');
         for (const line of store.cart) {
             const product = store.findProduct(line.id);
             $summary.append(make('li', product.name + ' (' + product.unit + ') x ' + line.quantity + ' = ' + store.formatMoney(product.price * line.quantity)));
         }
-        store.clearCart();
         $confirmation.append(
-            make('p', 'Demo reference: ' + store.makeReference(), 'fw-bold mb-2'),
+            make('p', 'Your shopping list is ready to review', 'fw-bold mb-2'),
             $summary,
             make('p', 'Total: ' + store.formatMoney(totals.total) + ' for ' + totals.quantity + ' listed unit(s).', 'mb-2'),
-            make('p', 'Demonstration only. No data was sent, no real order was created and no payment was taken. The cart has been cleared.', 'mb-0')
+            make('p', 'Your items stay in the cart. Show this list in store or call to confirm availability and the final price. No order or payment has been submitted.', 'mb-0')
         );
         // Reveal the completed result, then focus it after the effect; no new CSS rules are written.
         $confirmation.slideDown(160, function () {

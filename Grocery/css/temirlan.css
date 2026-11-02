@@ -1,4 +1,4 @@
-/* Midterm correction layer. Bootstrap supplies all layout, spacing and buttons. */
+/* Store correction layer. Bootstrap supplies layout, spacing and buttons. */
 body {
     background-color: #f7f3e8;
     color: #23312b;
@@ -44,4 +44,33 @@ h1, h2, h3 {
 }
 .request-result:target .result-confirmation {
     display: block;
+}
+/* Product photographs share a clear display area without cropping the packaging. */
+.catalogue-product-photo {
+    height: 180px;
+    object-fit: contain;
+    background-color: white;
+}
+.category-photo {
+    height: 120px;
+    object-fit: contain;
+    background-color: white;
+}
+.category-card {
+    text-decoration: none;
+}
+.category-card:hover, .category-card:focus-visible {
+    border-color: #24513b;
+}
+/* Keep a long basket within reach while Bootstrap controls its sidebar position. */
+#cart-items {
+    max-height: 24rem;
+    overflow-y: auto;
+}
+/* The sticky desktop basket must stay usable even when reviewing all 50 items. */
+@media (min-width: 992px) {
+    #catalogue-cart {
+        max-height: calc(100vh - 1rem);
+        overflow-y: auto;
+    }
 }

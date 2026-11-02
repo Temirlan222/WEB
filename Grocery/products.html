@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name = "description" content = "Grocery store: Lido">
+    <meta name="description" content="Browse 50 grocery products in five categories, search, compare recorded prices and build your Lido shopping list.">
     <meta name = "author" content = "Temirlan">
     <title>Products | Lido Grocery Store</title>
     <!-- Bootstrap 5.3.8 via CDN; the correction stylesheet follows Bootstrap. -->
@@ -52,12 +52,20 @@
     <!-- container limits reading width on larger screens and adds phone gutters. -->
     <main id="main-content" class="site-main container py-4 flex-grow-1">
         <!-- page title is an id because this page has one primary title -->
-        <h1 id="page-title" class="display-5 fw-bold mb-4">Products</h1>
+        <h1 id="page-title" class="display-5 fw-bold mb-3">Your everyday grocery shop</h1>
+        <p class="lead">Choose your groceries, check the quantities and keep track of your total in one cart.</p>
     <p class="d-flex flex-wrap gap-2 mb-4">
         <a id="view-categories" class="btn btn-outline-success" href="#product-categories">Product categories</a>
-        <a id="view-request" class="btn btn-success" href="#product-request">Prepare a request</a>
-        <a id="view-prices" class="btn btn-outline-success" href="prices.html">View prices</a>
+        <a id="view-request" class="btn btn-outline-success" href="#product-request">Looking for something else?</a>
+        <a id="view-prices" class="btn btn-success" href="#product-gallery">Browse products and prices</a>
+        <a class="btn btn-outline-success d-lg-none" href="#shopping-cart">Your cart</a>
     </p>
+    <section id="product-categories" class="content-section mb-4" aria-labelledby="categories-title">
+        <h2 id="categories-title" class="h4 fw-bold">Shop by category</h2>
+        <p class="text-body-secondary">Choose one of five categories, or search the full catalogue below.</p>
+    </section>
+    <div class="row g-4 align-items-start">
+    <div class="col-12 col-lg-8">
     <!-- Bootstrap Card: official card/card-body/card-title markup adapted to the existing product articles and figures. -->
     <section id="product-gallery" class="content-section mb-4 pb-4 border-bottom product-gallery row g-3">
         <h2 class="h3 fw-bold col-12">Food &amp; Household Products</h2>
@@ -95,7 +103,13 @@
         </article>
         </div>
             </section>
+    </div>
+    <aside id="catalogue-cart" class="col-12 col-lg-4 sticky-lg-top" aria-label="Your shopping cart"></aside>
+    </div>
 
+    <details class="content-section mb-4 pb-4 border-bottom">
+    <summary class="fw-bold">About Lido and the wider store range</summary>
+    <div class="mt-3">
     <aside class="content-section mb-4 pb-4 border-bottom product-note bg-white p-3 rounded">
         <p>Apart from packaged foods and household goods, fresh produce, particularly fruits and vegetables, is also sold in Lido on a daily basis.</p>
         <p>Products such as apples, bananas, tomatoes, cucumbers and potatoes can be found among all the usual products sold in Lido. Lido has bottled water, juices, drinks and many other kinds of beverages.</p>
@@ -104,7 +118,7 @@
     
     <hr class="my-4">
 
-    <section id="product-categories" class="content-section mb-4 pb-4 border-bottom category-list">
+    <section id="store-departments" class="content-section mb-4 pb-4 border-bottom category-list">
     <h2 class="h3 fw-bold">Details on the remaining sections:</h2>
     <ol type ="1">
         <li>Quick bites</li>
@@ -172,11 +186,6 @@
     <dd class="col-12 col-md-8 col-lg-9">Alcoholic beverages available for adult customers.</dd>
 </dl>
     </section>
-    <section id="product-request" class="content-section mb-4 pb-4 border-bottom request-section">
-    <h2 class="h3 fw-bold">Product Request Form</h2>
-    <p>
-        Prepare the details of the product you are looking for. Check the required fields to open the result below. This page does not send a request to the shop.
-    </p>
     <section class="content-section mb-4 pb-4 border-bottom store-quote text-center text-md-start bg-white p-3 rounded">
     <h2 class="h3 fw-bold">About the Store</h2>
     <blockquote class="blockquote">
@@ -190,8 +199,17 @@
         <q>We’re always happy to see you—come back again!</q>.
     </p>
 </section>
+    </div>
+    </details>
+    <details id="product-request" class="content-section mb-4 pb-4 border-bottom request-section">
+    <summary class="fw-bold">Looking for another product? Prepare a request</summary>
+    <div class="mt-3">
+    <h2 class="h3 fw-bold">Product Request Form</h2>
+    <p>
+        Prepare the details of the product you are looking for. Check the required fields to open the result below. This page does not send a request to the shop.
+    </p>
     <form id="product-request-form" class="request-form row g-3" action="products.html#request-result" method="get" aria-describedby="request-status">
-        <!-- No server or scripts: native browser validation checks fields, then GET opens the result anchor. -->
+        <!-- Required HTML attributes remain as a fallback; jQuery validates without sending personal details. -->
         <fieldset class="col-12">
             <legend>Product Request</legend>
             <!-- Nested row inside the fieldset column: fields stack on phones, then use two or three columns. -->
@@ -230,15 +248,11 @@
                 <label class="form-label" for="category">Product category:</label>
 
                 <select class="form-select" id="category" name="category">
-                    <option value="dairy">Dairy</option>
-                    <option value="food">Food products</option>
+                    <option value="dairy">Dairy and eggs</option>
                     <option value="produce">Fruit and vegetables</option>
-                    <option value="accessories">Accessories</option>
-                    <option value="beverages">Beverages</option>
-                    <option value="snacks">Snacks</option>
-                    <option value="sweets">Sweets</option>
-                    <option value="meat">Meat</option>
-                    <option value="household">Household Cleaning</option>
+                    <option value="meat">Meat and fish</option>
+                    <option value="bakery">Bakery</option>
+                    <option value="pantry">Pantry</option>
                 </select>
             </p>
             <div class="col-12">
@@ -270,7 +284,7 @@
         </fieldset>
 
     </form>
-    <p id="request-status" class="small text-body-secondary mt-3">Checking reloads this local page and opens the result below. Entries are included in the page URL; nothing is sent to Lido and no order is placed.</p>
+    <p id="request-status" class="small text-body-secondary mt-3">Check your request details on this page, then contact Lido to ask about availability. Nothing is sent to the shop and no order is placed.</p>
     <!-- Empty message and summary hooks are ready for future interaction; the result area is already visible. -->
     <section id="request-result" class="request-result border rounded bg-white p-3 mt-3" aria-labelledby="result-title">
         <h3 id="result-title" class="h5 fw-bold">Request result</h3>
@@ -285,7 +299,8 @@
             <a id="result-hours" class="btn btn-outline-success btn-sm" href="index.html#opening-hours">Plan a visit</a>
         </p>
     </section>
-</section>
+    </div>
+    </details>
     </main>
     <p class="container d-none d-md-block mb-3"><a id="back-to-top" class="btn btn-outline-success btn-sm" href="#page-title">Top</a></p>
     <footer id="site-footer" class="site-footer container-fluid py-4 text-center text-md-start">
