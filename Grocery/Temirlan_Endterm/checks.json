@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-08",
+  "productCount": 50,
+  "categories": [
+    {
+      "id": "dairy",
+      "count": 10
+    },
+    {
+      "id": "produce",
+      "count": 10
+    },
+    {
+      "id": "meat",
+      "count": 10
+    },
+    {
+      "id": "bakery",
+      "count": 10
+    },
+    {
+      "id": "pantry",
+      "count": 10
+    }
+  ],
+  "bilingualSearch": true,
+  "numericPriceSorting": true,
+  "allFiftyDelegatedAddButtons": true,
+  "independentCartTotals": true,
+  "keyboardQuantityChanges": true,
+  "reviewPreservesCart": true,
+  "repeatedReviewHasNoDuplicates": true,
+  "downloadShoppingList": true,
+  "homeBudgetAndRequestPrefill": true,
+  "homeCategoryLinks": true,
+  "sharedCartPersistence": true,
+  "obsoleteSavedItemsExplained": true,
+  "corruptStorageRecovery": true,
+  "requestValidationAndReset": true,
+  "safeVisitorText": true,
+  "localLinksChecked": 129,
+  "results": [
+    {
+      "page": "index",
+      "width": 375,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "products",
+      "width": 375,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "prices",
+      "width": 375,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "delivery",
+      "width": 375,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "contacts",
+      "width": 375,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "colophon",
+      "width": 375,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "index",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "products",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "prices",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "delivery",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "contacts",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "colophon",
+      "width": 768,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "index",
+      "width": 1366,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "products",
+      "width": 1366,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "prices",
+      "width": 1366,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "delivery",
+      "width": 1366,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "contacts",
+      "width": 1366,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    },
+    {
+      "page": "colophon",
+      "width": 1366,
+      "overflow": false,
+      "brokenImages": [],
+      "duplicateIds": 0
+    }
+  ],
+  "errors": [],
+  "dialogs": [],
+  "midtermFreeze": "Home/Products plus script links only, CSS restored",
+  "realEffects": "fadeOut/fadeIn/slideDown callbacks and style cleanup passed",
+  "nuHtml": "source and generated own pages: zero messages",
+  "scope": "Temirlan Home/Products and shared cart; other pages responsive smoke only"
+}

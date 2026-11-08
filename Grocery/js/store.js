@@ -668,8 +668,8 @@
         } else if (phone !== '' && (!/^\+?[\d\s()-]+$/.test(phone) || digits.length < 10 || digits.length > 15)) {
             errors.phone = 'Enter a valid phone number with 10 to 15 digits.';
         }
-        if (product.length === 0 || product.length > 100) {
-            errors.product = 'Enter a product name with 1 to 100 characters.';
+        if (product.length === 0 || product.length > 200) {
+            errors.product = 'Enter a product name with 1 to 200 characters.';
         }
         if (!validQuantity(values.quantity)) {
             errors.quantity = 'Enter a whole quantity from 1 to 999.';

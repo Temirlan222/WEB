@@ -8,11 +8,18 @@ $(function () {
     if (!$gallery.length || !window.Lido) return;
 
     const store = window.Lido;
+    const $requestCategory = $('#category').empty();
+    for (const category of store.categories) {
+        $('<option>').val(category.id).text(category.label).appendTo($requestCategory);
+    }
+    const $selectedLabel = $('<label>').addClass('form-check-label ms-2').attr('for', 'catalogue-selected').text('Only products in my cart');
+    const $selected = $('<input>').addClass('form-check-input').attr({id: 'catalogue-selected', type: 'checkbox'});
+
     const categories = store.categories;
     const $shopPhotos = $gallery.children('div').detach();
     const $title = $('<h2>').text('Shop everyday groceries').addClass('h3 fw-bold col-12');
     const source = store.catalogueSource;
-    const $note = $('<p>').text('Prices from ' + source.retailer + ', ' + source.city + ', recorded on ' + source.checkedAt + '. Confirm Lido prices and availability before visiting.')
+    const $note = $('<p>').text('Prices from ' + source.retailer + ', ' + source.city + ', recorded on ' + source.checkedAt + '. Confirm Lido prices and availability before visiting. Original team store photos are available below; individual product photos are not shown.')
         .addClass('col-12 small text-body-secondary mb-0');
     const $controls = $('<div>').addClass('col-12');
     const $fields = $('<div>').addClass('row g-3 align-items-end');
@@ -47,7 +54,7 @@ $(function () {
     $categoryField.append($categoryLabel, $category);
     $sortField.append($sortLabel, $sort);
     $fields.append($searchField, $categoryField, $sortField);
-    $controls.append($fields, $reset);
+    $controls.append($fields, $('<div>').addClass('form-check mt-3').append($selected, $selectedLabel), $reset);
     $gallery.empty().append($title, $note, $controls, $count, $feedback, $cartLink, $empty, $results);
 
     // Detach and reinsert the original store photos below the catalogue.
@@ -100,9 +107,6 @@ $(function () {
             const $card = $('<article>').addClass('product-card card h-100 shadow-sm')
                 .attr('data-product-id', product.id).appendTo($column);
             const $body = $('<div>').addClass('card-body d-flex flex-column');
-            const $image = $('<img>').addClass('catalogue-product-photo w-100 rounded mb-3').attr({
-                src: product.image, alt: product.name, width: 240, height: 180, loading: 'lazy', decoding: 'async'
-            });
             const $name = $('<h3>').text(product.name).addClass('card-title h5 fw-bold');
             const $translation = $('<p>').text(product.englishName).addClass('small text-body-secondary mb-2');
             const $unit = $('<p>').text(product.unit).addClass('small text-body-secondary mb-2');
@@ -111,20 +115,22 @@ $(function () {
             const $add = $('<button>').text('Add to cart').addClass('btn btn-success mt-auto').attr({
                 type: 'button', 'data-add-product': product.id, 'aria-label': 'Add ' + product.name + ' to cart'
             });
+            const $request = $('<button>').addClass('btn btn-outline-success btn-sm mt-2').attr({type: 'button', 'data-request-product': product.id}).text('Prepare an enquiry');
             const $sourceLink = $('<a>').text('Price source').addClass('small link-secondary mt-2').attr({
                 href: product.sourceUrl, target: '_blank', rel: 'noopener noreferrer',
                 'aria-label': 'View price source for ' + product.name
             });
             const $mobileCart = $('<a>').text('View cart and total').addClass('small link-success d-lg-none mt-2')
                 .attr('href', '#shopping-cart');
-            $body.append($image, $name, $translation, $unit, $price, $quantity, $add, $mobileCart, $sourceLink).appendTo($card);
+            $body.append($name, $translation, $unit, $price, $quantity, $add, $request, $mobileCart, $sourceLink).appendTo($card);
             $results.append($column);
         }
         updateSelectedCards();
     }
 
     function applyFilters() {
-        const items = store.filterProducts(store.products, $search.val(), $category.val());
+        let items = store.filterProducts(store.products, $search.val(), $category.val());
+        if ($selected.prop('checked')) items = items.filter(function (product) { return store.cart.some(function (line) { return line.id === product.id; }); });
         renderCatalogue(store.sortProducts(items, $sort.val()));
         $shortcuts.find('button').each(function () {
             const $button = $(this);
@@ -136,6 +142,7 @@ $(function () {
 
     function resetFilters() {
         $search.val('');
+        $selected.prop('checked', false);
         $category.val('all');
         $sort.val('default');
         $feedback.stop(true, false).removeAttr('style').text('');
@@ -156,6 +163,18 @@ $(function () {
             ? (wasSelected ? 'Another ' : '') + name + ' added to your cart. Use View cart to check quantities and totals.'
             : 'Could not add another ' + name + '. Check its quantity in your cart.');
     });
+    // Delegate to the stable gallery: new cards after filtering also support enquiry.
+    $gallery.on('click', '[data-request-product]', function () {
+        const product = store.findProduct($(this).attr('data-request-product'));
+        if (!product) return;
+        const line = store.cart.find(function (item) { return item.id === product.id; });
+        $('#product-name').val(product.name).trigger('input');
+        $('#quantity').val(line ? line.quantity : 1).trigger('input');
+        $('#category').val(product.category).trigger('change');
+        location.hash = 'product-request';
+        $('#customer-name').trigger('focus');
+    });
+    $selected.on('change', applyFilters);
     $search.on('input', applyFilters);
     $category.on('change', applyFilters);
     $sort.on('change', applyFilters);
@@ -166,7 +185,7 @@ $(function () {
         $search.trigger('focus');
     });
     $reset.on('click', resetFilters);
-    $(window).on('cart-updated', updateSelectedCards);
+    $(window).on('cart-updated', applyFilters);
     $('[href="#product-request"]').on('click', function () {
         $('#product-request').prop('open', true);
     });

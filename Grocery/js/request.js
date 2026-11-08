@@ -9,6 +9,7 @@ $(function () {
         return;
     }
 
+    $('#product-name').attr('maxlength', 200);
     const fields = [
         { key: 'name', ids: ['customer-name'], errorId: 'customer-name-error' },
         { key: 'email', ids: ['customer-email'], errorId: 'customer-email-error' },

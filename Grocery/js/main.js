@@ -48,7 +48,7 @@ $(function () {
 
     const $linkRow = $('<p>').addClass('mb-3').prependTo('main');
     // Chain: attr sets the link/id, addClass uses existing styling, text sets its label, appendTo inserts it.
-    const $link = $('<a>').attr({ id: 'cart-link', href: 'prices.html' })
+    const $link = $('<a>').attr({ id: 'cart-link', href: 'products.html#shopping-cart' })
         .addClass('btn btn-outline-success btn-sm').text('Shopping cart (0)').appendTo($linkRow);
 
     function updateCartLink() {
@@ -56,24 +56,6 @@ $(function () {
     }
     $page.on('cart-updated', updateCartLink);
     updateCartLink();
-
-    const $homeCategories = $('#home-category-list');
-    if ($homeCategories.length) {
-        for (const category of store.categories) {
-            const products = store.products.filter(function (product) { return product.category === category.id; });
-            const $column = $('<div>').addClass('col');
-            const $card = $('<a>').addClass('category-card card h-100 text-decoration-none text-reset shadow-sm')
-                .attr('href', 'products.html?category=' + category.id + '#product-gallery');
-            $('<img>').addClass('category-photo img-fluid w-100 rounded-top').attr({
-                src: products[0].image, alt: category.label, width: 240, height: 120, loading: 'lazy'
-            }).appendTo($card);
-            const $body = $('<div>').addClass('card-body');
-            $('<h3>').addClass('h6 fw-bold').text(category.label).appendTo($body);
-            $('<p>').addClass('small mb-0 text-body-secondary').text(products.length + ' products').appendTo($body);
-            $card.append($body).appendTo($column);
-            $homeCategories.append($column);
-        }
-    }
 
     $('nav a[href="prices.html"]').text('Cart');
     const currentPage = location.pathname.split('/').pop() || 'index.html';
@@ -116,14 +98,15 @@ $(function () {
     const $contact = make('a', 'Call the store', 'btn btn-outline-success').attr('href', 'tel:+77479052505');
     const $confirmation = make('div', '', 'hidden success rounded p-3 mt-3')
         .attr({ id: 'cart-confirmation', role: 'status' }).prop('tabIndex', -1);
-    $actions.append($checkout, $contact, $clear);
+    const $download = make('button', 'Download shopping list', 'btn btn-outline-success').attr({id: 'cart-download', type: 'button'});
+    $actions.append($checkout, $download, $contact, $clear);
     $cart.append($title, $notice, $empty, $items, $quantity, $total, $actions, $confirmation);
     if (catalogueUpdated) {
         make('p', 'The catalogue has changed. Items no longer listed were removed from your saved cart.', 'small alert alert-info')
             .attr({ id: 'cart-catalogue-notice', role: 'status' }).insertAfter($notice);
     }
     if ($('#catalogue-cart').length) $cart.appendTo('#catalogue-cart');
-    else $cart.insertBefore('#request-summary');
+    else $cart.insertBefore('#product-gallery');
 
     function lineButton(action, text, product, disabled) {
         return make('button', text, 'btn btn-outline-success btn-sm')
@@ -152,7 +135,7 @@ $(function () {
         $quantity.text('Total quantity: ' + totals.quantity + ' listed unit(s)');
         $total.text('Total: ' + store.formatMoney(totals.total));
         $empty.toggleClass('hidden', totals.quantity !== 0);
-        $clear.add($checkout).prop('disabled', totals.quantity === 0);
+        $clear.add($checkout).add($download).prop('disabled', totals.quantity === 0);
     }
 
     // Delegate to the stable list: direct binding to today's buttons would miss buttons created by the next render.
@@ -194,6 +177,19 @@ $(function () {
             $(this).removeClass('hidden').removeAttr('style').trigger('focus');
         });
     });
+    $download.on('click', function () {
+        const rows = store.cart.map(function (line) {
+            const product = store.findProduct(line.id);
+            return product.name + ' (' + product.unit + ') x ' + line.quantity + ' = ' + store.formatMoney(product.price * line.quantity);
+        });
+        rows.push('Total: ' + store.formatMoney(store.cartTotals(store.cart).total));
+        rows.push('Recorded reference prices. Confirm availability and final prices with Lido. No order placed.');
+        const url = URL.createObjectURL(new Blob([rows.join('\n')], {type: 'text/plain;charset=utf-8'}));
+        const $file = $('<a>').attr({href: url, download: 'Lido-shopping-list.txt'}).appendTo($cart);
+        $file[0].click();
+        $file.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    });
     $page.on('cart-updated', renderCart);
     renderCart();
 });
@@ -204,6 +200,7 @@ $(function () {
 $(function () {
     'use strict';
 
+    if (!$('body').hasClass('page-contacts')) return;
     const $review = $('.customer-review');
     const $tools = $('.payment-information');
     const $actions = $('main a[href^="tel:"]').closest('.d-flex');

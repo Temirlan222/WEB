@@ -1,5 +1,10 @@
 # Lido Grocery Store
 
+## Endterm — current Temirlan contribution
+
+Home/Products/shared-cart Endterm implementation, requirement audit and submission instructions: [Temirlan Endterm](Grocery/Temirlan_Endterm/README.md). Native Home budget/saved-list guide is separate from jQuery catalogue/cart/enquiry. Own HTML/CSS are restored to midterm plus script links. Earlier sections below describe historical snapshots.
+
+
 A six-page website for Lido Grocery Store, Uly Dala Avenue 31, Astana. It continues the same project and repository from Assignments 1–3 and the Midterm Project.
 
 [Repository](https://github.com/Temirlan222/WEB) · [Midterm](https://github.com/Temirlan222/WEB/tree/midterm) · [Assignment 4](https://github.com/Temirlan222/WEB/tree/assignment-4) · [Assignment 5](https://github.com/Temirlan222/WEB/tree/assignment-5) · [Assignment 6](https://github.com/Temirlan222/WEB/tree/assignment-6)
