@@ -48,7 +48,7 @@ $(function () {
 
     const $linkRow = $('<p>').addClass('mb-3').prependTo('main');
     // Chain: attr sets the link/id, addClass uses existing styling, text sets its label, appendTo inserts it.
-    const $link = $('<a>').attr({ id: 'cart-link', href: 'products.html#shopping-cart' })
+    const $link = $('<a>').attr({ id: 'cart-link', href: 'prices.html' })
         .addClass('btn btn-outline-success btn-sm').text('Shopping cart (0)').appendTo($linkRow);
 
     function updateCartLink() {
@@ -75,6 +75,7 @@ $(function () {
         }
     }
 
+    $('nav a[href="prices.html"]').text('Cart');
     const currentPage = location.pathname.split('/').pop() || 'index.html';
     $('nav a').each(function () {
         const $link = $(this);

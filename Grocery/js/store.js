@@ -1,7 +1,7 @@
 'use strict';
 
-// jQuery ready keeps the shared data API available before later ready callbacks run.
-$(function () {
+// Data and calculations do not need the DOM or jQuery.
+(function () {
     // Galmart Astana listing snapshots; these are not live Lido stock or price promises.
     const storeCategories = [
         {
@@ -711,4 +711,4 @@ $(function () {
         today: today,
         validateRequest: validateRequest
     };
-});
+})();
