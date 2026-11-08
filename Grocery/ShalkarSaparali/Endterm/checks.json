@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-08",
+  "aboutSearchAndReset": true,
+  "nativeExampleToggle": true,
+  "reviewTranslation": true,
+  "helpfulPersistence": true,
+  "clipboardSuccessAndDenied": true,
+  "delegatedTopics": true,
+  "fullFieldValidation": true,
+  "resetAndSafeRetainedSummary": true,
+  "downloadQuestion": true,
+  "responsiveMenu": true,
+  "results": [
+    {
+      "name": "contacts",
+      "width": 375,
+      "overflow": false,
+      "duplicates": 0,
+      "broken": 0
+    },
+    {
+      "name": "colophon",
+      "width": 375,
+      "overflow": false,
+      "duplicates": 0,
+      "broken": 0
+    },
+    {
+      "name": "contacts",
+      "width": 768,
+      "overflow": false,
+      "duplicates": 0,
+      "broken": 0
+    },
+    {
+      "name": "colophon",
+      "width": 768,
+      "overflow": false,
+      "duplicates": 0,
+      "broken": 0
+    },
+    {
+      "name": "contacts",
+      "width": 1366,
+      "overflow": false,
+      "duplicates": 0,
+      "broken": 0
+    },
+    {
+      "name": "colophon",
+      "width": 1366,
+      "overflow": false,
+      "duplicates": 0,
+      "broken": 0
+    }
+  ],
+  "errors": [],
+  "freeze": "Own HTML equals midterm after removing added script links; both CSS files unchanged",
+  "nuHtml": "source and generated Contacts/About: zero messages",
+  "regression": "Temirlan Endterm full browser suite and real effects passed again",
+  "preservation": "Home/Products/cart/delivery source unchanged; shared main only loses the extracted Contacts block"
+}

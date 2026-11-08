@@ -722,7 +722,7 @@ setupRequestForm();
 
 
 // ===== Original Shalkar Contacts features (plain JavaScript) =====
-// Comparison only. The active versions are rewritten in contacts.js with jQuery.
+// Comparison only. The active versions are rewritten in contacts.jquery.js with jQuery.
 
 function setupContactTranslationOld() {
     const review = document.querySelector('.customer-review');

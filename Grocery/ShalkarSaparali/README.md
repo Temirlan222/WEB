@@ -1,8 +1,10 @@
 # Assignment 3 — Saparali Shalkar
 
+Current Endterm work: [Contacts and About](Endterm/README.md). The sections below describe previous milestones.
+
 ## Assignment 6 jQuery continuation
 
-The Contacts block appended to `../js/main.js` runs after jQuery 3.7.1. It rewrites the review translation, helpful-review state and phone-copy feature with jQuery; creates a topic list and form from arrays/code; uses delegated events and purposeful effects; and validates each form field separately. The plain-JavaScript comparison is appended to `../js/old-js-version.js`, which is not linked to any page.
+The Contacts block now in `../js/contacts.jquery.js` runs after jQuery 3.7.1. It rewrites the review translation, helpful-review state and phone-copy feature with jQuery; creates a topic list and form from arrays/code; uses delegated events and purposeful effects; and validates each form field separately. The plain-JavaScript comparison is appended to `../js/old-js-version.js`, which is not linked to any page.
 
 Only existing elements and Bootstrap classes are used; `../contacts.html` and `../css/shalkar.css` remain frozen. No new page, plugin, template, CSS rule or AI log was added.
 

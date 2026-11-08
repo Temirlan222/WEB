@@ -1,5 +1,8 @@
 # Lido Grocery Store
 
+Current complete Endterm snapshot: [Shalkar Contacts/About continuation](Grocery/ShalkarSaparali/Endterm/README.md) and [Temirlan Home/Products/shared-cart](Grocery/Temirlan_Endterm/README.md). Contacts uses a separate jQuery script; About has a native-JavaScript page guide. Final tag: `endterm`; previous Temirlan-only snapshot: `endterm-temirlan`.
+
+
 ## Endterm — current Temirlan contribution
 
 Home/Products/shared-cart Endterm implementation, requirement audit and submission instructions: [Temirlan Endterm](Grocery/Temirlan_Endterm/README.md). Native Home budget/saved-list guide is separate from jQuery catalogue/cart/enquiry. Own HTML/CSS are restored to midterm plus script links. Earlier sections below describe historical snapshots.
