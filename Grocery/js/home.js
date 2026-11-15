@@ -1,71 +1,59 @@
 'use strict';
-// Plain JavaScript only: category guide and saved shopping-list budget on Home.
-// store.js loads first; defer makes the existing HTML available here.
+
+// тут чистый JS. store.js грузится раньше и даёт нам категории и функции для корзины.
+// из-за defer HTML уже разобран, поэтому можно искать блоки на странице.
 (function () {
     const store = window.Lido;
     const host = document.getElementById('products-summary');
+    // если нет данных или блока, выходим, чтобы не пытаться работать с пустым элементом.
     if (!store || !host) return;
 
+    // хтмл элемент с помощью докумнт креат и потому вставляем в страницу
+    // в  make() задаём текст и классы, а ниже вставляем готовый элемент через append().
     function make(tag, text, classes) {
         const element = document.createElement(tag);
         element.textContent = text;
         element.className = classes || '';
         return element;
     }
-    const guide = make('div', '', 'row g-3 mb-3');
+    const guide = make('div', '', 'row row-cols-2 row-cols-md-3 row-cols-lg-5 g-3 mb-3');
     guide.id = 'home-category-list';
+    // по одной кнопке на категорию. ID в ?category= нужен, чтобы Products сразу выбрал её.
     for (const category of store.categories) {
-        const column = make('div', '', 'col-12 col-md-6 col-lg-4');
-        const link = make('a', category.label + ' (10 products)', 'btn btn-outline-success w-100');
-        link.href = 'products.html?category=' + category.id + '#product-gallery';
+        const column = make('div', '', 'col');
+        const products = store.products.filter(function (product) { return product.category === category.id; });
+        const link = make('a', '', 'category-tile');
+        const image = document.createElement('img');
+        image.src = products[0].image;
+        image.alt = products[0].englishName;
+        image.width = 180;
+        image.height = 105;
+        image.loading = 'lazy';
+        link.append(image, make('strong', category.label), make('span', products.length + ' essentials to explore ↗'));
+        link.href = 'products.html?category=' + encodeURIComponent(category.id) + '#product-gallery';
         column.append(link);
         guide.append(column);
     }
     host.append(guide);
-    const websiteNote = document.querySelector('#website-summary p');
-    if (websiteNote) websiteNote.textContent = 'Store information and photographs come from the team visit. Catalogue names and reference prices come from Galmart Astana listings recorded on 2 November 2026. Confirm current prices and availability with Lido. This site prepares a local shopping list, not an online order.';
-    const section = make('section', '', 'border rounded bg-white p-3 mb-3');
-    section.setAttribute('aria-label', 'Continue your saved shopping list');
-    section.append(make('h3', 'Continue your shopping list', 'h5 fw-bold'));
-    const summary = make('p', '');
-    summary.id = 'home-saved-summary';
-    const label = make('label', 'Optional shopping budget (KZT)', 'form-label');
-    label.htmlFor = 'home-budget';
-    const budget = document.createElement('input');
-    budget.id = 'home-budget';
-    budget.type = 'number';
-    budget.min = '0';
-    budget.step = '1';
-    budget.className = 'form-control mb-2';
-    const result = make('p', '', 'small mb-2');
-    result.id = 'home-budget-result';
-    result.setAttribute('role', 'status');
-    const link = make('a', 'Continue shopping', 'btn btn-success');
-    link.href = 'products.html#shopping-cart';
-    section.append(summary, label, budget, result, link);
-    host.append(section);
+    // подборка ведёт к реальному товару в каталоге; цены берём из общего массива.
+    const featured = make('section', '', 'home-featured');
+    featured.append(make('p', 'A FEW EVERYDAY ESSENTIALS', 'eyebrow'), make('h2', 'For the week ahead', 'section-title mb-4'));
+    const featuredRow = make('div', '', 'row row-cols-2 row-cols-md-4 g-3');
+    for (const product of [store.products[0], store.products[10], store.products[30], store.products[40]]) {
+        const column = make('div', '', 'col');
+        const productLink = make('a', '', 'featured-link');
+        productLink.href = 'products.html?q=' + encodeURIComponent(product.englishName) + '#product-gallery';
+        const image = document.createElement('img');
+        image.src = product.image;
+        image.alt = product.englishName;
+        image.width = 220;
+        image.height = 130;
+        image.loading = 'lazy';
+        productLink.append(image, make('strong', product.englishName), make('span', store.formatMoney(product.price)));
+        column.append(productLink);
+        featuredRow.append(column);
+    }
+    featured.append(featuredRow);
+    host.after(featured);
 
-    function readCart() {
-        try { return store.normalizeCart(JSON.parse(localStorage.getItem('lido-cart'))); }
-        catch (error) { return []; }
-    }
-    function updateSummary() {
-        const totals = store.cartTotals(readCart());
-        summary.textContent = totals.quantity ? totals.quantity + ' units saved. Reference total: ' + store.formatMoney(totals.total) : 'No saved products yet. Choose a category to start.';
-        result.classList.remove('error', 'success');
-        if (budget.value === '') { result.textContent = 'Enter a budget to compare it with your saved list.'; return; }
-        const amount = Number(budget.value);
-        if (!Number.isInteger(amount) || amount < 0) {
-            result.textContent = 'Enter a whole budget of zero or more.';
-            result.classList.add('error');
-            return;
-        }
-        const remaining = amount - totals.total;
-        result.textContent = remaining >= 0 ? store.formatMoney(remaining) + ' left in your budget.' : store.formatMoney(-remaining) + ' above your budget. Edit your list before visiting.';
-        result.classList.add(remaining >= 0 ? 'success' : 'error');
-    }
-    budget.addEventListener('input', updateSummary);
-    window.addEventListener('storage', updateSummary);
-    window.addEventListener('pageshow', updateSummary);
-    updateSummary();
 })();

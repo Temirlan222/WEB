@@ -22,6 +22,11 @@ h1, h2, h3 {
     color: #d7a928;
     text-decoration: underline;
 }
+.page-index #browse-products:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
 /* Predefined states for later class switching. No custom layout rules. */
 .hidden, .result-confirmation {
     display: none;

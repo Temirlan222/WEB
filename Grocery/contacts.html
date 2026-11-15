@@ -6,73 +6,73 @@
     <meta name="description" content="Lido grocery store at Uly Dala Avenue, 31, Astana: public contact details, opening hours and a customer review.">
     <meta name="author" content="Saparali Shalkar">
     <title>Contacts and opening hours | Lido Grocery Store</title>
-    <!-- Bootstrap 5.3.8 via CDN; the correction stylesheet follows Bootstrap. -->
+<!-- bootstrap 5.3.8 via CDN; shared site.css customises the Lido interface. -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/shalkar.css">
+    <link rel="stylesheet" href="css/site.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer></script>
     <script src="js/store.js" defer></script>
+    <script src="js/favourites.js" defer></script>
     <script src="js/main.js" defer></script>
     <script src="js/contacts.jquery.js" defer></script>
 </head>
-<body class="page-contacts">
-    <!-- Page author: Saparali Shalkar. -->
-    <!-- container-fluid keeps the header colour full width. -->
-    <header class="site-header container-fluid py-4 text-center text-md-start">
-        <div class="container">
-            <p class="site-name lead fw-bold mb-0">Lido Grocery Store</p>
-        </div>
+<body class="page-contacts d-flex flex-column min-vh-100">
+<a class="visually-hidden-focusable btn btn-light" href="#main-content">Skip to content</a>
+
+
+    <div class="store-strip"><div class="container d-flex justify-content-between gap-3"><span>Your neighbourhood grocery · Astana</span><a href="contacts.html#opening-hours">Open 24 hours <span aria-hidden="true">↗</span></a></div></div>
+    <header class="site-header">
+        <div class="container"><div class="row align-items-center g-3">
+            <div class="col-6 col-lg-3"><a class="brand" href="index.html" aria-label="Lido Grocery Store home">lido<span class="brand-dot">.</span></a><span class="brand-caption d-none d-sm-block">Everyday, nearby.</span></div>
+            <div class="col-6 col-lg-3 order-lg-3 text-end"><a class="saved-link" href="products.html?favourites=1#product-gallery"><span aria-hidden="true">♡</span> Saved items</a><p class="small mb-0 mt-1 d-none d-sm-block">Uly Dala Avenue, 31</p></div>
+            <div class="col-12 col-lg-6 order-lg-2"><form class="header-search d-flex" action="products.html" method="get" role="search"><label class="visually-hidden" for="site-search">Search the product catalogue</label><input class="form-control" id="site-search" type="search" name="q" placeholder="What’s on your shopping list?" maxlength="200"><button class="btn btn-success" type="submit">Search <span aria-hidden="true">↗</span></button></form></div>
+        </div></div>
     </header>
-    <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="dark" aria-label="Main navigation">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#shalkar-navigation" aria-controls="shalkar-navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="shalkar-navigation">
-                <ul class="nav-list navbar-nav mx-auto gap-lg-3">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-                    <li class="nav-item"><a class="nav-link" href="prices.html">Prices</a></li>
-                    <li class="nav-item"><a class="nav-link" href="delivery.html">Order and delivery</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="contacts.html">Contacts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- container gives readable width and phone gutters. -->
-    <main id="main-content" class="site-main container py-4">
-        <h1 id="page-title" class="display-5 fw-bold mb-3 text-center text-md-start">Contacts and opening hours</h1>
+    <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="light" aria-label="Main navigation">
+<div class="container">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle menu"><span class="navbar-toggler-icon"></span> Menu</button>
+<div class="collapse navbar-collapse" id="main-navigation"><ul class="navbar-nav gap-lg-2 flex-wrap">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+<li class="nav-item"><a class="nav-link" href="prices.html">Prices</a></li>
+<li class="nav-item"><a class="nav-link" href="cart.html" data-cart-link>Cart</a></li>
+<li class="nav-item"><a class="nav-link" href="delivery.html">Pickup & delivery</a></li>
+<li class="nav-item"><a class="nav-link active" href="contacts.html" aria-current="page">Contacts</a></li>
+<li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
+</ul></div></div></nav>
+
+    <main id="main-content" class="site-main container py-4 flex-grow-1">
+        <p class="eyebrow">YOUR NEIGHBOURHOOD STORE</p>
+<h1 id="page-title" class="display-5 fw-bold mb-3 text-center text-md-start">Contacts and opening hours</h1>
         <p class="lead mb-4">Lido is a grocery shop at <b>Uly Dala Avenue, 31</b> in Astana.
             The telephone and hours below come from public listings checked on 13 September 2026.
             Call before making a special trip to ask about products or any changes.</p>
 
-        <!-- Outer grid: details and hours stack on phones and sit side by side on desktops. -->
+
         <div class="row g-4 mb-4">
-        <section class="content-section contact-details col-12 col-lg-7">
+        <section class="content-section contact-details col-12 col-lg-7"><div class="surface-panel">
             <h2 class="h3 fw-bold">Find the shop</h2>
-            <!-- Nested row: the address and photograph use responsive columns inside the details column. -->
+
             <div class="row g-3 align-items-start">
                 <div class="col-12 col-md-7">
             <p>Address: Uly Dala Avenue, 31, Astana, Kazakhstan.<br>
                 Phone: <a href="tel:+77479052505">+7&nbsp;747&nbsp;905&nbsp;25&nbsp;05</a>.</p>
-            <!-- Bootstrap alert highlights the unverified email information. -->
-            <p id="email-unavailable" class="alert alert-warning mb-0" role="note">The checked listings do not provide a verified shop email.
-                You can <a href="mailto:?subject=Question%20about%20Lido">prepare an email draft</a>,
-                but must add a confirmed recipient before sending.</p>
+
+            <p id="email-unavailable" class="alert alert-warning mb-0" role="note">A verified shop email is unavailable. You can <a href="#contact-form">prepare a question below</a> and use it when you call or visit Lido.</p>
                 </div>
                 <div class="col-12 col-md-5 text-center text-md-start">
-            <!-- A figure keeps this photograph and its identifying caption together as one piece of evidence. -->
+
             <figure class="figure mb-0">
                 <img class="figure-img img-fluid rounded shadow-sm" src="images/Лидо.jpg" alt="Lido storefront at night, with the illuminated Cyrillic sign above parked cars" width="215" height="279">
                 <figcaption class="figure-caption">The storefront sign reads <q lang="ru">ЛИДО</q>. Photograph from the team repository.</figcaption>
             </figure>
                 </div>
             </div>
-        </section>
+        </div></section>
 
-        <section class="content-section contact-hours col-12 col-lg-5">
+        <section id="opening-hours" class="content-section contact-hours col-12 col-lg-5"><div class="surface-panel">
             <h2 class="h3 fw-bold">Opening hours</h2>
-            <!-- A table makes the relationship between the days and their opening hours explicit. -->
+
             <table class="table table-bordered table-striped align-middle">
                 <caption class="caption-top">Listed weekly schedule<sup><a href="#hours-source">1</a></sup></caption>
                 <thead>
@@ -89,11 +89,11 @@
                 </tbody>
             </table>
             <p id="hours-source" class="small text-body-secondary">1. Source: <a href="https://yandex.kz/maps/ru/org/lido/214320886088/" target="_blank" rel="noopener noreferrer">Lido on Yandex Maps</a>. Confirm holiday arrangements by phone.</p>
-        </section>
+        </div></section>
         </div>
 
         <div class="row g-4 mb-4">
-        <article class="content-section customer-review col-12 col-md-7">
+        <article class="content-section customer-review col-12 col-md-7"><div class="surface-panel">
             <h2 class="h3 fw-bold">A customer review</h2>
             <blockquote cite="https://yandex.kz/maps/ru/org/lido/214320886088/">
                 <p lang="ru">Хороший магазин приемлемые цены, добродушные собственники✊</p>
@@ -101,33 +101,33 @@
             <p>Асан Р., <time datetime="2025-08-13">13 August 2025</time>,
                 <cite><a href="https://yandex.kz/maps/ru/org/lido/214320886088/" target="_blank" rel="noopener noreferrer">public review of Lido</a></cite>.</p>
             <p>This is a published customer opinion, not an interview collected by our team.</p>
-        </article>
+        </div></article>
 
-        <aside class="content-section payment-information col-12 col-md-5">
+        <aside class="content-section payment-information col-12 col-md-5"><div class="surface-panel">
             <h2 class="h3 fw-bold">Payment information</h2>
             <p><a href="https://2gis.kz/astana/firm/70000001066901298/tab/info" target="_blank" rel="noopener noreferrer">2GIS</a>
                 lists cash, card and <abbr title="Quick Response">QR</abbr> payments.
                 Ask staff which options are available when paying.</p>
-            <!-- The span preserves a brand's spelling during translation; it adds no heading or emphasis. -->
+
             <p>For a specific item, such as <span translate="no">Barni</span>, check the package and current price in the shop.</p>
-        </aside>
+        </div></aside>
         </div>
-        <div class="d-flex flex-wrap gap-2 align-items-center mb-4">
+
+    </main>
+
+    <p class="container mb-3"><a class="btn btn-outline-success btn-sm" href="#page-title">Back to top</a></p>
+<footer class="site-footer"><div class="container">        <div id="contact-actions" class="d-flex flex-wrap gap-2 align-items-center mb-4">
             <a class="btn btn-success" href="tel:+77479052505">Call Lido</a>
             <a class="btn btn-outline-success btn-sm" href="https://yandex.kz/maps/ru/org/lido/214320886088/" target="_blank" rel="noopener noreferrer">View on map</a>
-            <button class="btn btn-secondary btn-sm disabled" type="button" disabled aria-describedby="email-unavailable">Email unavailable</button>
+            <a class="btn btn-outline-success btn-sm" href="#email-unavailable">Email information</a>
         </div>
-    </main>
-    <a class="back-to-top btn btn-outline-success btn-sm d-none d-md-inline-block ms-3 mb-3" href="#page-title">Top</a>
-    <footer class="site-footer container-fluid py-4 text-center text-md-start">
-        <div class="container">
-            <div class="row g-3 align-items-center">
-                <p class="col-12 col-md-6 mb-0">&copy; 2026 Lido student project &mdash; Saparali Shalkar.</p>
-                <p class="col-12 col-md-6 mb-0">Uly Dala Avenue, 31, Astana<br><a class="link-light" href="tel:+77479052505">+7&nbsp;747&nbsp;905&nbsp;25&nbsp;05</a></p>
-            </div>
-        </div>
-    </footer>
-    <!-- Bootstrap 5.3.8 bundle powers the collapsing navbar; no custom JavaScript. -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <div class="row g-4">
+        <div class="col-12 col-md-5"><a class="brand" href="index.html">lido<span class="brand-dot">.</span></a><p class="mt-3 mb-2">A little planning. A better everyday shop.</p><p class="footer-muted small">Your neighbourhood grocery at Uly Dala Avenue, 31, Astana.</p></div>
+        <div class="col-6 col-md-3"><h2 class="h6">Explore</h2><a href="products.html">Shop the catalogue</a><a href="prices.html">Reference prices</a><a href="cart.html">Your shopping list</a><a href="colophon.html">About this site</a></div>
+        <div class="col-6 col-md-4"><h2 class="h6">Come say hello</h2><a href="tel:+77479052505">+7 747 905 25 05</a><a href="https://2gis.kz/astana/firm/70000001066901298" target="_blank" rel="noopener noreferrer">Find us on the map ↗</a><a href="contacts.html">Contacts & opening hours</a><a href="mailto:253741@astanait.edu.kz">Email the website team</a></div>
+        </div><div class="footer-bottom d-flex flex-wrap justify-content-between gap-2"><span>© 2026 Lido student project</span><span>Plan here. Confirm prices and availability with the shop.</span></div></div></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -4,9 +4,9 @@ $(function () {
     'use strict';
 
     if (!$('body').hasClass('page-contacts')) return;
-    const $review = $('.customer-review');
-    const $tools = $('.payment-information');
-    const $actions = $('main a[href^="tel:"]').closest('.d-flex');
+    const $review = $('.customer-review > .surface-panel');
+    const $tools = $('.payment-information > .surface-panel');
+    const $actions = $('#contact-actions');
 
     function safeStorageGet(key) {
         try {
@@ -20,11 +20,11 @@ $(function () {
         try {
             window.localStorage.setItem(key, value);
         } catch (error) {
-            // The feature still works when private browsing blocks storage.
+            // the feature still works when private browsing blocks storage.
         }
     }
 
-    // Rewritten feature 1: .on(), .text(), .attr() and fadeToggle replace
+    // rewritten feature 1: .on(), .text(), .attr() and fadeToggle replace
     // addEventListener, textContent, setAttribute and classList. It is shorter.
     const $translation = $('<p>', {
         id: 'review-translation',
@@ -56,7 +56,7 @@ $(function () {
         $translation.stop(true, true).fadeToggle(200);
     });
 
-    // Rewritten feature 2: toggleClass, attr and text replace the old
+    // rewritten feature 2: toggleClass, attr and text replace the old
     // classList, getAttribute/setAttribute and textContent calls.
     const $helpfulButton = $('<button>', {
         id: 'helpful-review',
@@ -81,7 +81,7 @@ $(function () {
         safeStorageSet('lido-contact-review-helpful', String(isHelpful));
     });
 
-    // Rewritten feature 3: the button, temporary field and feedback are built
+    // rewritten feature 3: the button, temporary field and feedback are built
     // with jQuery instead of createElement/appendChild and a click listener.
     const $copyButton = $('<button>', {
         class: 'btn btn-outline-success btn-sm',
@@ -148,7 +148,7 @@ $(function () {
         text: 'Show contact form'
     });
 
-    // The array is turned into list items with each() and appendTo(); none are in HTML.
+    // the array is turned into list items with each() and appendTo(); none are in HTML.
     $(topics).each(function (index, topic) {
         $('<button>', {
             class: 'contact-topic list-group-item list-group-item-action',
@@ -202,7 +202,7 @@ $(function () {
     const $reset = $('<button>').addClass('btn btn-outline-success ms-2').attr({id: 'contact-reset', type: 'reset'}).text('Reset');
     $form.find('[type="submit"]').after($reset);
     $form.append($summary, $download);
-    // Error text is next to its control and also associated for assistive technology.
+    // error text is next to its control and also associated for assistive technology.
     $form.find('[required]').each(function () {
         const $field = $(this);
         const errorId = $field.attr('id') + '-error';
@@ -214,12 +214,12 @@ $(function () {
     $form.find('#contact-success').hide();
     $tools.append($toolsHeading, $toolsIntro, $topicList, $topicStatus, $formToggle, $form);
 
-    // This delegated handler is attached to an existing parent. Direct binding
+    // this delegated handler is attached to an existing parent. Direct binding
     // to .contact-topic before the array was built would miss the new buttons.
     $tools.on('click', '.contact-topic', function () {
         const subject = $(this).attr('data-subject');
 
-        // This chain selects the clicked topic and clears the other siblings.
+        // this chain selects the clicked topic and clears the other siblings.
         $(this)
             .addClass('active')
             .attr('aria-current', 'true')
@@ -228,7 +228,7 @@ $(function () {
             .removeAttr('aria-current');
 
         $(this).parent().siblings('#topic-status').text(`Selected topic: ${subject}.`);
-        $(this).closest('.content-section').find('#contact-subject').val(subject);
+        $(this).closest('.content-section').find('#contact-subject').val(subject).trigger('input');
         $form.stop(true, true).slideDown(250);
         $formToggle.addClass('active').attr('aria-expanded', 'true').text('Hide contact form');
     });
@@ -305,7 +305,7 @@ $(function () {
     });
 
     $form.on('submit', function (event) {
-        // Without preventDefault the browser would reload and remove our messages.
+        // without preventDefault the browser would reload and remove our messages.
         event.preventDefault();
         let valid = true;
 
@@ -345,7 +345,7 @@ $(function () {
                 $(this).attr('tabindex', '-1').trigger('focus');
             });
 
-        // Browser validation helps visitors, but the server must repeat every check.
+        // browser validation helps visitors, but the server must repeat every check.
     });
 
 
@@ -367,17 +367,14 @@ $(function () {
         $link.remove();
         setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
     });
-    // The unavailable email must not lead to a draft without a recipient.
+    // the unavailable email must not lead to a draft without a recipient.
     $('#email-unavailable a').attr('href', '#contact-form').text('prepare a question below').on('click', function (event) {
         event.preventDefault();
         $form.stop(true, true).slideDown(180, function () { $('#contact-name').trigger('focus'); });
         $formToggle.addClass('active').attr('aria-expanded', 'true').text('Hide contact form');
     });
-    $('main button[disabled]').filter(function () { return $(this).text() === 'Email unavailable'; })
-        .prop('disabled', false).removeClass('disabled').text('Why no email?').on('click', function () {
-            $('#email-unavailable').attr('tabindex', '-1').trigger('focus');
-        });
 
-    // Element selector and :first filter add a useful relationship to the schedule.
+
+    // element selector and :first filter add a useful relationship to the schedule.
     $('table:first').attr('aria-describedby', 'hours-source');
 });

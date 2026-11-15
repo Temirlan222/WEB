@@ -3,7 +3,7 @@ $(function () {
     'use strict';
 
     // .find(), .val(), .text() and .on() replace native lookups, values, textContent and listeners.
-    // The field rules are unchanged; jQuery makes the DOM updates shorter and clearer.
+    // the field rules are unchanged; jQuery makes the DOM updates shorter and clearer.
     const $form = $('#product-request-form');
     if (!$form.length || !window.Lido) {
         return;
@@ -29,7 +29,7 @@ $(function () {
     let $counter = $('#comment-counter');
     let hasValidated = false;
 
-    // Keep required/min/maxlength in HTML for the browser fallback when scripts are disabled.
+    // keep required/min/maxlength in HTML for the browser fallback when scripts are disabled.
     $form.prop('noValidate', true);
     $('#request-date').attr('min', Lido.today());
     // .html() is only for this trusted constant markup; visitor input always uses .text().
@@ -96,7 +96,7 @@ $(function () {
     }
 
     function hideMessage($message) {
-        // Cancel an obsolete effect before clearing it; no stale completion callback can reveal it.
+        // cancel an obsolete effect before clearing it; no stale completion callback can reveal it.
         $message.stop(true, false).addClass('hidden').removeAttr('style').empty();
     }
 
@@ -137,11 +137,11 @@ $(function () {
     }
 
     function submitRequest(event) {
-        // Without this, the HTML GET would reload the page and put these entries in its URL.
+        // without this, the HTML GET would reload the page and put these entries in its URL.
         event.preventDefault();
         hasValidated = true;
         const values = collectValues();
-        // Browser checks never replace server validation; this demo has no server submission.
+        // browser checks never replace server validation; this demo has no server submission.
         const errors = Lido.validateRequest(values, Lido.today());
         showFeedback(errors);
         hideMessage($confirmation);
@@ -156,7 +156,7 @@ $(function () {
         }
 
         const categoryLabel = $form.find('#category option:selected').text();
-        // Reset only after all checks pass; captured values still build the summary afterwards.
+        // reset only after all checks pass; captured values still build the summary afterwards.
         $(this).trigger('reset');
         $summary.empty();
         addSummaryRow('Name', values.name);

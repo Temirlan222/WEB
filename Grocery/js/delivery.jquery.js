@@ -7,7 +7,7 @@ $(function () {
         { name: 'name', label: 'Your name', type: 'text', autocomplete: 'name' },
         { name: 'email', label: 'Email', type: 'email', autocomplete: 'email' },
         { name: 'phone', label: 'Phone', type: 'tel', autocomplete: 'tel' },
-        { name: 'address', label: 'Delivery address', type: 'text', autocomplete: 'street-address' }
+        { name: 'address', label: 'Delivery address', type: 'text', autocomplete: 'address-line1' }
     ];
     const payments = [
         { value: 'cash', label: 'Cash on receipt' },
@@ -22,12 +22,13 @@ $(function () {
         return $('<' + tag + '>').text(text || '').addClass(classes || '');
     }
 
-    document.title = 'Order and delivery | Lido Grocery Store';
+    document.title = 'Pickup & delivery | Lido Grocery Store';
     $('meta[name="description"]').attr('content', 'Prepare your shopping list and contact Lido about collection or delivery.');
-    $('nav a[href="prices.html"]').text('Cart');
-    const $main = $('main').empty();
+    const $notice = $('#storage-notice').detach();
+    const $main = $('main').empty().append($notice);
     $main.append(
-        make('h1', 'Order & delivery', 'display-5 fw-bold mb-3').attr('id', 'page-title'),
+        make('p', 'THE NEXT STEP', 'eyebrow'),
+        make('h1', 'Pickup & delivery', 'display-5 fw-bold mb-3').attr('id', 'page-title'),
         make('p', 'Your groceries, your way. Prepare a list, then confirm it with Lido.', 'lead'),
         make('p', 'This page does not send an order or take payment. Contact details stay on this page only.', 'small text-body-secondary')
     );
@@ -49,7 +50,7 @@ $(function () {
     const $methodGroup = make('div', '', 'mb-3').insertBefore($form.find('[name="address"]').closest('.mb-3'));
     make('label', 'Pickup or delivery?', 'form-label').attr('for', 'delivery-method').appendTo($methodGroup);
     const $method = $('<select>').attr({ id: 'delivery-method', name: 'method', 'aria-describedby': 'error-method' })
-        .prop('required', true).addClass('form-select').appendTo($methodGroup);
+        .addClass('form-select').appendTo($methodGroup);
     $method.append(
         $('<option>').val('pickup').text('Pickup · collect at Uly dala 31'),
         $('<option>').val('delivery').text('Delivery · to your address')
@@ -58,7 +59,7 @@ $(function () {
     const $paymentGroup = make('div', '', 'mb-3').appendTo($form);
     make('label', 'Payment method', 'form-label').attr('for', 'delivery-payment').appendTo($paymentGroup);
     const $payment = $('<select>').attr({ id: 'delivery-payment', name: 'payment', 'aria-describedby': 'error-payment payment-note' })
-        .prop('required', true).addClass('form-select').appendTo($paymentGroup);
+        .addClass('form-select').appendTo($paymentGroup);
     for (const payment of payments) {
         $('<option>').val(payment.value).text(payment.label).appendTo($payment);
     }
@@ -68,17 +69,17 @@ $(function () {
     const $actions = make('div', '', 'd-flex flex-wrap gap-2').appendTo($form);
     make('button', 'Review my list', 'btn btn-success').prop('type', 'submit').appendTo($actions);
     make('button', 'Reset details', 'btn btn-outline-success').prop('type', 'reset').appendTo($actions);
-    const $confirmation = make('section', '', 'alert alert-success mt-3 d-none')
+    const $confirmation = make('div', '', 'alert alert-success mt-3 d-none')
         .attr({ id: 'delivery-confirmation', role: 'status', tabindex: '-1' }).appendTo($details);
 
     const $aside = make('aside', '', 'col-12 col-lg-5').appendTo($row);
     const $summary = make('div', '', 'card bg-white shadow-sm p-3 mb-3').appendTo($aside);
-    $summary.append(make('h2', 'Your shopping list', 'h4'));
-    const $items = make('ul', '', 'list-unstyled mb-2').appendTo($summary);
+    $summary.append(make('h2', 'Your visit', 'h4'));
+    const $cartMessage = make('p', '', 'mb-2').appendTo($summary);
     const $total = make('p', '', 'fw-bold').appendTo($summary);
     $summary.append(
         make('p', 'Catalogue estimates only. Confirm final prices, stock and any delivery fee with Lido.', 'small text-body-secondary'),
-        make('a', 'Edit cart', 'btn btn-outline-success').attr('href', 'prices.html')
+        make('a', 'Edit cart', 'btn btn-outline-success').attr('href', 'cart.html')
     );
     $aside.append(
         make('a', 'Call Lido: +7 747 905 25 05', 'btn btn-success mb-3').attr('href', 'tel:+77479052505'),
@@ -90,21 +91,12 @@ $(function () {
     }
 
     function refreshCart() {
-        try {
-            cart = store.normalizeCart(JSON.parse(localStorage.getItem('lido-cart')));
-        } catch (error) {
-            cart = [];
-        }
-        $items.empty();
-        for (const line of cart) {
-            const product = store.findProduct(line.id);
-            make('li', product.englishName + ' · ' + product.unit + ' × ' + line.quantity + ' = ' + store.formatMoney(product.price * line.quantity), 'border-bottom py-2').appendTo($items);
-        }
-        if (!cart.length) $items.append(make('li', 'Your cart is empty. Add products before preparing a list.'));
+        cart = store.cart;
+        $cartMessage.text(cart.length ? 'Your items are saved on the Cart page.' : 'Your cart is empty. Add products before preparing a list.');
         $total.text('Product total: ' + store.formatMoney(store.cartTotals(cart).total));
         $details.toggleClass('d-none', !cart.length);
         $summary.find('a').text(cart.length ? 'Edit cart' : 'Browse products')
-            .attr('href', cart.length ? 'prices.html' : 'products.html#product-gallery');
+            .attr('href', cart.length ? 'cart.html' : 'products.html#product-gallery');
         hideConfirmation();
     }
 
@@ -147,7 +139,7 @@ $(function () {
         hideConfirmation();
         submitted = true;
         let valid = true;
-        $form.find(':input[required]:enabled').each(function () {
+        $form.find(':input[required]:enabled, select:enabled').each(function () {
             $(this).val($(this).val().trim());
             if (!validate($(this))) valid = false;
         });
@@ -162,7 +154,6 @@ $(function () {
             make('p', value('name') + ' · ' + value('email') + ' · ' + value('phone')),
             make('p', value('method') === 'delivery' ? 'Delivery to: ' + value('address') : 'Pickup: Uly dala 31, Astana.'),
             make('p', 'Payment preference: ' + payments.find(payment => payment.value === value('payment')).label),
-            $items.clone().removeAttr('id'),
             make('p', 'Estimated product total: ' + store.formatMoney(store.cartTotals(cart).total), 'fw-bold'),
             make('p', 'Nothing has been sent or paid. Call Lido or show this list in store to confirm stock, final prices and delivery. Your cart is kept.', 'mb-0')
         ).removeClass('d-none').hide().fadeIn(200, function () { $(this).trigger('focus'); });
@@ -172,12 +163,10 @@ $(function () {
         hideConfirmation();
         $form.find('input, select').removeClass('is-invalid is-valid').removeAttr('aria-invalid');
         $form.find('.invalid-feedback').text('');
-        // Reset values are applied after the reset event finishes.
+        // reset values are applied after the reset event finishes.
         setTimeout(toggleAddress, 0);
     });
-    $(window).on('storage', function (event) {
-        if (event.originalEvent.key === 'lido-cart' || event.originalEvent.key === null) refreshCart();
-    });
+    $(window).on('cart-updated', refreshCart);
     refreshCart();
     toggleAddress();
 });

@@ -1,8 +1,8 @@
 'use strict';
 
-// Data and calculations do not need the DOM or jQuery.
+// data and calculations do not need the DOM or jQuery.
 (function () {
-    // Galmart Astana listing snapshots; these are not live Lido stock or price promises.
+    // galmart Astana listing snapshots; these are not live Lido stock or price promises.
     const storeCategories = [
         {
             "id": "dairy",
@@ -631,10 +631,6 @@
         return new Intl.NumberFormat('en-US').format(amount) + ' ₸';
     }
 
-    function makeReference() {
-        return 'DEMO-' + Math.floor(100000 + Math.random() * 900000);
-    }
-
     function formatDate(date) {
         return date.getFullYear() + '-' + String(date.getMonth() + 1).padStart(2, '0') + '-' + String(date.getDate()).padStart(2, '0');
     }
@@ -707,8 +703,59 @@
         addItem: addItem,
         cartTotals: cartTotals,
         formatMoney: formatMoney,
-        makeReference: makeReference,
         today: today,
         validateRequest: validateRequest
     };
+
+    // корзина хранит только ID и количество. Все страницы используют одни и те же действия.
+    const store = window.Lido;
+    store.storageAvailable = true;
+    store.readCart = function () {
+        let raw;
+        try {
+            raw = window.localStorage.getItem('lido-cart');
+        } catch (error) {
+            store.storageAvailable = false;
+            return store.cart;
+        }
+        try { return normalizeCart(JSON.parse(raw)); }
+        catch (error) { return []; }
+    };
+    function notifyCart() {
+        window.dispatchEvent(new Event('cart-updated'));
+    }
+    store.saveCart = function () {
+        store.cart = normalizeCart(store.cart);
+        try {
+            window.localStorage.setItem('lido-cart', JSON.stringify(store.cart));
+            store.storageAvailable = true;
+        } catch (error) { store.storageAvailable = false; }
+        notifyCart();
+    };
+    store.addToCart = function (id) {
+        if (store.storageAvailable) store.cart = store.readCart();
+        const before = cartTotals(store.cart).quantity;
+        store.cart = addItem(store.cart, id);
+        store.saveCart();
+        return cartTotals(store.cart).quantity > before;
+    };
+    store.setCartQuantity = function (id, quantity) {
+        if (store.storageAvailable) store.cart = store.readCart();
+        store.cart = changeQuantity(store.cart, id, quantity);
+        store.saveCart();
+    };
+    store.clearCart = function () { store.cart = []; store.saveCart(); };
+    store.cart = store.readCart();
+    if (window.addEventListener) {
+        window.addEventListener('storage', function (event) {
+            if (event.key === 'lido-cart' || event.key === null) {
+                store.cart = store.readCart();
+                notifyCart();
+            }
+        });
+        window.addEventListener('pageshow', function () {
+            if (store.storageAvailable) store.cart = store.readCart();
+            notifyCart();
+        });
+    }
 })();

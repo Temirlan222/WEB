@@ -1,11 +1,12 @@
 'use strict';
-// Plain JavaScript owns the About page guide; Contacts DOM lives in contacts.jquery.js.
+// plain JavaScript owns the About page guide; Contacts DOM lives in contacts.jquery.js.
 (function () {
     const pages = [
-        {title: 'Home', url: 'index.html', text: 'Choose a category, continue your saved list and compare its total with your budget.'},
-        {title: 'Products', url: 'products.html', text: 'Search 50 products, filter by category or your cart, prepare an enquiry and download a shopping list.'},
-        {title: 'Cart', url: 'prices.html', text: 'Change quantities, remove items and review the estimated total before continuing to delivery information.'},
-        {title: 'Order and delivery', url: 'delivery.html', text: 'Prepare a local delivery or pickup plan. This site does not submit a real order or collect a payment.'},
+        {title: 'Home', url: 'index.html', text: 'Choose a category and explore everyday essentials.'},
+        {title: 'Products', url: 'products.html', text: 'Search 50 products, save favourites, view product details, add items to your cart.'},
+        {title: 'Prices', url: 'prices.html', text: 'Compare recorded reference prices and pack sizes from the same catalogue.'},
+        {title: 'Cart', url: 'cart.html', text: 'Change quantities, remove items and review or download the shopping list before continuing to delivery information.'},
+        {title: 'Pickup & delivery', url: 'delivery.html', text: 'Prepare a local delivery or pickup plan. This site does not submit a real order or collect a payment.'},
         {title: 'Contacts', url: 'contacts.html', text: 'Find the address, phone and listed hours; prepare and download a question for the store.'},
         {title: 'About this site', url: 'colophon.html', text: 'Find the right page using this guide and learn how the site works.'}
     ];
@@ -17,8 +18,6 @@
         element.className = classes || '';
         return element;
     }
-    // Update existing outdated copy; the frozen HTML source remains unchanged.
-    host.querySelectorAll('p')[1].textContent = 'The site uses HTML, Bootstrap and a small colour stylesheet. Plain JavaScript builds this guide and the Home budget; jQuery handles the product catalogue and enquiry forms. The menu uses the Bootstrap bundle. Files open directly in a browser, with internet access for the CDN libraries. No real payment or order is submitted.';
     const heading = make('h3', 'Find the page you need', 'h5 fw-bold mt-4');
     const label = make('label', 'Search pages by name or purpose', 'form-label');
     label.htmlFor = 'site-page-search';

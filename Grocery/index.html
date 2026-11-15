@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,87 +7,72 @@
     <meta name = "description" content = "Grocery store: Lido">
     <meta name = "author" content = "Temirlan">
     <title>Home | Lido Grocery Store</title>
-    <!-- Bootstrap 5.3.8 via CDN; the correction stylesheet follows Bootstrap. -->
+<!-- bootstrap 5.3.8 via CDN; shared site.css customises the Lido interface. -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/temirlan.css">
+    <link rel="stylesheet" href="css/site.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer></script>
     <script src="js/store.js" defer></script>
+    <script src="js/favourites.js" defer></script>
     <script src="js/home.js" defer></script>
     <script src="js/main.js" defer></script>
 </head>
 <body class="page-index d-flex flex-column min-vh-100">
-    <a class="visually-hidden-focusable btn btn-light" href="#main-content">Skip to content</a>
-    <!-- container-fluid fills the screen; container aligns the shared header content. -->
-    <header class="site-header container-fluid py-4 text-center text-md-start">
-        <div class="container">
-            <p class="site-name h2 fw-bold mb-1">Lido Grocery Store</p>
-            <p class="mb-0">Your local grocery store at Uly Dala Avenue, 31</p>
-        </div>
-    </header>
-    <!-- Native details/summary opens the phone menu without any scripts. Bootstrap controls its layout. -->
-    <nav class="site-nav py-2" aria-label="Main navigation">
-        <div class="container">
-            <details id="mobile-navigation" class="d-lg-none">
-                <summary class="btn btn-outline-light w-100 text-start">Menu</summary>
-                <ul class="nav flex-column mt-2">
-                    <li class="nav-item"><a id="mobile-nav-index" class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a id="mobile-nav-products" class="nav-link" href="products.html">Products</a></li>
-                    <li class="nav-item"><a id="mobile-nav-prices" class="nav-link" href="prices.html">Prices</a></li>
-                    <li class="nav-item"><a id="mobile-nav-delivery" class="nav-link" href="delivery.html">Order and delivery</a></li>
-                    <li class="nav-item"><a id="mobile-nav-contacts" class="nav-link" href="contacts.html">Contacts</a></li>
-                    <li class="nav-item"><a id="mobile-nav-colophon" class="nav-link" href="colophon.html">About this site</a></li>
-                </ul>
-            </details>
-            <ul id="desktop-navigation" class="nav d-none d-lg-flex justify-content-center gap-2">
-                    <li class="nav-item"><a id="nav-index" class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-                    <li class="nav-item"><a id="nav-products" class="nav-link" href="products.html">Products</a></li>
-                    <li class="nav-item"><a id="nav-prices" class="nav-link" href="prices.html">Prices</a></li>
-                    <li class="nav-item"><a id="nav-delivery" class="nav-link" href="delivery.html">Order and delivery</a></li>
-                    <li class="nav-item"><a id="nav-contacts" class="nav-link" href="contacts.html">Contacts</a></li>
-                    <li class="nav-item"><a id="nav-colophon" class="nav-link" href="colophon.html">About this site</a></li>
-            </ul>
-        </div>
-    </nav>
+<a class="visually-hidden-focusable btn btn-light" href="#main-content">Skip to content</a>
 
-    <!-- main content is an id because this page has one main content region -->
-    <!-- container limits reading width on larger screens and adds phone gutters. -->
+
+    <div class="store-strip"><div class="container d-flex justify-content-between gap-3"><span>Your neighbourhood grocery · Astana</span><a href="contacts.html#opening-hours">Open 24 hours <span aria-hidden="true">↗</span></a></div></div>
+    <header class="site-header">
+        <div class="container"><div class="row align-items-center g-3">
+            <div class="col-6 col-lg-3"><a class="brand" href="index.html" aria-label="Lido Grocery Store home">lido<span class="brand-dot">.</span></a><span class="brand-caption d-none d-sm-block">Everyday, nearby.</span></div>
+            <div class="col-6 col-lg-3 order-lg-3 text-end"><a class="saved-link" href="products.html?favourites=1#product-gallery"><span aria-hidden="true">♡</span> Saved items</a><p class="small mb-0 mt-1 d-none d-sm-block">Uly Dala Avenue, 31</p></div>
+            <div class="col-12 col-lg-6 order-lg-2"><form class="header-search d-flex" action="products.html" method="get" role="search"><label class="visually-hidden" for="site-search">Search the product catalogue</label><input class="form-control" id="site-search" type="search" name="q" placeholder="What’s on your shopping list?" maxlength="200"><button class="btn btn-success" type="submit">Search <span aria-hidden="true">↗</span></button></form></div>
+        </div></div>
+    </header>
+
+    <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="light" aria-label="Main navigation">
+<div class="container">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle menu"><span class="navbar-toggler-icon"></span> Menu</button>
+<div class="collapse navbar-collapse" id="main-navigation"><ul class="navbar-nav gap-lg-2 flex-wrap">
+<li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+<li class="nav-item"><a class="nav-link" href="prices.html">Prices</a></li>
+<li class="nav-item"><a class="nav-link" href="cart.html" data-cart-link>Cart</a></li>
+<li class="nav-item"><a class="nav-link" href="delivery.html">Pickup & delivery</a></li>
+<li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+<li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
+</ul></div></div></nav>
+
+
+
     <main id="main-content" class="site-main container py-4 flex-grow-1">
-    <h1 id="page-title" class="display-5 fw-bold mb-4 text-center text-md-start">Welcome to Lido Grocery Store</h1>
-    <p class="d-flex flex-wrap gap-2 mb-4">
-        <a id="browse-products" class="btn btn-success" href="products.html#product-gallery">Browse products</a>
-        <a id="view-hours" class="btn btn-outline-success" href="#opening-hours">Opening hours</a>
-        <a id="prepare-request" class="btn btn-outline-success" href="products.html#product-request">Prepare a product request</a>
-    </p>
+    <section class="home-hero mb-5" aria-labelledby="page-title"><div class="row align-items-center g-0">
+        <div class="col-12 col-lg-6 hero-copy"><p class="eyebrow">YOUR EVERYDAY STARTS HERE</p><h1 id="page-title">Good food.<br>Close to <em>home.</em></h1><p class="hero-description">From the morning milk to tonight’s dinner. Find your essentials, build a list and make your next visit a little easier.</p><div class="d-flex flex-wrap gap-2"><a id="browse-products" class="btn btn-success btn-lg" href="products.html#product-gallery">Explore the catalogue <span aria-hidden="true">↗</span></a><a id="view-hours" class="btn btn-outline-success btn-lg" href="#opening-hours">Visit Lido</a></div><p class="hero-footnote">50 products · 5 everyday categories · One simple list</p></div>
+        <div class="col-12 col-lg-6 hero-picture"><img src="images/catalogue/apples.webp" width="600" height="338" alt="Red apples from the fruit and vegetables catalogue" fetchpriority="high"><div class="hero-note"><span class="eyebrow">A FRESH START</span><strong>Small shops.<br> Everyday favourites.</strong><a href="products.html?category=produce#product-gallery">Discover fruit & vegetables ↗</a></div></div>
+    </div></section>
+    <div class="service-line row g-3 mb-5"><div class="col-12 col-md-4"><span class="service-number">01</span><strong>Choose your essentials</strong><p>Browse five everyday categories.</p></div><div class="col-12 col-md-4"><span class="service-number">02</span><strong>Make it your list</strong><p>Save favourites and build your shopping list.</p></div><div class="col-12 col-md-4"><span class="service-number">03</span><strong>Visit or call Lido</strong><p>Confirm availability with the shop.</p></div></div>
+
+
+
+    <section id="products-summary" class="content-section mb-5 products-summary">
+        <p class="eyebrow">THE EVERYDAY EDIT</p><h2 class="section-title">What’s on your list?</h2>
+<p class="text-body-secondary">Find your essentials by category. The prices are recorded references, ready to help you plan.</p>
+    </section>
     <section class="content-section mb-4 pb-4 border-bottom about-section">
         <h2 class="h3 fw-bold">About Us</h2>
         <p id="cascade-note" class="row g-3 align-items-center mb-0">
             <span class="col-12 col-md-4 col-lg-3 text-center text-md-start">
-            <img class="store-photo img-fluid rounded border border-white" src="Лидо.jpg" alt="Front entrance of Lido Grocery Store" width="150" height="200">
+            <img class="store-photo img-fluid rounded border border-white" src="Лидо.jpg" alt="Front entrance of Lido Grocery Store" width="150" height="200" loading="lazy">
             </span>
             <span class="col-12 col-md-8 col-lg-9">
            Welcome to Lido Grocery Store at Uly Dala 31.
-            The Lido Grocery market has everything that is needed
-            daily in any residential area. The products available include food,
+            Find everyday groceries, drinks and household essentials at Lido. The products available include food,
             drinks, snacks, sweets, home care products, fresh fruits and vegetables,
             meat products, and other non-food items. The benefit of the Lido market is
             that you can go shopping at any time of day because the store is operating around the clock 24/7.
             </span>
         </p>
     </section>
-
-
-    <hr class="my-4">
-    <section id="products-summary" class="content-section mb-4 pb-4 border-bottom products-summary">
-        <h2 class="h3 fw-bold">Our Products</h2>
-        <p>
-            Lido has a big range of commodities offered in various departments.
-            People may purchase dairy products, bread, beverages, frozen products,
-            sweets, fruits, vegetables, meat, and cleaning materials. The supermarket
-            also contains a section of non-food commodities such as toys, socks, and accessory items.
-            More details on these sections can be found on the <a href="products.html">Products page</a>.
-        </p>
-    </section>
-    <hr class="my-4">
     <section id="opening-hours" class="content-section mb-4 pb-4 border-bottom opening-hours row g-3">
         <h2 class="h3 fw-bold col-12 mb-0">Opening Hours</h2>
         <p class="col-12 col-md-6 mb-0">
@@ -98,26 +84,21 @@
             The store can be used both for quick purchases and for larger everyday shopping.
         </p>
     </section>
-    <hr class="my-4">
     <section id="website-summary" class="content-section mb-4 pb-4 border-bottom website-summary">
         <h2 class="h3 fw-bold">About This Website</h2>
         <p>
-            A website has been made to provide basic information regarding Lido Grocery Store.
-            People can find out about various product categories, see different prices at the store,
-            and get some meaningful information about the store as well. The information presented in
-            this website is dependent on our visit to the store and the information that we collected from there.
+            Store information and photographs come from the team visit. Catalogue names and reference prices
+            come from Galmart Astana listings recorded on 2 November 2026. Confirm current prices and
+            availability with Lido. This site prepares a local shopping list, not an online order.
         </p>
     </section>
 </main>
-    <p class="container d-none d-md-block mb-3"><a id="back-to-top" class="btn btn-outline-success btn-sm" href="#page-title">Top</a></p>
-     <footer id="site-footer" class="site-footer container-fluid py-4 text-center text-md-start">
-        <div class="container">
-            <div class="row g-3 align-items-center small">
-                <p class="col-12 col-md-6 col-lg-4 mb-0">Lido Grocery Store<br>&copy; 2026 Lido student project</p>
-                <p class="col-12 col-md-6 col-lg-4 mb-0">Uly Dala Avenue, 31, Astana<br><a id="shop-phone" class="link-light text-break" href="tel:+77479052505">+7 747 905 25 05</a></p>
-                <p class="col-12 col-md-6 col-lg-4 mb-0"><a id="shop-map" class="link-light" href="https://2gis.kz/astana/firm/70000001066901298" target="_blank" rel="noopener noreferrer">View Lido on the map</a><br><a id="team-email" class="link-light text-break" href="mailto:253741@astanait.edu.kz">Email the website team</a></p>
-            </div>
-        </div>
-    </footer>
+    <p class="container mb-3"><a class="btn btn-outline-success btn-sm" href="#page-title">Back to top</a></p>
+<footer class="site-footer"><div class="container"><div class="row g-4">
+        <div class="col-12 col-md-5"><a class="brand" href="index.html">lido<span class="brand-dot">.</span></a><p class="mt-3 mb-2">A little planning. A better everyday shop.</p><p class="footer-muted small">Your neighbourhood grocery at Uly Dala Avenue, 31, Astana.</p></div>
+        <div class="col-6 col-md-3"><h2 class="h6">Explore</h2><a href="products.html">Shop the catalogue</a><a href="prices.html">Reference prices</a><a href="cart.html">Your shopping list</a><a href="colophon.html">About this site</a></div>
+        <div class="col-6 col-md-4"><h2 class="h6">Come say hello</h2><a href="tel:+77479052505">+7 747 905 25 05</a><a href="https://2gis.kz/astana/firm/70000001066901298" target="_blank" rel="noopener noreferrer">Find us on the map ↗</a><a href="contacts.html">Contacts & opening hours</a><a href="mailto:253741@astanait.edu.kz">Email the website team</a></div>
+        </div><div class="footer-bottom d-flex flex-wrap justify-content-between gap-2"><span>© 2026 Lido student project</span><span>Plan here. Confirm prices and availability with the shop.</span></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

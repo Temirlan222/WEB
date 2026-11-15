@@ -3,162 +3,77 @@
     <head>
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Current product prices at Lido Grocery Store" name="description">
+        <meta content="Recorded reference prices for the Lido shopping list" name="description">
         <meta content="Nurbayev Murager" name="author">
         <title>Prices | Lido Grocery Store</title>
-        <!-- Bootstrap 5.3.3 from CDN. Custom CSS follows Bootstrap. -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/murager.css" rel="stylesheet">
+<!-- bootstrap 5.3.8 via CDN; shared site.css customises the Lido interface. -->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/site.css">
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" defer></script>
         <script src="js/store.js" defer></script>
-        <script src="js/cart.js" defer></script>
+    <script src="js/favourites.js" defer></script>
+<script src="js/main.js" defer></script>
+        <script src="js/prices.js" defer></script>
     </head>
     <body class="page-prices d-flex flex-column min-vh-100">
-        <header class="site-header container-fluid py-4 text-white text-center text-md-start">
-            <!-- container-fluid lets the header use the full screen width. -->
-            <div class="container">
-                <p class="site-name h2 mb-0">Lido Grocery Store</p>
-            </div>
-        </header>
-        <!-- Bootstrap Navbar: kept the six original links and added a collapse toggler. -->
-        <nav aria-label="Main navigation" class="site-nav navbar navbar-expand-lg" data-bs-theme="dark">
-            <div class="container">
-                <button aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#main-menu" data-bs-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="main-menu">
-                    <ul class="nav-list navbar-nav mx-auto gap-lg-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="products.html">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a aria-current="page" class="nav-link active" href="prices.html">Prices</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="delivery.html">Order and delivery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contacts.html">Contacts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="colophon.html">About this site</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- main content is an id because this page has one main content region -->
-        <main class="site-main container py-4 flex-grow-1" id="main-content">
-            <!-- container limits text width on large screens and keeps side padding on phones. -->
-            <!-- page title is an id because this page has one primary title -->
-            <h1 class="display-5 fw-bold text-center text-md-start mb-3" id="page-title">Product Prices</h1>
-            <p class="lead">The content of this page represents a summary of costs for a number of goods that were available at Lido Grocery Store. In this case, the most frequently purchased categories were selected, allowing users the possibility of gauging approximately how much visitors have to spend on groceries. The goods presented in the table can be distinguished by their type. Prices may change during the week — always check the shelf price</p>
-            <p class="d-flex flex-wrap gap-2 align-items-center mb-4"> <a class="btn btn-success" href="#price-table">Go directly to the price table</a> or <a class="btn btn-outline-success" href="#price-information">read information about the prices</a>. </p>
+<a class="visually-hidden-focusable btn btn-light" href="#main-content">Skip to content</a>
+        <div class="store-strip"><div class="container d-flex justify-content-between gap-3"><span>Your neighbourhood grocery · Astana</span><a href="contacts.html#opening-hours">Open 24 hours <span aria-hidden="true">↗</span></a></div></div>
+    <header class="site-header">
+        <div class="container"><div class="row align-items-center g-3">
+            <div class="col-6 col-lg-3"><a class="brand" href="index.html" aria-label="Lido Grocery Store home">lido<span class="brand-dot">.</span></a><span class="brand-caption d-none d-sm-block">Everyday, nearby.</span></div>
+            <div class="col-6 col-lg-3 order-lg-3 text-end"><a class="saved-link" href="products.html?favourites=1#product-gallery"><span aria-hidden="true">♡</span> Saved items</a><p class="small mb-0 mt-1 d-none d-sm-block">Uly Dala Avenue, 31</p></div>
+            <div class="col-12 col-lg-6 order-lg-2"><form class="header-search d-flex" action="products.html" method="get" role="search"><label class="visually-hidden" for="site-search">Search the product catalogue</label><input class="form-control" id="site-search" type="search" name="q" placeholder="What’s on your shopping list?" maxlength="200"><button class="btn btn-success" type="submit">Search <span aria-hidden="true">↗</span></button></form></div>
+        </div></div>
+    </header>
+
+        <nav class="site-nav navbar navbar-expand-lg" data-bs-theme="light" aria-label="Main navigation">
+<div class="container">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle menu"><span class="navbar-toggler-icon"></span> Menu</button>
+<div class="collapse navbar-collapse" id="main-navigation"><ul class="navbar-nav gap-lg-2 flex-wrap">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+<li class="nav-item"><a class="nav-link active" href="prices.html" aria-current="page">Prices</a></li>
+<li class="nav-item"><a class="nav-link" href="cart.html" data-cart-link>Cart</a></li>
+<li class="nav-item"><a class="nav-link" href="delivery.html">Pickup & delivery</a></li>
+<li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+<li class="nav-item"><a class="nav-link" href="colophon.html">About this site</a></li>
+</ul></div></div></nav>
+
+        <main id="main-content" class="site-main container py-4 flex-grow-1">
+
+
+            <p class="eyebrow">PLAN YOUR SHOP</p>
+<h1 class="display-5 fw-bold mb-3" id="page-title">A little planning.<br>A clearer budget.</h1>
+            <p class="page-intro">Find a price at a glance. Compare your everyday essentials before building your list.</p>
             <section class="content-section price-section mb-4" id="price-table">
-                <h2 class="h3 mb-3">Current Prices</h2>
-                <p> All prices below were collected directly from the store. Prices are shown in <abbr title="Kazakhstani Tenge"> KZT </abbr>. Some products are sold by piece, while others are sold by <abbr title="Kilogram"> kg </abbr>. </p>
-                <!-- Bootstrap Table: adapted the striped table example to our existing product prices, caption and column headers. -->
-                <div class="table-responsive border rounded shadow-sm bg-white">
-                    <table class="price-table table table-sm table-striped table-bordered table-hover align-middle mb-0">
-                        <caption class="caption-top px-2 small text-body-secondary">
-                            Selected Products and Their Prices
-                        </caption>
-                        <thead class="table-success">
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Milk "Lactel"</td>
-                                <td>Dairy</td>
-                                <td>1 L</td>
-                                <td>846 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Bread</td>
-                                <td>Food Products</td>
-                                <td>1 piece</td>
-                                <td>230 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Apples</td>
-                                <td>Fruit and Vegetables</td>
-                                <td>1 kg</td>
-                                <td>672 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Chocolate "Twix"</td>
-                                <td>Sweets</td>
-                                <td>1 piece</td>
-                                <td>435 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Juice "Rich"</td>
-                                <td>Beverages</td>
-                                <td>1 L</td>
-                                <td>1335 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Potato Chips "Lays"</td>
-                                <td>Snacks</td>
-                                <td>1 pack</td>
-                                <td>1100 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Laundry Detergent "Ariel"</td>
-                                <td>Household Cleaning</td>
-                                <td>1 pack</td>
-                                <td>5100 ₸</td>
-                            </tr>
-                            <tr>
-                                <td>Sausage</td>
-                                <td>Meat</td>
-                                <td>1 pack</td>
-                                <td>2000 ₸</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            <hr class="my-4">
-            <section class="content-section price-information mb-4" id="price-information">
-                <h2 class="h3 mb-3">Price Information</h2>
-                <div class="row g-4 align-items-start">
-                    <p class="col-12 col-md-6 col-lg-4 mb-0">Product pricing may fluctuate because shops receive new supplies, conduct sales activities, and change their product mix. Hence, the amount mentioned here is not fixed since the amounts given here are based on our observations at the time of our visit. Also, buyers should confirm with the current shelf price before buying any given product.</p>
-                    <div class="col-12 col-md-6 col-lg-4">
-                        <h3 class="h5">How We Collected the Prices</h3>
-                        <ol type="1">
-                            <li>We visited Lido Grocery Store in person.</li>
-                            <li>We selected products from several different categories.</li>
-                            <li>We checked the prices shown on the shelves.</li>
-                            <li>We recorded the information for this website.</li>
-                        </ol>
+                <h2 class="visually-hidden">Find reference prices</h2>
+                <div class="price-tools surface-panel mb-4">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-12 col-md-7"><label class="form-label" for="price-search">Which product are you looking for?</label><input id="price-search" class="form-control" type="search" placeholder="Try milk, apples or a brand name" maxlength="200"></div>
+                        <div class="col-12 col-md-5"><label class="form-label" for="price-sort">Sort prices</label><select id="price-sort" class="form-select"><option value="price-asc">Lowest price first</option><option value="price-desc">Highest price first</option></select></div>
                     </div>
-                    <p class="col-12 col-md-12 col-lg-4 mb-0">This table is meant to provide visitors with a basic impression of daily prices of items in the store. It is not the entire range of items available in the store. More items can be discovered on the Products page.</p>
+                    <div id="price-categories" class="category-shortcuts d-flex flex-wrap gap-2 mt-3" role="group" aria-label="Filter prices by category"></div>
                 </div>
+                <div class="d-flex justify-content-between align-items-center gap-3 mb-3"><p class="small text-body-secondary mb-0" id="price-count" role="status"></p><button id="price-reset" class="btn btn-outline-success btn-sm" type="button">Reset filters</button></div>
+                <p id="price-empty" class="price-empty" hidden>No prices match your search. Try another product or reset the filters.</p>
+                <div id="price-results" class="row g-3" tabindex="-1"></div>
+                <div id="price-pager" class="catalogue-pager d-flex flex-wrap justify-content-center gap-2 mt-4"><button id="price-more" type="button" class="btn btn-success" aria-controls="price-results">Show more ↓</button><button id="price-less" type="button" class="btn btn-outline-success" aria-controls="price-results" hidden>Show fewer ↑</button></div>
+                <noscript><p>Enable JavaScript to browse prices, or call the shop to check a product.</p></noscript>
             </section>
+            <section class="price-reference-note mt-5 mb-4" id="price-information">
+<h2 class="h6">A guide for your next shop</h2>
+<p class="small mb-0">Prices are in tenge for the pack or unit shown. Recorded from Galmart Astana via Wolt on 2 November 2026; these are reference prices, not live Lido prices. Confirm current prices and availability with the shop. Choose a product above to find it in our catalogue.</p>
+</section>
         </main>
-        <a aria-label="Back to page title" class="back-to-top btn btn-dark btn-sm position-fixed bottom-0 end-0 m-3" href="#page-title">Top</a>
-        <footer class="site-footer container-fluid py-4 text-white">
-            <div class="container">
-                <div class="row g-3 align-items-center text-center text-md-start">
-                    <p class="col-12 col-md-6 col-lg-4 mb-0">Lido Grocery Store</p>
-                    <p class="col-12 col-md-6 col-lg-4 mb-0">© 2026 Lido Grocery Store</p>
-                    <p class="col-12 col-md-6 col-lg-4 mb-0"> Contact: <a class="link-light text-break" href="tel:+77479052505">+7 747 905 25 05</a> </p>
-                    <p class="col-12 col-md-6 col-lg-4 mb-0">Address: Uly dala 31</p>
-                    <p class="col-12 col-md-6 col-lg-4 mb-0"> Email: <a class="link-light text-break" href="mailto:253741@astanait.edu.kz">253741@astanait.edu.kz</a> </p>
-                    <p class="col-12 col-md-6 col-lg-4 mb-0"> <a class="link-light text-break" href="https://2gis.kz/astana/gallery/firm/70000001066901298/photoId/30258560165926185?m=71.39957%2C51.100682%2F16" rel="noopener noreferrer" target="_blank">View Lido location on 2GIS</a> </p>
-                </div>
-            </div>
-        </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-        </script>
-    </body>
+
+        <p class="container mb-3"><a class="btn btn-outline-success btn-sm" href="#page-title">Back to top</a></p>
+<footer class="site-footer"><div class="container"><div class="row g-4">
+        <div class="col-12 col-md-5"><a class="brand" href="index.html">lido<span class="brand-dot">.</span></a><p class="mt-3 mb-2">A little planning. A better everyday shop.</p><p class="footer-muted small">Your neighbourhood grocery at Uly Dala Avenue, 31, Astana.</p></div>
+        <div class="col-6 col-md-3"><h2 class="h6">Explore</h2><a href="products.html">Shop the catalogue</a><a href="prices.html">Reference prices</a><a href="cart.html">Your shopping list</a><a href="colophon.html">About this site</a></div>
+        <div class="col-6 col-md-4"><h2 class="h6">Come say hello</h2><a href="tel:+77479052505">+7 747 905 25 05</a><a href="https://2gis.kz/astana/firm/70000001066901298" target="_blank" rel="noopener noreferrer">Find us on the map ↗</a><a href="contacts.html">Contacts & opening hours</a><a href="mailto:253741@astanait.edu.kz">Email the website team</a></div>
+        </div><div class="footer-bottom d-flex flex-wrap justify-content-between gap-2"><span>© 2026 Lido student project</span><span>Plan here. Confirm prices and availability with the shop.</span></div></div></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

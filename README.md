@@ -1,5 +1,39 @@
 # Lido Grocery Store
 
+## Current Lido interface
+
+Seven pages share a redesigned green-and-white Bootstrap interface, with a
+common catalogue search and navigation. Products displays the 50 existing
+sourced photographs, a saved-favourites filter and keyboard-accessible product
+details. Favourites persist separately from the cart in browser storage.
+Home includes category tiles and a small essentials selection. The complete shopping list remains on **Grocery/cart.html**;
+Products initially shows eight matches, with Show more and Show fewer controls;
+search and filters still cover all 50 products. Prices presents the same data as
+photo cards with category/search filters and price sorting, also eight at a time.
+Pickup/delivery, contact preparation and the
+About page guide remain available. No order, payment or message is submitted
+to the shop. Prices are recorded references, not a live Lido stock feed.
+
+Serve the `Grocery` folder using VS Code Live Server or another local HTTP server,
+then open `index.html`. Use one server address for all pages so browser storage
+is shared. Internet access is needed for Bootstrap and jQuery CDN assets.
+
+Current checks: `node tests/logic.cjs`, `node tests/catalogue-data.cjs`,
+`node tests/favourites.cjs`, `node tests/final-source.cjs`, `node tests/final-browser.cjs`.
+The browser suite needs Playwright plus Chrome and Edge; set `PLAYWRIGHT_PATH`
+when using a different installation. It checks seven pages at 375/768/1366 px.
+This is viewport testing, not a test on a physical phone.
+
+Unused assignment styles, the removed product-request script and the old comparison script are preserved under
+`archive/assignment-assets/`; live pages load only `Grocery/css/site.css`.
+Existing assignment submission folders and evidence are historical snapshots.
+Earlier test files target those snapshots and are not the final-site suite.
+
+## Historical project notes
+
+The material below describes earlier versions, not the current layout.
+
+
 Current complete Endterm snapshot: [Shalkar Contacts/About continuation](Grocery/ShalkarSaparali/Endterm/README.md) and [Temirlan Home/Products/shared-cart](Grocery/Temirlan_Endterm/README.md). Contacts uses a separate jQuery script; About has a native-JavaScript page guide. Final tag: `endterm`; previous Temirlan-only snapshot: `endterm-temirlan`.
 
 
