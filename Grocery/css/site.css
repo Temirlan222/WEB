@@ -19,8 +19,6 @@ h1 { font-weight:750; }
 .site-nav { background:#fff; border-top:1px solid #edf0e9; border-bottom:1px solid var(--lido-line); --bs-navbar-color:#425a49; --bs-navbar-active-color:#183d2c; --bs-navbar-hover-color:#245b3e; padding:9px 0; }
 .site-nav .nav-link { border-radius:8px; padding:8px 15px; font-size:.85rem; font-weight:600; }
 .site-nav .nav-link:hover,.site-nav .nav-link.active { background:#edf3e6; color:var(--lido-ink); }
-.site-nav [data-cart-link] { background:var(--lido-ink); color:#fff; }
-.site-nav [data-cart-link]:hover,.site-nav [data-cart-link].active { background:var(--lido-green); color:#fff; }
 .site-main { overflow-wrap:anywhere; }
 .site-main > .display-5 { margin-top:10px; }
 .site-main img { max-width:100%; }
